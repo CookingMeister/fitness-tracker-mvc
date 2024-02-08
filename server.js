@@ -32,7 +32,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-const apiRoutes = require('./routes/apiRoutes');
+const apiRoutes = require('./routes/api/apiRoutes');
 const htmlRoutes = require('./routes/htmlRoutes');
 
 app.use('/api', apiRoutes);
