@@ -24,6 +24,13 @@ Sleep.init(
                 isNumeric: true,
             },
         },
+        userId: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id',
+            },
+        },
     },
     {
         sequelize,
