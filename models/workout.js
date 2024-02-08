@@ -18,7 +18,7 @@ Workout.init(
                 isAlpha: true,
             },
         },
-        exercise: {
+        exercise_name: {
             type: DataTypes.STRING,
             validate: {
                 isAlpha: true,
