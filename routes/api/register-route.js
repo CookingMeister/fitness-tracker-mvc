@@ -6,8 +6,8 @@ router.get('/', (req, res) => {
   });
   
   router.post('/', (req, res) => {
-    // console.log('register route clicked')
-    // console.log(req.body);
+    console.log('register route clicked')
+    console.log(req.body);
     // create a new user
     User.create({
       username: req.body.username,
