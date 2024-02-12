@@ -39,16 +39,22 @@
 
 <nav>
     <div class="nav-wrapper">
-      <img src="./img/logo.JPG" width="5%" class="brand-logo">
-      <a href="#!" class="brand-logo">SimplyFit</a>
-      
+      <a href="#!" class="brand-logo">Fitness Tracker App</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-         <li><a href="profile.html">Profile</a></li>
+         <li><a href="sass.html">Profile</a></li>
           <li><a href="badges.html">Recipes</a></li>
           <li><a href="collapsible.html">TBD/Sign out?</a></li>
       </ul>
     </div>
   </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="sass.html">Sass</a></li>
+    <li><a href="badges.html">Components</a></li>
+    <li><a href="collapsible.html">Javascript</a></li>
+    <li><a href="mobile.html">Mobile</a></li>
+  </ul>
 
 
   
@@ -58,20 +64,18 @@
 <div class="row">
   <!-- first column -->
   <div class="col s6">
-   
+    test
  <!-- progress circle test   -->
     <div class="card0 container">
       <div class="row">
         <div class="col s6">
- <svg width="200" height="200" viewBox="0 0 280 250" class="circular-progress">
+ <svg width="250" height="250" viewBox="0 0 250 250" class="circular-progress">
   <circle class="bg"></circle>
   <circle class="fg"></circle>
-  </svg>
-<p class="overall-progress">*Insert %% here*</p>
+</svg>
 </div>
-<!-- BMI icon and index -->
-<div class="col s6 center">
-  <img src="./img/BMI.png" height="90px" width="90px" class="BMI-img">
+<div class="col s6  center">
+  <img src="./img/BMI.png" height="100px" width="100px" class="BMI-img">
   <p class="BMI-index">*Insert here*</p>
 </div>
 
@@ -84,13 +88,13 @@
     Your year's progress - Daily Average
   </h4>
   <!-- Daily average container -->
-  <div class="daily-average">
+  <div class="container">
     <!-- first row -->
     <div class="row">
       <div class="col s3">
         Cardio
         <i class="small material-icons">directions_run</i> 
-        <div class="progress" id="progress-cardio-year"
+        <div class="progress" id="actProg1"
               role="progressbar">
       <div class="determinate" style="width: 5%"></div>
   </div>
@@ -98,7 +102,7 @@
         <div class="col s3">
           Workout
           <img src="./img/exercise.svg" width="30px">
-                  <div class="progress" id="progress-workout-year"
+                  <div class="progress" id="actProg1"
               role="progressbar">
       <div class="determinate" style="width: 5%"></div>
   </div>
@@ -107,7 +111,7 @@
          <div class="col s3">
           Water
            <i class="small material-icons">opacity</i>
-        <div class="progress" id="progress-water-year"
+        <div class="progress" id="actProg1"
               role="progressbar">
       <div class="determinate" style="width: 5%"></div>
   </div>
@@ -118,7 +122,7 @@
           <div class="col s3">
             Steps
             <img src="./img/1024px-Footsteps_icon.svg.png" width="30px">
-        <div class="progress" id="progress-steps-year"
+        <div class="progress" id="actProg1"
               role="progressbar">
       <div class="determinate" style="width: 5%"></div>
   </div>
@@ -126,58 +130,77 @@
           <div class="col s3">
             Sleep
             <img src="./img/sleep.png" width="30px"> 
-        <div class="progress" id="progress-sleep-year"
+        <div class="progress" id="actProg1"
               role="progressbar">
       <div class="determinate" style="width: 5%"></div>
   </div>
-           </div>
-     
+  
+
+  
+          </div>
+          
         </div>
-    
+        
+
+        <div class="row">
+          <div class="col s3">
+            Water Intake
+            <i class="small material-icons">directions_run</i> 
+        <div class="progress" id="actProg1"
+              role="progressbar">
+      <div class="determinate" style="width: 5%"></div>
+  </div>
+          </div>
+          <div class="col s6">
+            
+        <div class="progress" id="actProg1"
+              role="progressbar">
+      <div class="determinate" style="width: 5%"></div>
+  </div>
+          </div>
+        </div>
 
    </div>
   </div>
 </div>
-</div>
+
+
 </div>
 
+</div>
+<p>End 1st</p>
   </div>
 
   <!-- end of first column -->
   <!-- start of second column-->
   <div class="col s6">
-   
+    test2
      <div class="card1 container">
       <div class="row">
         <div class="col s3">
       
-           <div class="progress" id="progress-cardio"
+           <div class="progress" id="actProg1"
               role="progressbar">
       <div class="determinate" style="width: 20%"></div>
   </div>
-  <button class="btn-activity cardio0-preview">
-          <i class="medium material-icons">directions_run</i>
-          </button>
-
+          <i class="large material-icons">directions_run</i>
         </div>
         <div class="col s3">
-         
-            <div class="progress" id="progress-workout"
+            <div class="progress" id="actProg1"
               role="progressbar">
       <div class="determinate" style="width: 30%"></div>
   </div>
-          <button class="btn-activity workout-preview">
-            <img src="./img/exercise.svg" width="70px" height="70px">
+          
+            <img src="./img/exercise.svg" width="80px" height="80px">
         </div>
-      </button>
+        
         <div class="col s3">
-            <div class="progress" id="progress-water"
+            <div class="progress" id="actProg1"
               role="progressbar">
       <div class="determinate" style="width: 40%"></div>
   </div>
-            <button class="btn-activity water-preview">          
-            <i class="medium material-icons">opacity</i>
-            </button>
+                      
+            <i class="large material-icons">opacity</i>
           </div>
         </div>
         </div>
@@ -185,22 +208,19 @@
           <div class="card1 container">
       <div class="row">
         <div class="col s3">
-          <div class="progress" id="progress-steps"
+          <div class="progress" id="actProg1"
               role="progressbar">
       <div class="determinate" style="width: 50%"></div>
   </div>
-  <button class="btn-activity steps-preview">
-<img src="./img/1024px-Footsteps_icon.svg.png" width="70px" height="70px">
-</button>
+<img src="./img/1024px-Footsteps_icon.svg.png" width="80px" height="80px">
+
         </div>
         <div class="col s3">
-          <div class="progress" id="progress-sleep"
+          <div class="progress" id="actProg1"
               role="progressbar">
       <div class="determinate" style="width: 60%"></div>
   </div>
-  <button class="btn-activity sleep-preview">
-          <img src="./img/sleep.png" width="70px" height="70px">
-          </button>
+          <img src="./img/sleep.png" width="80px" height="80px">
         </div>
         
         <div class="col s3">
@@ -208,9 +228,9 @@
               role="progressbar">
       <div class="determinate" style="width: 100%"></div>
   </div>
-                     <button class="btn-activity profile">
-            <i class="medium material-icons">person</i>
-           </button>
+                     
+            <i class="large material-icons">person</i>
+           
           </div>
         </div>
         </div>
@@ -221,15 +241,15 @@
   </div>
 </div>
 
- </div>
  
+
+<p>End 2nd</p>
+ </div>
 
  <!-- Two columns end -->
 
       </div>
     </div>
-<footer>dsaf</footer>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./Assets/javascript/script.js"></script>
   </body>

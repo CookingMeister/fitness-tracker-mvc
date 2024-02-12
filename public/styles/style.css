@@ -1,7 +1,7 @@
 .container {
   display: flex;
   align-items: center;
-  padding: 10px;
+  margin: 10px auto;
 }
 
 .nav-wrapper {
@@ -15,6 +15,18 @@ h4 {
 .btn-floating {
   align-items: center;
 }
+
+.material-icons {
+  font-size: large;
+}
+
+.btn-activity {
+  border-radius: 5px;
+  border-color: white;
+  width: 80px;
+  height: 95px;
+}
+
 /* Progress circle test */
 .circular-progress {
   --size: 150px;
@@ -24,7 +36,7 @@ h4 {
   --circumference: calc(var(--radius) * pi * 2);
   --dash: calc((var(--progress) * var(--circumference)) / 100);
   animation: progress-animation 5s linear 0s 1 forwards;
-  padding: 20px auto;
+  padding: 10px auto;
 }
 
 .circular-progress circle {
@@ -46,7 +58,7 @@ h4 {
   transform-origin: var(--half-size) var(--half-size);
   stroke-dasharray: var(--dash) calc(var(--circumference) - var(--dash));
   transition: stroke-dasharray 0.3s linear 0s;
-  stroke: #5394fd;
+  stroke: #34a0a4;
 }
 
 @property --progress {
