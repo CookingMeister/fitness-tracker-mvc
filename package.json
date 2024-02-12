@@ -12,7 +12,9 @@
     "sequelize": "^6.36.0"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create": "node ./db/schema.js"
   },
   "name": "fitness-tracker-mvc",
   "description": "## Description",
