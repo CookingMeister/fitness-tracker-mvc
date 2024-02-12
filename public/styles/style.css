@@ -1,3 +1,10 @@
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --bluegreen: #34A0A4;
+  --darkblue: #1E6091;
+}
+
 .container {
   display: flex;
   align-items: center;
