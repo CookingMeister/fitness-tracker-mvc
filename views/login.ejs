@@ -8,7 +8,7 @@
       <div class="card">
         <div class="card-body">
           <!-- Makes POST request to /login route -->
-          <form action="/login" method="POST">
+          <form action="/api/login" method="POST">
             <div class="form-group">
               <label for="email">Email</label>
               <input type="email" class="form-control" name="username" />
@@ -17,12 +17,12 @@
               <label for="password">Password</label>
               <input type="password" class="form-control" name="password" />
             </div>
-            <button type="submit" class="btn btn-dark">Login</button>
+            <button type="submit" class="btn btn-dark login-btn">Login</button>
           </form>
         </div>
       </div>
     </div>
   </div>
 </div>
-
+<script src="../js/login.js"></script>
 <%- include('partials/footer') %>
