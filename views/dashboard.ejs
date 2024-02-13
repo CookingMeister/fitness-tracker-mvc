@@ -1,0 +1,15 @@
+<%- include('partials/header') %>
+
+<form>
+    <form action="/api/dashboard" method="POST"></form>
+    <div class="row mb-3">
+      <label for="inputWater" class="col-sm-2 col-form-label">Water</label>
+      <div class="col-sm-10">
+        <input type="Water" class="form-control" placeholder="Ounces" name="inputWater" id="inputWater">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>
+
+<%- include('partials/footer') %>
