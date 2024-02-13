@@ -11,13 +11,13 @@ Water.init(
             autoIncrement: true,
             allowNull: false,
         },
-        day: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isAlpha: true,
-            },
-        },
+        // day: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false,
+        //     validate: {
+        //         isAlpha: true,
+        //     },
+        // },
         amount: {
             type: DataTypes.INTEGER,
             validate: {
