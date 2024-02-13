@@ -1,15 +1,16 @@
 <%- include('partials/header') %>
 
-<form>
-    <form action="/api/dashboard" method="POST"></form>
+<form action="/api/dashboard" method="POST">
     <div class="row mb-3">
-      <label for="inputWater" class="col-sm-2 col-form-label">Water</label>
+      <label for="water" class="col-sm-2 col-form-label">Water</label>
       <div class="col-sm-10">
-        <input type="Water" class="form-control" placeholder="Ounces" name="inputWater" id="inputWater">
+        <input type="number" class="form-control" placeholder="ounces" name="wtr-amt" id="wtr-amt"></input>
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Add</button>
+    <button type="submit" class="btn btn-primary wtr-btn" >Add</button>
 </form>
+
+<script src="../js/dashboard.js"></script>
 
 <%- include('partials/footer') %>
