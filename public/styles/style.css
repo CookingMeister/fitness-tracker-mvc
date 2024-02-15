@@ -8,14 +8,13 @@
 .container {
   display: flex;
   align-items: center;
-
-}
   margin: 10px auto;
 }
 
 .nav-wrapper {
   background-color: #34a0a4;
 }
+
 h4 {
   text-decoration: underline;
   font-size: medium;
@@ -80,6 +79,7 @@ h4 {
   from {
     --progress: 0;
   }
+
   to {
     --progress: 70;
   }
