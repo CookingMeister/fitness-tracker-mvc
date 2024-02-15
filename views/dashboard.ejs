@@ -11,6 +11,51 @@
     <button type="submit" class="btn btn-primary wtr-btn" >Add</button>
 </form>
 
+<!-- Cards for each Model -->
+<div class="container mt-5">
+  <div class="row">
+    <% categories.forEach((category) => { %>
+      <div class="col-md-4 mb-4">
+        <div class="card" data-bs-toggle="modal" data-bs-target="#modal<%= category.name %>">
+          <div class="card-body text-center">
+            <!-- Placeholder icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-card-text" viewBox="0 0 16 16">
+              <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5H1.5a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13ZM1 4v8h14V4H1Z"/>
+              <path d="M3 5h10v1H3V5Z"/>
+              <path d="M3 7h10v1H3V7Z"/>
+              <path d="M3 9h5v1H3V9Z"/>
+            </svg>
+            <h5 class="card-title mt-3"><%= category.name %></h5>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</div>
+
+<!-- Modals -->
+<% categories.forEach((category) => { %>
+  <div class="modal fade" id="modal<%= category.name %>" tabindex="-1" aria-labelledby="modalLabel<%= category.name %>" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel<%= category.name %>">Data for <%= category.name %></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <% if (category.data && category.data.length > 0) { %>
+            <% category.data.forEach((item) => { %>
+              <p><%= item.id %></p> <!-- the actual attribute you want to display -->
+            <% }) %>
+          <% } else { %>
+            <p>No data available.</p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% }) %>
+
 <script src="../js/dashboard.js"></script>
 
 <%- include('partials/footer') %>
