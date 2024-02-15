@@ -6,9 +6,10 @@ document.querySelector('.login-btn').addEventListener('click', (event) => {
     const postRequest = axios.post('/api/login', user);
     postRequest.
         then(function (response) {
-            console.log('Response:', response.data);
+          console.log('Response:', response.data);
+          window.location.replace('/');
         })
         .catch(function (error) {
           console.error('Error:', error.message);
-        });   
+        });
 });
