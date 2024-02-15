@@ -11,17 +11,29 @@ router.get('/', async (req, res) => {
     const sleepData = (await Sleep.findAll()) || [];
     const stepsData = (await Steps.findAll()) || [];
 
-    // Pass the data to the EJS template
-    res.render('dashboard', {
-      categories: [
-        { name: 'User', data: userData },
-        { name: 'Cardio', data: cardioData },
-        { name: 'Workout', data: workoutData },
-        { name: 'Water', data: waterData },
-        { name: 'Sleep', data: sleepData },
-        { name: 'Steps', data: stepsData },
-      ],
-    });
+    if (req.session.loggedIn) {
+      res.render('dashboard', {
+        categories: [
+          { name: 'User', data: userData },
+          { name: 'Cardio', data: cardioData },
+          { name: 'Workout', data: workoutData },
+          { name: 'Water', data: waterData },
+          { name: 'Sleep', data: sleepData },
+          { name: 'Steps', data: stepsData },
+        ],
+      });
+    } else {
+      // Pass the data to the EJS template
+      res.render('dashboard', {
+        categories: [
+          { name: 'Cardio', data: cardioData },
+          { name: 'Workout', data: workoutData },
+          { name: 'Water', data: waterData },
+          { name: 'Sleep', data: sleepData },
+          { name: 'Steps', data: stepsData },
+        ],
+      });
+    }
   } catch (error) {
     console.error(error);
     res.status(500).send('Server Error');
