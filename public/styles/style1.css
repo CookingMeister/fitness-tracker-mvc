@@ -18,3 +18,7 @@ body {
   box-shadow: 5px 5px 15px black;
   border-radius: 5px;
 }
+
+.card {
+  box-shadow: 5px 5px 15px black;
+}
