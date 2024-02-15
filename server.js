@@ -2,10 +2,11 @@
 const express = require('express');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const passport = require('passport');
+const passport = require('./config/passport');
 const LocalStrategy = require('passport-local').Strategy;
 const sequelize = require('./config/connection.js');
 const routes = require('./routes');
+const flash = require('express-flash');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -33,6 +34,8 @@ app.use(
 // Passport
 app.use(passport.initialize());
 app.use(passport.session());
+// flash
+app.use(flash());
 
 // Routes
 app.use(routes);
