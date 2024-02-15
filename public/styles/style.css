@@ -1,8 +1,8 @@
 :root {
   --white: #ffffff;
   --black: #000000;
-  --bluegreen: #34A0A4;
-  --darkblue: #1E6091;
+  --bluegreen: #34a0a4;
+  --darkblue: #1e6091;
 }
 
 .container {
@@ -33,6 +33,13 @@ h4 {
   border-color: white;
   width: 80px;
   height: 95px;
+}
+.log-progress-view {
+  padding: 50px;
+  text-align: center;
+}
+.submit-btn {
+  margin: 15px;
 }
 
 /* Progress circle test */
