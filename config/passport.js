@@ -6,18 +6,18 @@ const bcrypt = require('bcrypt');
 passport.use(
   new LocalStrategy(
     {
-      username: 'email',
+      username: 'username',
       password: 'password',
     },
-    async (email, password, done) => {
+    async (username, password, done) => {
       try {
-        const user = await User.findOne({ where: { email } });
+        const user = await User.findOne({ where: { username } });
 
         const isPasswordValid =
           user && (await bcrypt.compare(password, user.password));
 
         return !user
-          ? done(null, false, { message: 'Incorrect email.' })
+          ? done(null, false, { message: 'Incorrect username.' })
           : !isPasswordValid
           ? done(null, false, { message: 'Incorrect password.' })
           : done(null, user);
@@ -38,7 +38,7 @@ passport.deserializeUser(async (id, done) => {
     done(null, user);
   } catch (error) {
     done(error);
-  };
+  }
 });
 
 module.exports = passport;
