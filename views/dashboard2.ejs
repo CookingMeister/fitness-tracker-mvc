@@ -1,9 +1,20 @@
 <%- include('partials/header') %>
 
+<div class="container">
+    <div class="row">
+      <div class="col">
+      <form action="/api/dashboard/water/:id" method="get" id="get-date">
+        <label for="date">Choose a date:</label>
+        <input type="date" id="date" name="date" min="2000-01-02"><br>
+        <button type="submit" class="btn btn-primary date-btn" >Add</button>
+      </form>
+    </div>
+  </div>
+  
 <!-- Cards for each Model -->
 <div class="container mt-5">
     <h1>Simply Fit</h1>
-    <h3 id="date" class="text-center"></h3>
+    <!-- <h3 id="date" class="text-center"></h3> -->
     <hr>
     <div class="row">
       <% categories.forEach((category) => { %>
@@ -48,6 +59,8 @@
   <% }) %>
   
   <!-- Form Modals -->
+
+  <!-- User -->
     <div class="modal fade" id="formModalUser" tabindex="-1" aria-labelledby="formModalLabelUser" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -60,11 +73,15 @@
               <!-- Form fields for each attribute of the model -->
               <div class="mb-3">
                 <label for="userHeight" class="form-label">Height</label>
-                <input type="number" class="form-control" id="userHeight" name="userHeight">
+                <input type="number" class="form-control" placeholder="in feet" id="userHeightFeet" name="userHeightFeet">
+              </div>
+              <div class="mb-3">
+                <label for="userHeight" class="form-label">Height</label>
+                <input type="number" class="form-control" placeholder="in inches" id="userHeightInches" name="userHeightInches">
               </div>
               <div class="mb-3">
                 <label for="userWeight" class="form-label">Weight</label>
-                <input type="number" class="form-control" id="userWeight" name="userWeight">
+                <input type="number" class="form-control" placeholder="in lbs" id="userWeight" name="userWeight">
               </div>
               <!-- Repeat for other attributes -->
               
@@ -165,7 +182,7 @@
                 <!-- Form fields for each attribute of the model -->
                 <div class="mb-3">
                   <label for="Water" class="form-label">Water</label>
-                  <input type="number" class="form-control" placeholder="ounces" id="water" name="water">
+                  <input type="number" class="form-control" placeholder="ounces" id="wtr-amt" name="wtr-amt">
                 </div>              
                 <!-- hidden input needed to pass the model ID for updates -->
                 <input type="hidden" name="userId" value="userId">
@@ -234,18 +251,7 @@
         </div>
       </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col">
-    <form action="/api/dashboard/water/:id" method="get" id="get-date">
-      <label for="date">Choose a date:</label>
-      <input type="date" id="date" name="date" min="2000-01-02"><br>
-      <button type="submit" class="btn btn-primary date-btn" >Add</button>
-    </form>
-  </div>
-</div>
-
-<% //* add water %>
+<!-- <% //* add water %>
 <div class="row">
   <div class="col">
     <form action="/api/dashboard/water" method="POST">
@@ -347,7 +353,7 @@
   </div>
 </div>
 </div>
-   
+    -->
 
 
 <script src="../js/dashboard.js"></script>
