@@ -21,6 +21,8 @@ h4 {
 }
 
 .btn-floating {
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -90,4 +92,22 @@ h4 {
   to {
     --progress: 70;
   }
+}
+
+.activity-name {
+  background-color: var(--bluegreen);
+  color: var(--white);
+  padding: 5px 10px 5px 10px;
+  text-align: center;
+  font-size: large;
+}
+.activity-goal {
+  border: solid;
+  text-align: center;
+  font-style: italic;
+  font-size: medium;
+}
+
+.weekPicker {
+  text-align: center;
 }
