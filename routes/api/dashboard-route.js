@@ -5,7 +5,7 @@ const { Op } = require('sequelize');
 
 router.get('/', async (req, res) => {
   try {
-    // Fetch data from your models
+    // Fetch data from models
     const userData = (await User.findAll()) || [];
     const cardioData = (await Cardio.findAll()) || [];
     const workoutData = (await Workout.findAll()) || [];
@@ -13,8 +13,8 @@ router.get('/', async (req, res) => {
     const sleepData = (await Sleep.findAll()) || [];
     const stepsData = (await Steps.findAll()) || [];
 
-    if (req.session.loggedIn) {
-      res.render('dashboard', {
+    if (req.session.loggedIn) {  // If user logged in, include user data
+      res.render('dashboard2', {
         categories: [
           { name: 'User', data: userData },
           { name: 'Cardio', data: cardioData },
