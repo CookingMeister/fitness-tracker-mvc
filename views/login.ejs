@@ -1,23 +1,60 @@
 <%- include('partials/header') %>
 
 <div class="container mt-5">
-  <h1>Login</h1>
 
   <div class="row">
-    <div class="col">
+    <div class="col-md-6">
+      <h1>Login</h1>
       <div class="card">
         <div class="card-body">
           <!-- Makes POST request to /login route -->
           <form action="/api/login" method="POST">
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" class="form-control" name="username" />
+              <input
+                type="email"
+                class="form-control"
+                name="username"
+                id="email"
+              />
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" class="form-control" name="password" />
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                id="password"
+              />
             </div>
-            <button type="submit" class="btn btn-dark login-btn">Login</button>
+            <button type="submit" class="btn btn-dark mt-3 login-btn">
+              Login
+              <i class="fas fa-check m-1"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <h1>Logout</h1>
+      <div class="card">
+        <div class="card-body">
+          <!-- Makes POST request to /logout route -->
+          <form action="/api/logout" method="POST">
+            <div class="form-group">
+              <label for="logout-email">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                name="username"
+                id="logout-email"
+              />
+            </div>
+            <button type="submit" class="btn btn-dark mt-3 logout-btn">
+              Logout 
+              <i class="fas fa-trash m-1"></i>
+            </button>
           </form>
         </div>
       </div>
@@ -26,5 +63,6 @@
 </div>
 
 <script src="../js/login.js"></script>
+<script src="../js/logout.js"></script>
 
 <%- include('partials/footer') %>
