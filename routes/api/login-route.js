@@ -17,7 +17,7 @@ router.post('/', (req, res, next) => {
           err
             ? res.status(500).json({ message: 'There was an error logging in' })
             : // Save user data in session
-              (req.session.id = user.id);
+              (req.session.userId = user.id);
           req.session.username = user.username;
           req.session.loggedIn = true;
           req.session.save((err) => {

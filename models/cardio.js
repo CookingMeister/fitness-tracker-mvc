@@ -11,18 +11,8 @@ Cardio.init(
             autoIncrement: true,
             allowNull: false,
         },
-        day: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isAlpha: true,
-            },
-        },
         exercise_name: {
             type: DataTypes.STRING,
-            validate: {
-                isAlpha: true,
-            },
         },
         distance: {
             type: DataTypes.DECIMAL,
@@ -46,7 +36,7 @@ Cardio.init(
     },
     {
         sequelize,
-        timestamps: false,
+        timestamps: true,
         freezeTableName: true,
         underscored: true,
         modelName: 'cardio',
