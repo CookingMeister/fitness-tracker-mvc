@@ -94,7 +94,7 @@ router.post('/water', async (req, res) => {
 
   try {
     const addWater = await Water.create({
-      amount: wtrInput,
+      amount: req.body.wtrAmt,
       userId: userId,
     });
     res.status(201);
@@ -120,8 +120,8 @@ router.get('/sleep/:id', async (req, res) => {
   try {
     const userId = req.session.passport.user;
     //! date needs to be updated with value from frontend
-    // const dateInput = req.params.id;
-    // console.log(dateInput);
+    const dateInput = req.params.id;
+    console.log(dateInput);
     console.log(userId);
 
     const sleep = await Sleep.findAll({
@@ -162,7 +162,7 @@ router.post('/sleep', async (req, res) => {
   const userId = req.session.passport.user;
   try {
     const addSleep = await Sleep.create({
-      hours: req.body.slpInput,
+      hours: req.body.sleep,
       userId: userId,
     });
     res.status(201);
@@ -188,8 +188,8 @@ router.get('/cardio/:id', async (req, res) => {
   try {
     const userId = req.session.passport.user;
     //! date needs to be updated with value from frontend
-    // const dateInput = req.params.id;
-    // console.log(dateInput);
+    const dateInput = req.params.id;
+    console.log(dateInput);
     console.log(userId);
 
     const cardio = await Cardio.findAll({
@@ -310,9 +310,8 @@ router.post('/steps', async (req, res) => {
 router.get('/workout/:id', async (req, res) => {
   try {
     const userId = req.session.passport.user;
-    //! date needs to be updated with value from frontend
-    // const dateInput = req.params.id;
-    // console.log(dateInput);
+    const dateInput = req.params.id;
+    console.log(dateInput);
     console.log(userId);
 
     const workout = await Workout.findAll({
@@ -342,7 +341,7 @@ router.post('/workout', async (req, res) => {
   const userId = req.session.passport.user;
   try {
     const addWorkout = await Workout.create({
-      exercise_name: req.body.exercise,
+      exercise_name: req.body.workout,
       reps: req.body.reps,
       sets: req.body.sets,
       userId: userId,
