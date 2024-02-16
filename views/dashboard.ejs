@@ -26,7 +26,7 @@
             <h5 class="card-title mt-3"><%= category.name %></h5>
                <!-- Button to open the form modal -->
                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal<%= category.name %>">
-                Update/Add Data
+                <i class="fas fa-plus mx-1"></i> Data
               </button>
           </div>
         </div>
@@ -79,7 +79,10 @@
             <!-- hidden input needed to pass the model ID for updates -->
             <input type="hidden" name="modelId" value="<%= category.id %>">
             
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-success">
+              Submit
+              <i class="fas fa-check mx-2"></i>
+            </button>
           </form>
         </div>
       </div>
