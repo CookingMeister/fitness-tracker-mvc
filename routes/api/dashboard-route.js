@@ -43,34 +43,36 @@ router.get('/', async (req, res) => {
 });
 
 //! water requests
-// router.get('/water/:id', async (req, res) => {
-//     try {
-//         const userId = req.session.userId;
-//         const dateInput = req.params.id;
+router.get('/water/:id', async (req, res) => {
+    try {
+        const userId = req.session.passport.user;
+        const dateInput = req.params.id;
 
-//         console.log(dateInput);
-//         console.log(userId);
-//         const water = await Water.findAll({
-//             where: {
-//                 created_at: {
-//                     [Op.between]: [dateInput, "2024-02-17"],
-//                 }
-//             }
-//         });
+        console.log(dateInput);
+        console.log(userId);
 
-//         // console.log('Water data:', water);
+        const water = await Water.findAll({
+            where: {
+                userId: userId,
+                created_at: {
+                    [Op.between]: ["2024-02-16", "2024-02-17"],
+                }
+            }
+        });
 
-//         // if (!water) {
-//         //     return res.status(404).send('Water not found');
-//         // }
+        console.log('Water data:', water);
 
-//         // res.status(200).json(water);
+        if (!water) {
+            return res.status(404).send('Water not found');
+        }
+
+        res.status(200).json(water);
         
-//     } catch (error) {
-//         console.error('Error processing water data:', error);
-//         res.status(500).send('Error processing water data');
-//     }
-// });
+    } catch (error) {
+        console.error('Error processing water data:', error);
+        res.status(500).send('Error processing water data');
+    }
+});
 
 router.post('/water', async (req, res) => {
     console.log(req.body);
