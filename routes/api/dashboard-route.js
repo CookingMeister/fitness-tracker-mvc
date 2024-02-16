@@ -3,8 +3,43 @@ const { transformAuthInfo } = require('passport');
 const { User, Water, Cardio, Sleep, Steps, Workout } = require('../../models');
 const { Op } = require('sequelize');
 
-router.get('/', (req, res) => {
-    res.render('dashboard');
+router.get('/', async (req, res) => {
+  try {
+    // Fetch data from your models
+    const userData = (await User.findAll()) || [];
+    const cardioData = (await Cardio.findAll()) || [];
+    const workoutData = (await Workout.findAll()) || [];
+    const waterData = (await Water.findAll()) || [];
+    const sleepData = (await Sleep.findAll()) || [];
+    const stepsData = (await Steps.findAll()) || [];
+
+    if (req.session.loggedIn) {
+      res.render('dashboard', {
+        categories: [
+          { name: 'User', data: userData },
+          { name: 'Cardio', data: cardioData },
+          { name: 'Workout', data: workoutData },
+          { name: 'Water', data: waterData },
+          { name: 'Sleep', data: sleepData },
+          { name: 'Steps', data: stepsData },
+        ],
+      });
+    } else {
+      // Pass the data to the EJS template
+      res.render('dashboard', {
+        categories: [
+          { name: 'Cardio', data: cardioData },
+          { name: 'Workout', data: workoutData },
+          { name: 'Water', data: waterData },
+          { name: 'Sleep', data: sleepData },
+          { name: 'Steps', data: stepsData },
+        ],
+      });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server Error');
+  }
 });
 
 //! water requests

@@ -1,9 +1,10 @@
-document.querySelector('.login-btn').addEventListener('click', (event) => {
+document.querySelector('.logout-btn').addEventListener('click', (event) => {
     event.preventDefault();
+    console.log('Logout clicked!');
     const username = document.querySelector('input[name= "username"]').value;
-    const password = document.querySelector('input[name= "password"]').value;
-    const user = { username, password };
-    const postRequest = axios.post('/api/login', user);
+
+    const user = { username };
+    const postRequest = axios.post('/api/logout', user);
     postRequest.
         then(function (response) {
           console.log('Response:', response.data);

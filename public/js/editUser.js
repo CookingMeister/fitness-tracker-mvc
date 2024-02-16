@@ -12,10 +12,10 @@ document.querySelectorAll('.editDetails').forEach(item => {
     });
   });
 
-  document.querySelector('.delete-btn').addEventListener('click', (event) => {
+  document.querySelector('.delete-btn').addEventListener('click', async (event) => {
   // event.preventDefault();
   document.querySelector('#modalContent').value = id;
-  axios
+  await axios
     .delete('/api/user/' + id)
     .then((response) => {
       console.log(response);
@@ -24,10 +24,9 @@ document.querySelectorAll('.editDetails').forEach(item => {
         document.getElementById('editModal')
       );
       editModal.hide();
-     
+      window.location.reload();
     })
     .catch((error) => {
       console.log(error);
-    });
-    window.location.reload(); // working unsure ???????
+    });  
 });
