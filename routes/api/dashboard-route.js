@@ -53,7 +53,7 @@ router.get('/', async (req, res) => {
 //         const water = await Water.findAll({
 //             where: {
 //                 created_at: {
-//                     [Op.between]: [dateInput, "2024-02-16"],
+//                     [Op.between]: [dateInput, "2024-02-17"],
 //                 }
 //             }
 //         });
@@ -74,7 +74,10 @@ router.get('/', async (req, res) => {
 
 router.post('/water', async (req, res) => {
     console.log(req.body);
-    const userId = req.session.userId;
+    const userId = req.session.passport.user;
+
+    console.log(req.session);
+    console.log(userId);
 
     try {
         const addWater = await Water.create({
@@ -104,7 +107,7 @@ router.post('/water', async (req, res) => {
 
 router.post('/sleep', async (req, res) => {
     console.log(req.body);
-    const userId = req.session.userId;
+    const userId = req.session.passport.user;
     try {
         const addSleep = await Sleep.create({
             hours: req.body.slpInput,
@@ -133,7 +136,7 @@ router.post('/sleep', async (req, res) => {
 
 router.post('/cardio', async (req, res) => {
     console.log(req.body);
-    const userId = req.session.userId;
+    const userId = req.session.passport.user;
     try {
         const addCardio = await Cardio.create({
             exercise_name: req.body.exercise,
@@ -164,7 +167,7 @@ router.post('/cardio', async (req, res) => {
 
 router.post('/steps', async (req, res) => {
     console.log(req.body);
-    const userId = req.session.userId;
+    const userId = req.session.passport.user;
     try {
         const addSteps = await Steps.create({
             amount: req.body.steps,
@@ -193,7 +196,7 @@ router.post('/steps', async (req, res) => {
 
 router.post('/workout', async (req, res) => {
     console.log(req.body);
-    const userId = req.session.userId;
+    const userId = req.session.passport.user;
     try {
         const addWorkout = await Workout.create({
             exercise_name: req.body.exercise,
