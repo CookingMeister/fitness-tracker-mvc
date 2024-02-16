@@ -1,0 +1,356 @@
+<%- include('partials/header') %>
+
+<!-- Cards for each Model -->
+<div class="container mt-5">
+    <h1>Simply Fit</h1>
+    <h3 id="date" class="text-center"></h3>
+    <hr>
+    <div class="row">
+      <% categories.forEach((category) => { %>
+        <div class="col-md-4 mb-4">
+          <div class="card" data-bs-toggle="modal" data-bs-target="#modal<%= category.name %>">
+            <div class="card-body text-center">
+            <!-- Font Awesome walking man icon -->
+            <i class="fas fa-walking fa-2x"></i>
+              <h5 class="card-title mt-3"><%= category.name %></h5>
+                 <!-- Button to open the form modal -->
+                 <button type="button" class="btn btn-primary px-3" data-bs-toggle="modal" data-bs-target="#formModal<%= category.name %>">
+                  <i class="fas fa-plus px-1"></i> Data
+                </button>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+  
+  <!-- Info Modals -->
+  <% categories.forEach((category) => { %>
+    <div class="modal fade" id="modal<%= category.name %>" tabindex="-1" aria-labelledby="modalLabel<%= category.name %>" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel<%= category.name %>">Data for <%= category.name %></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <% if (category.data && category.data.length > 0) { %>
+              <% category.data.forEach((item) => { %>
+                <p><%= item.id %></p> <!-- the actual attribute you want to display -->
+              <% }) %>
+            <% } else { %>
+              <p>No data available.</p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% }) %>
+  
+  <!-- Form Modals -->
+    <div class="modal fade" id="formModalUser" tabindex="-1" aria-labelledby="formModalLabelUser" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="formModalLabelUser">Update/Add User Data</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/api/dashboard/user" method="POST">
+              <!-- Form fields for each attribute of the model -->
+              <div class="mb-3">
+                <label for="userHeight" class="form-label">Height</label>
+                <input type="number" class="form-control" id="userHeight" name="userHeight">
+              </div>
+              <div class="mb-3">
+                <label for="userWeight" class="form-label">Weight</label>
+                <input type="number" class="form-control" id="userWeight" name="userWeight">
+              </div>
+              <!-- Repeat for other attributes -->
+              
+              <!-- hidden input needed to pass the model ID for updates -->
+              <input type="hidden" name="userId" value="userId">
+              
+              <button type="submit" class="btn btn-success">
+                Submit
+                <i class="fas fa-check mx-2"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="formModalCardio" tabindex="-1" aria-labelledby="formModalLabelCardio" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="formModalLabelCardio">Update/Add Cardio Data</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="/api/dashboard/cardio" method="POST">
+                <!-- Form fields for each attribute of the model -->
+                <div class="mb-3">
+                  <label for="Exercise" class="form-label">Exercise</label>
+                  <input type="text" class="form-control" placeholder="exercise" id="exercise" name="exercise">
+                </div>
+                <div class="mb-3">
+                  <label for="Distance" class="form-label">Distance</label>
+                  <input type="number" class="form-control" placeholder="distance(km)" id="distance" name="distance">
+                </div>
+                <div class="mb-3">
+                    <label for="Time" class="form-label">Time</label>
+                    <input type="number" class="form-control" placeholder="time(minutes)" id="time" name="time">
+                  </div>                
+                <!-- hidden input needed to pass the model ID for updates -->
+                <input type="hidden" name="userId" value="userId">
+                
+                <button type="submit" class="btn btn-success">
+                  Submit
+                  <i class="fas fa-check mx-2"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <div class="modal fade" id="formModalWorkout" tabindex="-1" aria-labelledby="formModalLabelWorkout" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="formModalLabelWorkout">Update/Add Workout Data</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="/api/dashboard/workout" method="POST">
+                <!-- Form fields for each attribute of the model -->
+                <div class="mb-3">
+                  <label for="Workout" class="form-label">Workout</label>
+                  <input type="text" class="form-control" placeholder="exercise" id="workout" name="workout">
+                </div>
+                <div class="mb-3">
+                  <label for="Reps" class="form-label">Reps</label>
+                  <input type="number" class="form-control" placeholder="reps" id="reps" name="reps">
+                </div>
+                <div class="mb-3">
+                    <label for="Sets" class="form-label">Sets</label>
+                    <input type="number" class="form-control" placeholder="sets" id="sets" name="sets">
+                  </div>                
+                <!-- hidden input needed to pass the model ID for updates -->
+                <input type="hidden" name="userId" value="userId">
+                
+                <button type="submit" class="btn btn-success">
+                  Submit
+                  <i class="fas fa-check mx-2"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="formModalWater" tabindex="-1" aria-labelledby="formModalLabelWater" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="formModalLabelWater">Update/Add Water Data</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="/api/dashboard/water" method="POST">
+                <!-- Form fields for each attribute of the model -->
+                <div class="mb-3">
+                  <label for="Water" class="form-label">Water</label>
+                  <input type="number" class="form-control" placeholder="ounces" id="water" name="water">
+                </div>              
+                <!-- hidden input needed to pass the model ID for updates -->
+                <input type="hidden" name="userId" value="userId">
+                
+                <button type="submit" class="btn btn-success">
+                  Submit
+                  <i class="fas fa-check mx-2"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="formModalSleep" tabindex="-1" aria-labelledby="formModalLabelSleep" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="formModalLabelSleep">Update/Add Sleep Data</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="/api/dashboard/sleep" method="POST">
+                <!-- Form fields for each attribute of the model -->
+                <div class="mb-3">
+                  <label for="Sleep" class="form-label">Sleep</label>
+                  <input type="number" class="form-control" placeholder="hours" id="sleep" name="sleep">
+                </div>              
+                <!-- hidden input needed to pass the model ID for updates -->
+                <input type="hidden" name="userId" value="userId">
+                
+                <button type="submit" class="btn btn-success">
+                  Submit
+                  <i class="fas fa-check mx-2"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="formModalSteps" tabindex="-1" aria-labelledby="formModalLabelSteps" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="formModalLabelSteps">Update/Add Steps Data</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="/api/dashboard/steps" method="POST">
+                <!-- Form fields for each attribute of the model -->
+                <div class="mb-3">
+                  <label for="Steps" class="form-label">Steps</label>
+                  <input type="number" class="form-control" placeholder="steps" id="steps" name="steps">
+                </div>              
+                <!-- hidden input needed to pass the model ID for updates -->
+                <input type="hidden" name="userId" value="userId">
+                
+                <button type="submit" class="btn btn-success">
+                  Submit
+                  <i class="fas fa-check mx-2"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+    <form action="/api/dashboard/water/:id" method="get" id="get-date">
+      <label for="date">Choose a date:</label>
+      <input type="date" id="date" name="date" min="2000-01-02"><br>
+      <button type="submit" class="btn btn-primary date-btn" >Add</button>
+    </form>
+  </div>
+</div>
+
+<% //* add water %>
+<div class="row">
+  <div class="col">
+    <form action="/api/dashboard/water" method="POST">
+        <div class="row mb-3">
+          <h3>Water: </h3>
+          <label for="water" class="col-sm-2 col-form-label">Water</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" placeholder="ounces" name="wtr-amt" id="wtr-amt"></input>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary wtr-btn" >Add</button>
+        <button type="submit" class="btn btn-primary wtr-update-btn" >Update</button>
+        <button type="submit" class="btn btn-primary wtr-delete-btn" >Delete</button>
+
+    </form>
+  </div>
+</div>
+
+<%  //* add sleep %>
+<div class="row">
+  <div class="col">
+    <form action="/api/dashboard/sleep" method="POST">
+        <div class="row mb-3">
+          <h3>Sleep: </h3>
+          <label for="sleep" class="col-sm-2 col-form-label">Sleep</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" placeholder="hours" name="slp-amt" id="slp-amt"></input>
+          </div>
+        </div>
+    
+        <button type="submit" class="btn btn-primary slp-btn" >Add</button>
+        <button type="submit" class="btn btn-primary slp-update-btn" >Update</button>
+        <button type="submit" class="btn btn-primary slp-delete-btn" >Delete</button>
+    
+    </form>
+  </div>
+</div>
+
+  <% //add cardio %>
+  <div class="row">
+    <div class="col">
+      <form action="/api/dashboard/cardio" method="POST">
+          <div class="row mb-3">
+            <h3>cardio: </h3>
+            <label for="cardio" class="col-sm-2 col-form-label">cardio</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="exercise" name="exercise" id="exercise"></input>
+              <input type="number" class="form-control" placeholder="distance(km)" name="distance" id="distance"></input>
+              <input type="number" class="form-control" placeholder="time(minutes)" name="time" id="time"></input>
+            </div>
+          </div>
+      
+          <button type="submit" class="btn btn-primary cardio">Add</button>
+          <button type="submit" class="btn btn-primary cardio-update" >Update</button>
+          <button type="submit" class="btn btn-primary cardio-delete" >Delete</button>
+      
+      </form>
+
+<% //add steps %>
+<div class="row">
+  <div class="col">
+    <form action="/api/dashboard/steps" method="POST">
+        <div class="row mb-3">
+          <h3>steps: </h3>
+          <label for="steps" class="col-sm-2 col-form-label">steps</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" placeholder="steps" name="steps" id="steps"></input>
+          </div>
+        </div>
+    
+        <button type="submit" class="btn btn-primary steps">Add</button>
+        <button type="submit" class="btn btn-primary steps-update" >Update</button>
+        <button type="submit" class="btn btn-primary steps-delete" >Delete</button>
+    
+    </form>
+  </div>
+</div>
+
+<% //add workout %>
+<div class="row">
+  <div class="col">
+    <form action="/api/dashboard/workout" method="POST">
+        <div class="row mb-3">
+          <h3>workout: </h3>
+          <label for="workout" class="col-sm-2 col-form-label">workout</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="exercise" name="exercise-name" id="exercise"></input>
+            <input type="number" class="form-control" placeholder="reps" name="reps" id="reps"></input>
+            <input type="number" class="form-control" placeholder="sets" name="sets" id="sets"></input>
+          </div>
+        </div>
+    
+        <button type="submit" class="btn btn-primary workout">Add</button>
+        <button type="submit" class="btn btn-primary workout-update" >Update</button>
+        <button type="submit" class="btn btn-primary workout-delete" >Delete</button>
+    
+    </form>
+  </div>
+</div>
+</div>
+   
+
+
+<script src="../js/dashboard.js"></script>
+<script src="../js/date.js"></script>
+
+<%- include('partials/footer') %>
