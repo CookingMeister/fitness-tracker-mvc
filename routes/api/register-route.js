@@ -14,25 +14,25 @@ router.post('/', async (req, res) => {
 
   try {
     const existingUser = await User.findOne({ where: { username } });
-    // If user already exists, return error
-    existingUser
+    existingUser  // If user already exists, return error
       ? res.status(400).json({ error: 'Username already in use' })
-      : bcrypt.hash(password, saltRounds).then((hashedPassword) => {
-          User.create({   // Create new user
+       // Hash the password with bcrypt
+      : await bcrypt.hash(password, saltRounds).then(async (hashedPassword) => {
+          const newUser = await User.create({ // Create new user
             username,
             password: hashedPassword,
-          }).then((newUser) => {  
-            req.login(newUser, (err) => {   // Login new user
-              if (err) {
-                console.error(err);
-                return res.status(500).json({ error: 'Internal Server Error' });
-              }
-              console.log('New User created and logged in');
-              return res.json(newUser);
-            });
+          });
+          req.login(newUser, (err) => { // Login the user
+            if (err) {
+              console.error(err);
+              return res.status(500).json({ error: 'Internal Server Error' });
+            }
+            req.session.loggedIn = true; // Set session loggedIn to true
+            console.log('New User created and logged in');
+            return res.json(newUser);
           });
         });
-  } catch (error) {   // Error handling
+  } catch (error) { // Error handling
     console.error(error);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
