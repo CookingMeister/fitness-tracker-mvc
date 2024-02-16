@@ -1,5 +1,5 @@
 
-//* get water
+//* get water data by date
 document.getElementById('get-date').addEventListener('submit', function(event) {
     event.preventDefault();
     const dateInput = document.querySelector('input[name="date"]').value;

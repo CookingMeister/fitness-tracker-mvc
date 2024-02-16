@@ -62,6 +62,17 @@ router.get('/water/:id', async (req, res) => {
 
         console.log('Water data:', water);
 
+        const waterSum = await Water.sum('amount', {
+            where: {
+                userId: userId,
+                created_at: {
+                    [Op.between]: ["2024-02-16", "2024-02-17"],
+                }
+            }
+        });
+
+        console.log(waterSum);
+
         if (!water) {
             return res.status(404).send('Water not found');
         }
