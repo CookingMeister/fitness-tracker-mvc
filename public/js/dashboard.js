@@ -62,6 +62,7 @@ wtrBtn.addEventListener('click', (event) => {
   const wtrInput = document.querySelector('input[name= "wtr-amt"]').value;
   const wtrAmt = { wtrInput };
   console.log(wtrAmt);
+  console.log(wtrInput);
 
   const postRequest = axios.post('/api/dashboard/water', wtrAmt);
   postRequest
