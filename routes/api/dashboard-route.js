@@ -47,7 +47,7 @@ router.get('/', async (req, res) => {
 router.get('/water/:id', async (req, res) => {
   try {
     const userId = req.session.passport.user;
-    //! date needs to be updated with value from frontend
+
     const dateInput = req.params.id;
     console.log(dateInput);
     console.log(userId);
