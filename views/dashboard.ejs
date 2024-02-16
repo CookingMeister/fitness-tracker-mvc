@@ -1,15 +1,115 @@
 <%- include('partials/header') %>
 
-<form action="/api/dashboard" method="POST">
-    <div class="row mb-3">
-      <label for="water" class="col-sm-2 col-form-label">Water</label>
-      <div class="col-sm-10">
-        <input type="number" class="form-control" placeholder="ounces" name="wtr-amt" id="wtr-amt"></input>
-      </div>
-    </div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+    <form action="/api/dashboard/water/:id" method="get" id="get-date">
+      <label for="date">Choose a date:</label>
+      <input type="date" id="date" name="date" min="2000-01-02"><br>
+      <button type="submit" class="btn btn-primary date-btn" >Add</button>
+    </form>
+  </div>
+</div>
 
-    <button type="submit" class="btn btn-primary wtr-btn" >Add</button>
-</form>
+<% //* add water %>
+<div class="row">
+  <div class="col">
+    <form action="/api/dashboard/water" method="POST">
+        <div class="row mb-3">
+          <label for="water" class="col-sm-2 col-form-label">Water</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" placeholder="ounces" name="wtr-amt" id="wtr-amt"></input>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary wtr-btn" >Add</button>
+        <button type="submit" class="btn btn-primary wtr-update-btn" >Update</button>
+        <button type="submit" class="btn btn-primary wtr-delete-btn" >Delete</button>
+
+    </form>
+  </div>
+</div>
+
+<%  //* add sleep %>
+<div class="row">
+  <div class="col">
+    <form action="/api/dashboard/sleep" method="POST">
+        <div class="row mb-3">
+          <label for="sleep" class="col-sm-2 col-form-label">Sleep</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" placeholder="hours" name="slp-amt" id="slp-amt"></input>
+          </div>
+        </div>
+    
+        <button type="submit" class="btn btn-primary slp-btn" >Add</button>
+        <button type="submit" class="btn btn-primary slp-update-btn" >Update</button>
+        <button type="submit" class="btn btn-primary slp-delete-btn" >Delete</button>
+    
+    </form>
+  </div>
+</div>
+
+  <% //add cardio %>
+  <div class="row">
+    <div class="col">
+      <form action="/api/dashboard/cardio" method="POST">
+          <div class="row mb-3">
+            <label for="cardio" class="col-sm-2 col-form-label">cardio</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="exercise" name="exercise" id="exercise"></input>
+              <input type="number" class="form-control" placeholder="distance(km)" name="distance" id="distance"></input>
+              <input type="number" class="form-control" placeholder="time(minutes)" name="time" id="time"></input>
+            </div>
+          </div>
+      
+          <button type="submit" class="btn btn-primary cardio">Add</button>
+          <button type="submit" class="btn btn-primary cardio-update" >Update</button>
+          <button type="submit" class="btn btn-primary cardio-delete" >Delete</button>
+      
+      </form>
+    </div>
+  </div>
+
+<% //add steps %>
+<div class="row">
+  <div class="col">
+    <form action="/api/dashboard/steps" method="POST">
+        <div class="row mb-3">
+          <label for="steps" class="col-sm-2 col-form-label">steps</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" placeholder="steps" name="steps" id="steps"></input>
+          </div>
+        </div>
+    
+        <button type="submit" class="btn btn-primary steps">Add</button>
+        <button type="submit" class="btn btn-primary steps-update" >Update</button>
+        <button type="submit" class="btn btn-primary steps-delete" >Delete</button>
+    
+    </form>
+  </div>
+</div>
+
+<% //add workout %>
+<div class="row">
+  <div class="col">
+    <form action="/api/dashboard/workout" method="POST">
+        <div class="row mb-3">
+          <label for="workout" class="col-sm-2 col-form-label">workout</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="exercise" name="exercise-name" id="exercise"></input>
+            <input type="number" class="form-control" placeholder="reps" name="reps" id="reps"></input>
+            <input type="number" class="form-control" placeholder="sets" name="sets" id="sets"></input>
+          </div>
+        </div>
+    
+        <button type="submit" class="btn btn-primary workout">Add</button>
+        <button type="submit" class="btn btn-primary workout-update" >Update</button>
+        <button type="submit" class="btn btn-primary workout-delete" >Delete</button>
+    
+    </form>
+  </div>
+</div>
+</div>
 
 <script src="../js/dashboard.js"></script>
 

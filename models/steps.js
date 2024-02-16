@@ -11,13 +11,6 @@ Steps.init(
             autoIncrement: true,
             allowNull: false,
         },
-        day: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isAlpha: true,
-            },
-        },
         amount: {
             type: DataTypes.INTEGER,
             validate: {
@@ -34,7 +27,7 @@ Steps.init(
     },
     {
         sequelize,
-        timestamps: false,
+        timestamps: true,
         freezeTableName: true,
         underscored: true,
         modelName: 'steps',
