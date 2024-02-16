@@ -1,5 +1,6 @@
 
-//* get water data by date
+//* get all data by date
+//! need to update date value after steph is done with input/js file
 document.getElementById('get-date').addEventListener('submit', function(event) {
     event.preventDefault();
     const dateInput = document.querySelector('input[name="date"]').value;
@@ -13,6 +14,38 @@ document.getElementById('get-date').addEventListener('submit', function(event) {
     .catch(function (error) {
         console.error('Error:', error.message);
     });    
+
+    axios.get('/api/dashboard/sleep/' + dateValue.dateInput )
+    .then(function (response) {
+        console.log('Response:', response.data);
+    })
+    .catch(function (error) {
+        console.error('Error:', error.message);
+    });   
+
+    axios.get('/api/dashboard/cardio/' + dateValue.dateInput )
+    .then(function (response) {
+        console.log('Response:', response.data);
+    })
+    .catch(function (error) {
+        console.error('Error:', error.message);
+    });   
+
+    axios.get('/api/dashboard/steps/' + dateValue.dateInput )
+    .then(function (response) {
+        console.log('Response:', response.data);
+    })
+    .catch(function (error) {
+        console.error('Error:', error.message);
+    });  
+
+    axios.get('/api/dashboard/workout/' + dateValue.dateInput )
+    .then(function (response) {
+        console.log('Response:', response.data);
+    })
+    .catch(function (error) {
+        console.error('Error:', error.message);
+    });  
 });
 
 //* add water 
@@ -39,6 +72,7 @@ wtrBtn.addEventListener('click', (event) => {
 //* delete water
 
 //* -----------------------------------------------------------------------------
+
 //* add sleep
 const slpBtn = document.querySelector('.slp-btn');
 

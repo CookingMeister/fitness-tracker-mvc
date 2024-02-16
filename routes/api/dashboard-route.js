@@ -46,10 +46,10 @@ router.get('/', async (req, res) => {
 router.get('/water/:id', async (req, res) => {
     try {
         const userId = req.session.passport.user;
-        const dateInput = req.params.id;
-
-        console.log(dateInput);
-        console.log(userId);
+        //! date needs to be updated with value from frontend
+        // const dateInput = req.params.id;
+        // console.log(dateInput);
+        // console.log(userId);
 
         const water = await Water.findAll({
             where: {
@@ -114,9 +114,47 @@ router.post('/water', async (req, res) => {
 
 //! sleep requests
 
-// router.get('/sleep/:id', (req, res) => {
+router.get('/sleep/:id', async (req, res) => {
+    try {
+        const userId = req.session.passport.user;
+        //! date needs to be updated with value from frontend
+        // const dateInput = req.params.id;
+        // console.log(dateInput);
+        console.log(userId);
 
-// });
+        const sleep = await Sleep.findAll({
+            where: {
+                userId: userId,
+                created_at: {
+                    [Op.between]: ["2024-02-16", "2024-02-17"],
+                }
+            }
+        });
+
+        console.log('Sleep data:', sleep);
+
+        const sleepSum = await Sleep.sum('hours', {
+            where: {
+                userId: userId,
+                created_at: {
+                    [Op.between]: ["2024-02-16", "2024-02-17"],
+                }
+            }
+        });
+
+        console.log(sleepSum);
+
+        if (!sleep) {
+            return res.status(404).send('Sleep not found');
+        }
+
+        res.status(200).json(sleep);
+        
+    } catch (error) {
+        console.error('Error processing Sleep data:', error);
+        res.status(500).send('Error processing Sleep data');
+    }
+});
 
 router.post('/sleep', async (req, res) => {
     console.log(req.body);
@@ -143,9 +181,36 @@ router.post('/sleep', async (req, res) => {
 
 //! cardio requests
 
-// router.get('/cardio/:id', (req, res) => {
+router.get('/cardio/:id', async (req, res) => {
+    try {
+        const userId = req.session.passport.user;
+        //! date needs to be updated with value from frontend
+        // const dateInput = req.params.id;
+        // console.log(dateInput);
+        console.log(userId);
 
-// });
+        const cardio = await Cardio.findAll({
+            where: {
+                userId: userId,
+                created_at: {
+                    [Op.between]: ["2024-02-16", "2024-02-17"],
+                }
+            }
+        });
+
+        console.log('Cardio data:', cardio);
+
+        if (!cardio) {
+            return res.status(404).send('Cardio not found');
+        }
+
+        res.status(200).json(cardio);
+        
+    } catch (error) {
+        console.error('Error processing Cardio data:', error);
+        res.status(500).send('Error processing Cardio data');
+    }
+});
 
 router.post('/cardio', async (req, res) => {
     console.log(req.body);
@@ -174,9 +239,47 @@ router.post('/cardio', async (req, res) => {
 
 //! steps requests
 
-// router.get('/steps/:id', (req, res) => {
+router.get('/steps/:id', async (req, res) => {
+    try {
+        const userId = req.session.passport.user;
+        //! date needs to be updated with value from frontend
+        // const dateInput = req.params.id;
+        // console.log(dateInput);
+        console.log(userId);
 
-// });
+        const steps = await Steps.findAll({
+            where: {
+                userId: userId,
+                created_at: {
+                    [Op.between]: ["2024-02-16", "2024-02-17"],
+                }
+            }
+        });
+
+        console.log('Steps data:', steps);
+
+        const stepsSum = await Steps.sum('amount', {
+            where: {
+                userId: userId,
+                created_at: {
+                    [Op.between]: ["2024-02-16", "2024-02-17"],
+                }
+            }
+        });
+
+        console.log(stepsSum);
+
+        if (!steps) {
+            return res.status(404).send('Steps not found');
+        }
+
+        res.status(200).json(steps);
+        
+    } catch (error) {
+        console.error('Error processing Steps data:', error);
+        res.status(500).send('Error processing Steps data');
+    }
+});
 
 router.post('/steps', async (req, res) => {
     console.log(req.body);
@@ -203,9 +306,36 @@ router.post('/steps', async (req, res) => {
 
 //! workout requests
 
-// router.get('/workout/:id', (req, res) => {
+router.get('/workout/:id', async (req, res) => {
+    try {
+        const userId = req.session.passport.user;
+        //! date needs to be updated with value from frontend
+        // const dateInput = req.params.id;
+        // console.log(dateInput);
+        console.log(userId);
 
-// });
+        const workout = await Workout.findAll({
+            where: {
+                userId: userId,
+                created_at: {
+                    [Op.between]: ["2024-02-16", "2024-02-17"],
+                }
+            }
+        });
+
+        console.log('Workout data:', workout);
+
+        if (!workout) {
+            return res.status(404).send('Workout not found');
+        }
+
+        res.status(200).json(workout);
+        
+    } catch (error) {
+        console.error('Error processing Workout data:', error);
+        res.status(500).send('Error processing Workout data');
+    }
+});
 
 router.post('/workout', async (req, res) => {
     console.log(req.body);
