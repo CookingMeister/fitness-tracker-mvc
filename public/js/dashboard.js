@@ -91,7 +91,7 @@ const slpBtn = document.querySelector('.slp-btn');
 
 slpBtn.addEventListener('click', (event) => {
   event.preventDefault();
-  const slpInput = document.querySelector('input[name= "slp-amt"]').value;
+  const slpInput = document.querySelector('input[name= "sleep"]').value;
   const slpAmt = { slpInput };
 
   console.log(slpAmt);
@@ -178,7 +178,7 @@ const addWorkoutBtn = document.querySelector('.workout');
 
 addWorkoutBtn.addEventListener('click', (event) => {
   event.preventDefault();
-  const exercise = document.querySelector('input[name="exercise-name"]').value;
+  const exercise = document.querySelector('input[name="workout"]').value;
   const reps = document.querySelector('input[name="reps"]').value;
   const sets = document.querySelector('input[name="sets"]').value;
 
