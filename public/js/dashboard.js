@@ -70,7 +70,7 @@ wtrBtn.addEventListener('click', (event) => {
       console.log('Response:', response.data);
       // Close the modal here
       let editModal = bootstrap.Modal.getInstance(
-        document.getElementById('editModal')
+        document.getElementById('formModalWater')
       );
       editModal.hide();
       window.location.reload();
