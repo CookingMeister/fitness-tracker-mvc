@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
       });
     } else {
       // Pass the data to the EJS template
-      res.render('dashboard', {
+      res.render('dashboard2', {
         categories: [
           { name: 'Cardio', data: cardioData },
           { name: 'Workout', data: workoutData },
