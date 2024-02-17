@@ -1,5 +1,5 @@
 //* get all data by date
-//! need to update date value after steph is done with input/js file
+
 document
   .getElementById('get-date')
   .addEventListener('submit', function (event) {
