@@ -95,7 +95,7 @@ router.post('/water', async (req, res) => {
   try {
     const addWater = await Water.create({
 
-      amount: req.body.wtrAmt,
+      amount: req.body.wtrInput,
 
       userId: userId,
     });
@@ -164,7 +164,7 @@ router.post('/sleep', async (req, res) => {
   const userId = req.session.passport.user;
   try {
     const addSleep = await Sleep.create({
-      hours: req.body.sleep,
+      hours: req.body.slpInput,
       userId: userId,
     });
     res.status(201);
@@ -343,7 +343,7 @@ router.post('/workout', async (req, res) => {
   const userId = req.session.passport.user;
   try {
     const addWorkout = await Workout.create({
-      exercise_name: req.body.workout,
+      exercise_name: req.body.exercise,
       reps: req.body.reps,
       sets: req.body.sets,
       userId: userId,
