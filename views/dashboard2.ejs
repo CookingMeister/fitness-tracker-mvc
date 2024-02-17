@@ -12,6 +12,7 @@
     </div>
 
     <!-- Cards for each Model -->
+
     <div class="container mt-5">
       <h1>Simply Fit</h1>
       <!-- <h3 id="date" class="text-center"></h3> -->
@@ -40,35 +41,65 @@
 
     <!-- Info Modals -->
     <% categories.forEach((category)=> { %>
-      <div class="modal fade" id="modal<%= category.name %>" tabindex="-1"
-        aria-labelledby="modalLabel<%= category.name %>" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalLabel<%= category.name %>">
-                Data for <%= category.name %>
-              </h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <div
+    class="modal fade"
+    id="modal<%= category.name %>"
+    tabindex="-1"
+    aria-labelledby="modalLabel<%= category.name %>"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel<%= category.name %>">
+            Data for <%= category.name %>
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <% if (category.data && category.data.length> 0) { %>
+          <form id="deleteForm<%= category.name %>">
+            <% category.data.forEach((item)=> { %>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="<%= item.id %>"
+                id="deleteItem<%= item.id %>"
+              />
+              <label class="form-check-label" for="deleteItem<%= item.id %>">
+                <%= item.id %>
+              </label>
             </div>
-            <div class="modal-body">
-              <% if (category.data && category.data.length> 0) { %> <% category.data.forEach((item)=> { %>
-                  <p>
-                    <%= item.id %>
-                  </p>
-                  <!-- the actual attribute you want to display -->
-                  <% }) %>
-                    <% } else { %>
-                      <p>No data available.</p>
-                      <% } %>
-            </div>
-          </div>
+            <% }) %>
+          </form>
+          <% } else { %>
+          <p>No data available.</p>
+          <% } %>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="submit"
+            form="deleteForm<%= category.name %>"
+            class="btn btn-danger"
+          >
+          <i class="fas fa-trash m-1"></i>
+            Selected
+          </button>
         </div>
       </div>
-      <% }) %>
+    </div>
+  </div>
+  <% }) %>
 
-        <!-- Form Modals -->
+      <!-- Form Modals -->
 
-        <!-- User -->
+        <!-- User Modal-->
         <div class="modal fade" id="formModalUser" tabindex="-1" aria-labelledby="formModalLabelUser"
           aria-hidden="true">
           <div class="modal-dialog">
@@ -111,6 +142,7 @@
           </div>
         </div>
 
+        <!-- Cardio Model -->
         <div class="modal fade" id="formModalCardio" tabindex="-1" aria-labelledby="formModalLabelCardio"
           aria-hidden="true">
           <div class="modal-dialog">
@@ -150,6 +182,7 @@
           </div>
         </div>
 
+        <!-- Workout Modal -->
         <div class="modal fade" id="formModalWorkout" tabindex="-1" aria-labelledby="formModalLabelWorkout"
           aria-hidden="true">
           <div class="modal-dialog">
@@ -188,6 +221,7 @@
           </div>
         </div>
 
+      <!-- Water Modal -->
         <div class="modal fade" id="formModalWater" tabindex="-1" aria-labelledby="formModalLabelWater"
           aria-hidden="true">
           <div class="modal-dialog">
@@ -218,6 +252,7 @@
           </div>
         </div>
 
+      <!-- Sleep Modal -->
         <div class="modal fade" id="formModalSleep" tabindex="-1" aria-labelledby="formModalLabelSleep"
           aria-hidden="true">
           <div class="modal-dialog">
@@ -248,6 +283,7 @@
           </div>
         </div>
 
+      <!-- Steps Modal -->
         <div class="modal fade" id="formModalSteps" tabindex="-1" aria-labelledby="formModalLabelSteps"
           aria-hidden="true">
           <div class="modal-dialog">
