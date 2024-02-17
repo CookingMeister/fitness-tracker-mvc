@@ -4,24 +4,24 @@ const { Op } = require('sequelize');
 
 router.get('/', async (req, res) => {
   try {
-    // Fetch data from models
-    const userData =
-      (await User.findOne({ where: { id: req.session.userId } })) || null;
-    const cardioData =
-      (await Cardio.findOne({ where: { userId: req.session.userId } })) || [];
-    const workoutData =
-      (await Workout.findOne({ where: { userId: req.session.userId } })) || [];
-    const waterData =
-      (await Water.findOne({ where: { userId: req.session.userId } })) || null;
-    const sleepData =
-      (await Sleep.findOne({ where: { userId: req.session.userId } })) || null;
-    const stepsData =
-      (await Steps.findOne({ where: { userId: req.session.userId } })) || [];
-
-
-    // Pass the data to the EJS template
+    // If user logged in, include user data
     if (req.session.loggedIn) {
-      // If user logged in, include user data
+      // Fetch data from models
+      const userData =
+        (await User.findOne({ where: { id: req.session.userId } })) || [];
+      const cardioData =
+        (await Cardio.findOne({ where: { userId: req.session.userId } })) || [];
+      const workoutData =
+        (await Workout.findOne({ where: { userId: req.session.userId } })) ||
+        [];
+      const waterData =
+        (await Water.findOne({ where: { userId: req.session.userId } })) || [];
+      const sleepData =
+        (await Sleep.findOne({ where: { userId: req.session.userId } })) || [];
+      const stepsData =
+        (await Steps.findOne({ where: { userId: req.session.userId } })) || [];
+
+      // Pass the data to the EJS template
       res.render('dashboard2', {
         categories: [
           { name: 'User', data: userData },
@@ -39,21 +39,7 @@ router.get('/', async (req, res) => {
         stepsData,
       });
     } else {
-      res.render('dashboard2', {
-        categories: [
-          { name: 'Cardio', data: cardioData },
-          { name: 'Workout', data: workoutData },
-          { name: 'Water', data: waterData },
-          { name: 'Sleep', data: sleepData },
-          { name: 'Steps', data: stepsData },
-        ],
-        userData,
-        cardioData,
-        workoutData,
-        waterData,
-        sleepData,
-        stepsData,
-      });
+      res.render('notLoggedIn');
     }
   } catch (error) {
     console.error(error);
@@ -67,12 +53,10 @@ router.post('/user', async (req, res) => {
     console.log(userId);
     const user = await User.findByPk(userId);
     console.log(user);
-    await user.update({ weight: req.body.weight,
-                        height: req.body.height });
+    await user.update({ weight: req.body.weight, height: req.body.height });
     res.status(200).json(user);
     console.log(user, 'User updated');
-  }
-  catch (error) {
+  } catch (error) {
     console.error(error);
     res.status(500).send('Server Error');
   }
@@ -129,7 +113,6 @@ router.post('/water', async (req, res) => {
 
   try {
     const addWater = await Water.create({
-
       amount: req.body.wtrInput,
 
       userId: userId,
@@ -152,14 +135,14 @@ router.delete('/water/:id', async (req, res) => {
     const deleteWater = await Water.destroy({
       where: {
         id: req.params.id,
-      }
-    })
+      },
+    });
     if (!deleteWater) {
       res.status(404).json({ message: 'Water does not exist!' });
       return;
     } else {
-    res.status(200).json(deleteWater);
-    };
+      res.status(200).json(deleteWater);
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json(error);
@@ -234,20 +217,20 @@ router.delete('/sleep/:id', async (req, res) => {
     const deleteSleep = await Sleep.destroy({
       where: {
         id: req.params.id,
-      }
-    })
+      },
+    });
     if (!deleteSleep) {
       res.status(404).json({ message: 'Sleep does not exist!' });
       return;
     } else {
-    res.status(200).json(deleteSleep);
-    };
+      res.status(200).json(deleteSleep);
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json(error);
   }
 });
-  
+
 //! cardio requests
 
 router.get('/cardio/:id', async (req, res) => {
@@ -305,14 +288,14 @@ router.delete('/cardio/:id', async (req, res) => {
     const deleteCardio = await Cardio.destroy({
       where: {
         id: req.params.id,
-      }
-    })
+      },
+    });
     if (!deleteCardio) {
       res.status(404).json({ message: 'Cardio does not exist!' });
       return;
     } else {
-    res.status(200).json(deleteCardio);
-    };
+      res.status(200).json(deleteCardio);
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json(error);
@@ -385,14 +368,14 @@ router.delete('/steps/:id', async (req, res) => {
     const deleteSteps = await Steps.destroy({
       where: {
         id: req.params.id,
-      }
-    })
+      },
+    });
     if (!deleteSteps) {
       res.status(404).json({ message: 'Steps does not exist!' });
       return;
     } else {
-    res.status(200).json(deleteSteps);
-    };
+      res.status(200).json(deleteSteps);
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json(error);
@@ -456,14 +439,14 @@ router.delete('/workout/:id', async (req, res) => {
     const deleteWorkout = await Workout.destroy({
       where: {
         id: req.params.id,
-      }
-    })
+      },
+    });
     if (!deleteWorkout) {
       res.status(404).json({ message: 'Workout does not exist!' });
       return;
     } else {
-    res.status(200).json(deleteWorkout);
-    };
+      res.status(200).json(deleteWorkout);
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json(error);
