@@ -94,7 +94,7 @@ router.post('/water', async (req, res) => {
 
   try {
     const addWater = await Water.create({
-      amount: wtrInput,
+      amount: req.body.wtrInput,
       userId: userId,
     });
     res.status(201);

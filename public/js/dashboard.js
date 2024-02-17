@@ -59,7 +59,7 @@ const wtrBtn = document.querySelector('.wtr-btn');
 
 wtrBtn.addEventListener('click', (event) => {
   event.preventDefault();
-  const wtrInput = document.querySelector('input[name= "wtr-amt"]').value;
+  const wtrInput = document.querySelector('input[name= "wtrAmt"]').value;
   const wtrAmt = { wtrInput };
   console.log(wtrAmt);
   console.log(wtrInput);
@@ -70,7 +70,7 @@ wtrBtn.addEventListener('click', (event) => {
       console.log('Response:', response.data);
       // Close the modal here
       let editModal = bootstrap.Modal.getInstance(
-        document.getElementById('editModal')
+        document.getElementById('formModalWater')
       );
       editModal.hide();
       window.location.reload();
