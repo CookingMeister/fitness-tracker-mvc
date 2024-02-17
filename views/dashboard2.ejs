@@ -65,17 +65,17 @@
         <!-- User data -->
         <form id="deleteFormUser">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="<%= userData.username %>" id="deleteItem<%= userData.username %>" />
+            <input class="form-check-input" type="checkbox" value="<%= userData.username %>" id="deleteUsername" />
             <label class="form-check-label" for="deleteItem">User: 
               <%= userData.username %></label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="<%= userData.height %>" id="deleteItem<%= userData.height %>" />
+            <input class="form-check-input" type="checkbox" value="<%= userData.height %>" id="deleteHeight" />
             <label class="form-check-label" for="deleteItem">Height: 
               <%= userData.height %></label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="<%= userData.weight %>" id="deleteItem<%= userData.weight %>" />
+            <input class="form-check-input" type="checkbox" value="<%= userData.weight %>" id="deleteWeight" />
             <label class="form-check-label" for="deleteItem">Weight: 
               <%= userData.weight %></label>
           </div>
@@ -103,19 +103,19 @@
        <!-- Cardio data -->
         <form id="deleteFormCardio">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="<%= cardioData.exercise_name %>" id="deleteItem<%= cardioData.exercise_name %>" />
+            <input class="form-check-input" type="checkbox" value="<%= cardioData.exercise_name %>" id="deleteCardio" />
             <label class="form-check-label" for="deleteItem">exercise:
               <%= cardioData.exercise_name %>
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="<%= cardioData.distance %>" id="deleteItem<%= cardioData.distance %>" />
+            <input class="form-check-input" type="checkbox" value="<%= cardioData.distance %>" id="deleteDistance" />
             <label class="form-check-label" for="deleteItem">distance:
               <%= cardioData.distance %>
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="<%= cardioData.time %>" id="deleteItem<%= cardioData.time %>" />
+            <input class="form-check-input" type="checkbox" value="<%= cardioData.time %>" id="deleteTime" />
             <label class="form-check-label" for="deleteItem">time:
               <%= cardioData.time %>
             </label>
@@ -145,19 +145,19 @@
         <form id="deleteFormWorkout">
       
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="deleteItem" />
+            <input class="form-check-input" type="checkbox" value="<%= workoutData.exercise_name %>" id="deleteWorkout" />
             <label class="form-check-label" for="deleteItem">exercise:
               <%= workoutData.exercise_name %>
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="deleteItem" />
+            <input class="form-check-input" type="checkbox" value="<%= workoutData.sets %>" id="deleteSets" />
             <label class="form-check-label" for="deleteItem">sets:
               <%= workoutData.sets %>
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="deleteItem" />
+            <input class="form-check-input" type="checkbox" value="<%= workoutData.reps %>" id="deleteReps" />
             <label class="form-check-label" for="deleteItem">reps:
               <%= workoutData.reps %>
             </label>
@@ -187,7 +187,7 @@
         <form id="deleteFormWater">
           <!-- Repeat this block for each water data item -->
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="deleteItem" />
+            <input class="form-check-input" type="checkbox" value="<%= waterData.amount %>" id="deleteWater" />
             <label class="form-check-label" for="deleteItem">amount: <%= waterData.amount %></label>
           </div>
           <!-- End of water data item block -->
@@ -214,7 +214,7 @@
        <!-- Sleep data -->
         <form id="deleteFormSleep">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="deleteItem" />
+            <input class="form-check-input" type="checkbox" value="<%= sleepData.hours %>" id="deleteSleep" />
             <label class="form-check-label" for="deleteItem">hours: <%= sleepData.hours %></label>
           </div>
           <!-- End of sleep data item block -->
@@ -241,7 +241,7 @@
         <!-- Steps data -->
         <form id="deleteFormSteps">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="deleteItem" />
+            <input class="form-check-input" type="checkbox" value="<%= stepsData.amount %>" id="deleteSteps" />
             <label class="form-check-label" for="deleteItem">steps: <%= stepsData.amount %></label>
           </div>
           <!-- End of steps data item block -->
