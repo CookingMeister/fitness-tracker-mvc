@@ -112,16 +112,30 @@ router.post('/water', async (req, res) => {
 
 // });
 
-// router.delete('/water/:id', (req, res) => {
-
-// });
+router.delete('/water/:id', async (req, res) => {
+  try {
+    const deleteWater = await Water.destroy({
+      where: {
+        id: req.params.id,
+      }
+    })
+    if (!deleteWater) {
+      res.status(404).json({ message: 'Water does not exist!' });
+      return;
+    } else {
+    res.status(200).json(deleteWater);
+    };
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
+});
 
 //! sleep requests
 
 router.get('/sleep/:id', async (req, res) => {
   try {
     const userId = req.session.passport.user;
-    //! date needs to be updated with value from frontend
     const dateInput = req.params.id;
     console.log(dateInput);
     console.log(userId);
@@ -180,16 +194,30 @@ router.post('/sleep', async (req, res) => {
 
 // });
 
-// router.delete('/sleep/:id', (req, res) => {
-
-// });
-
+router.delete('/sleep/:id', async (req, res) => {
+  try {
+    const deleteSleep = await Sleep.destroy({
+      where: {
+        id: req.params.id,
+      }
+    })
+    if (!deleteSleep) {
+      res.status(404).json({ message: 'Sleep does not exist!' });
+      return;
+    } else {
+    res.status(200).json(deleteSleep);
+    };
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
+});
+  
 //! cardio requests
 
 router.get('/cardio/:id', async (req, res) => {
   try {
     const userId = req.session.passport.user;
-    //! date needs to be updated with value from frontend
     const dateInput = req.params.id;
     console.log(dateInput);
     console.log(userId);
@@ -237,16 +265,30 @@ router.post('/cardio', async (req, res) => {
 
 // });
 
-// router.delete('/cardio/:id', (req, res) => {
-
-// });
+router.delete('/cardio/:id', async (req, res) => {
+  try {
+    const deleteCardio = await Cardio.destroy({
+      where: {
+        id: req.params.id,
+      }
+    })
+    if (!deleteCardio) {
+      res.status(404).json({ message: 'Cardio does not exist!' });
+      return;
+    } else {
+    res.status(200).json(deleteCardio);
+    };
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
+});
 
 //! steps requests
 
 router.get('/steps/:id', async (req, res) => {
   try {
     const userId = req.session.passport.user;
-    //! date needs to be updated with value from frontend
     const dateInput = req.params.id;
     console.log(dateInput);
     console.log(userId);
@@ -303,9 +345,24 @@ router.post('/steps', async (req, res) => {
 
 // });
 
-// router.delete('/steps/:id', (req, res) => {
-
-// });
+router.delete('/steps/:id', async (req, res) => {
+  try {
+    const deleteSteps = await Steps.destroy({
+      where: {
+        id: req.params.id,
+      }
+    })
+    if (!deleteSteps) {
+      res.status(404).json({ message: 'Steps does not exist!' });
+      return;
+    } else {
+    res.status(200).json(deleteSteps);
+    };
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
+});
 
 //! workout requests
 
@@ -359,8 +416,23 @@ router.post('/workout', async (req, res) => {
 
 // });
 
-// router.delete('/workout/:id', (req, res) => {
-
-// });
+router.delete('/workout/:id', async (req, res) => {
+  try {
+    const deleteWorkout = await Workout.destroy({
+      where: {
+        id: req.params.id,
+      }
+    })
+    if (!deleteWorkout) {
+      res.status(404).json({ message: 'Workout does not exist!' });
+      return;
+    } else {
+    res.status(200).json(deleteWorkout);
+    };
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
+});
 
 module.exports = router;

@@ -79,10 +79,11 @@
             <% category.data.forEach((item)=> { %>
             <div class="form-check">
               <input
-                class="form-check-input"
+                class="form-check-input deleteInput"
                 type="checkbox"
                 value="<%= item.id %>"
                 id="deleteItem<%= item.id %>"
+                name="deleteItems"
               />
               <label class="form-check-label" for="deleteItem<%= item.id %>">
                 <%= item.id %>
@@ -98,7 +99,7 @@
           <button
             type="submit"
             form="deleteForm<%= category.name %>"
-            class="btn btn-danger"
+            class="btn btn-danger deleteBtn"
           >
           <i class="fas fa-trash m-1"></i>
             Selected
