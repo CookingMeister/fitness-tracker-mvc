@@ -7,7 +7,7 @@ document.querySelector('.login-btn').addEventListener('click', (event) => {
     postRequest.
         then(function (response) {
           console.log('Response:', response.data);
-          window.location.replace('/');
+          window.location.replace('/api/dashboard');
         })
         .catch(function (error) {
           console.error('Error:', error.message);

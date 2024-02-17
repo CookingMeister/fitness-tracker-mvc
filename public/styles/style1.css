@@ -23,3 +23,7 @@ body {
 .card {
   box-shadow: 5px 5px 15px black;
 }
+.custom-btn {
+  background-color: rgb(52,160,164);
+  border: none;
+}

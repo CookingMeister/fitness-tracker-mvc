@@ -28,8 +28,9 @@ router.post('/', async (req, res) => {
               return res.status(500).json({ error: 'Internal Server Error' });
             }
             req.session.loggedIn = true; // Set session loggedIn to true
+            console.log(newUser)
             console.log('New User created and logged in');
-            return res.json(newUser);
+            return res.redirect('/api/dashboard');
           });
         });
   } catch (error) { // Error handling

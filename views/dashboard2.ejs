@@ -23,15 +23,27 @@
             <div class="card" data-bs-toggle="modal" data-bs-target="#modal<%= category.name %>">
               <div class="card-body text-center">
                 <!-- Font Awesome walking man icon -->
-                <i class="fas fa-walking fa-2x"></i>
-                <h5 class="card-title mt-3">
-                  <%= category.name %>
-                </h5>
-                <!-- Button to open the form modal -->
-                <button type="button" class="btn btn-primary px-3" data-bs-toggle="modal"
-                  data-bs-target="#formModal<%= category.name %>">
-                  <i class="fas fa-plus px-1"></i> Data
-                </button>
+                <% if (category.name == 'Steps') { %>
+                  <i class="fas fa-shoe-prints fa-3x"></i>
+                  <% } else if (category.name == 'Cardio') { %>
+                    <i class="fas fa-heartbeat fa-3x"></i>
+                    <% } else if (category.name == 'Water') { %>
+                      <i class="fas fa-tint fa-3x"></i>
+                      <% } else if (category.name == 'Workout') { %>
+                        <i class="fas fa-dumbbell fa-3x"></i>
+                        <% } else if (category.name == 'Sleep') { %>
+                          <i class="fas fa-bed fa-3x"></i>
+                          <% } else { %>
+                            <i class="fas fa-walking fa-3x"></i>
+                <% } %>
+                  <h5 class="card-title mt-3">
+                    <%= category.name %>
+                  </h5>
+                 <!-- Button to open the form modal -->
+                  <button type="button" class="btn btn-primary custom-btn px-3" data-bs-toggle="modal"
+                    data-bs-target="#formModal<%= category.name %>">
+                    <i class="fas fa-plus px-1"></i> Data
+                  </button>
               </div>
             </div>
           </div>
