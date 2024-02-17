@@ -1,34 +1,30 @@
-// let heightInches = 4;
-// let heightFeet = 5;
-// let weightLBS = 165;
+document.addEventListener('DOMContentLoaded', function () {
+  document
+    .querySelector('.submit-user-btn')
+    .addEventListener('click', function (event) {
+      event.preventDefault();
+      const heightFeet = parseFloat(
+        document.querySelector('#userHeightFeet').value
+      );
+      const heightInches = parseFloat(
+        document.querySelector('#userHeightInches').value
+      );
+      const weightLBS = parseFloat(document.querySelector('#userWeight').value);
 
-document
-  .querySelector(".submit-user-btn")
-  .addEventListener("click", async function (event) {
-    const heightFeet = await document.querySelector("#userHeightFeet").value;
-    const heightInches = await document.querySelector("#userHeightInches")
-      .value;
-    const weightLBS = await document.querySelector("#userWeight").value;
+      console.log(heightFeet);
+      console.log(heightInches);
+      console.log(weightLBS);
 
-    event.preventDefault();
-    console.log(heightFeet);
-    console.log(heightInches);
-    console.log(weightLBS);
-    return heightFeet, heightInches, weightLBS;
-  });
+      calculateBMI(heightFeet, heightInches, weightLBS);
+    });
 
-function calculateBMI(heightFeet, heightInches, weightLBS) {
-  const heightConvertedInches = heightFeet * 12 + heightInches;
-  console.log(heightConvertedInches);
+  function calculateBMI(heightFeet, heightInches, weightLBS) {
+    const heightConvertedInches = heightFeet * 12 + heightInches;
+    const inchesSquared = heightConvertedInches ** 2;
+    const weightHeightDivision = weightLBS / inchesSquared;
 
-  const inchesSquared = heightConvertedInches ** 2;
-  console.log(inchesSquared);
-
-  const weightHeightDivision = weightLBS / inchesSquared;
-  console.log(weightHeightDivision);
-
-  const BMI = weightHeightDivision * 703;
-  console.log(BMI);
-}
-
-calculateBMI();
+    const BMI = Math.floor(weightHeightDivision * 703);
+    console.log('Your BMI is:', BMI);
+    // If statements for conditionals such as too skinny, too fat, right on track, etc.
+  }
+});
