@@ -26,7 +26,7 @@ router.post('/', (req, res, next) => {
                   .status(500)
                   .json({ message: 'There was an error logging in' })
               : console.log('User logged in');
-            res.redirect('/');
+            res.redirect('/api/dashboard');
           });
         });
   })(req, res, next);
