@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   margin: 20px;
   background-image: linear-gradient(
     33deg,
@@ -12,9 +12,16 @@ body {
   height: 100vh;
 }
 
+h1 {
+  color:rgb(246, 38, 130) ;
+  text-shadow: 2px 2px 3px aliceblue;
+  text-align: center;
+  display: inline-block;
+}
+
 .custom-jumbotron {
-  height: 400px;
-  background-color: rgb(207, 238, 250, 0.8);
+  height: 350px;
+  background-color: rgb(255, 255, 255, 0.45);
   box-shadow: 5px 5px 15px black;
   border-radius: 5px;
   margin-top: 5%;
@@ -23,6 +30,7 @@ body {
 .card {
   box-shadow: 5px 5px 15px black;
 }
+
 .custom-btn {
   background-color: rgb(52,160,164);
   border: none;

@@ -53,6 +53,33 @@ document
         console.error('Error:', error.message);
       });
   });
+// User update button
+  document
+    .querySelector('.submit-user-btn')
+    .addEventListener('click', function (event) {
+      event.preventDefault();
+      const heightFeet = parseInt(
+        document.querySelector('#userHeightFeet').value
+      );
+      const heightInches = parseInt(
+        document.querySelector('#userHeightInches').value
+      );
+      const weight = parseInt(document.querySelector('#userWeight').value);
+      const heightConvertInches = heightFeet * 12 + heightInches;
+      const height = heightConvertInches;
+      console.log(height);
+      console.log(weight);
+      // const user = { height, weight };
+      const postRequest = axios.post('/api/dashboard/user', { height, weight });
+      postRequest
+      .then(function (response) {
+        console.log('Response:', response.data);
+        window.location.replace('/api/dashboard');
+      })
+      .catch(function (error) {
+        console.error('Error:', error.message);
+      })
+    });
 
 //* add water
 const wtrBtn = document.querySelector('.wtr-btn');

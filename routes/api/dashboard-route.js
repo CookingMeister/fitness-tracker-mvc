@@ -1,18 +1,25 @@
 const router = require('express').Router();
-const { transformAuthInfo } = require('passport');
 const { User, Water, Cardio, Sleep, Steps, Workout } = require('../../models');
 const { Op } = require('sequelize');
 
 router.get('/', async (req, res) => {
   try {
     // Fetch data from models
-    const userData = (await User.findAll()) || [];
-    const cardioData = (await Cardio.findAll()) || [];
-    const workoutData = (await Workout.findAll()) || [];
-    const waterData = (await Water.findAll()) || [];
-    const sleepData = (await Sleep.findAll()) || [];
-    const stepsData = (await Steps.findAll()) || [];
+    const userData =
+      (await User.findOne({ where: { id: req.session.userId } })) || null;
+    const cardioData =
+      (await Cardio.findOne({ where: { userId: req.session.userId } })) || [];
+    const workoutData =
+      (await Workout.findOne({ where: { userId: req.session.userId } })) || [];
+    const waterData =
+      (await Water.findOne({ where: { userId: req.session.userId } })) || null;
+    const sleepData =
+      (await Sleep.findOne({ where: { userId: req.session.userId } })) || null;
+    const stepsData =
+      (await Steps.findOne({ where: { userId: req.session.userId } })) || [];
 
+
+    // Pass the data to the EJS template
     if (req.session.loggedIn) {
       // If user logged in, include user data
       res.render('dashboard2', {
@@ -24,9 +31,14 @@ router.get('/', async (req, res) => {
           { name: 'Sleep', data: sleepData },
           { name: 'Steps', data: stepsData },
         ],
+        userData,
+        cardioData,
+        workoutData,
+        waterData,
+        sleepData,
+        stepsData,
       });
     } else {
-      // Pass the data to the EJS template
       res.render('dashboard2', {
         categories: [
           { name: 'Cardio', data: cardioData },
@@ -35,9 +47,32 @@ router.get('/', async (req, res) => {
           { name: 'Sleep', data: sleepData },
           { name: 'Steps', data: stepsData },
         ],
+        userData,
+        cardioData,
+        workoutData,
+        waterData,
+        sleepData,
+        stepsData,
       });
     }
   } catch (error) {
+    console.error(error);
+    res.status(500).send('Server Error');
+  }
+});
+// User update
+router.post('/user', async (req, res) => {
+  try {
+    const userId = req.session.passport.user;
+    console.log(userId);
+    const user = await User.findByPk(userId);
+    console.log(user);
+    await user.update({ weight: req.body.weight,
+                        height: req.body.height });
+    res.status(200).json(user);
+    console.log(user, 'User updated');
+  }
+  catch (error) {
     console.error(error);
     res.status(500).send('Server Error');
   }
