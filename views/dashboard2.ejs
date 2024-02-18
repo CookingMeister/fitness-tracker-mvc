@@ -65,18 +65,17 @@
         <!-- User data -->
         <form id="deleteFormUser">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="<%= userData.username %>" id="deleteUsername" />
-            <label class="form-check-label" for="deleteItem">User: 
+            <label class="form-check-label" for="deleteItem"><strong>User:</strong> 
               <%= userData.username %></label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="<%= userData.height %>" id="<%= userData.id %>" />
-            <label class="form-check-label" id="deleteHeight" for="deleteItem">Height: 
+            <input class="form-check-input heightCheck" type="checkbox" value="<%= userData.height %>" id="<%= userData.id %>" />
+            <label class="form-check-label" id="deleteHeight" for="deleteItem"><strong>Height: </strong>
               <%= userData.height %> inches</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="<%= userData.weight %>" id="<%= userData.id %>" />
-            <label class="form-check-label" id="deleteWeight" for="deleteItem">Weight: 
+            <input class="form-check-input weightCheck" type="checkbox" value="<%= userData.weight %>" id="<%= userData.id %>" />
+            <label class="form-check-label" id="deleteWeight" for="deleteItem"><strong>Weight:</strong> 
               <%= userData.weight %> lbs</label>
           </div>
           <!-- End of user data item block -->
@@ -177,7 +176,7 @@
           <!-- Repeat this block for each water data item -->
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="<%= waterData.amount %>" id="<%= waterData.id %>" />
-            <label class="form-check-label" id="waterLabel" for="deleteItem">amount: <%= waterData.amount %> oz</label>
+            <label class="form-check-label" id="waterLabel" for="deleteItem"><strong>Amount:</strong>  <%= waterData.amount %> oz</label>
           </div>
           <!-- End of water data item block -->
         </form>
@@ -204,7 +203,7 @@
         <form id="deleteFormSleep">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="<%= sleepData.hours %>" id="<%= sleepData.id %>" />
-            <label class="form-check-label" id="sleepLabel" for="deleteItem">hours: <%= sleepData.hours %></label>
+            <label class="form-check-label" id="sleepLabel" for="deleteItem"><strong>Hours:</strong> <%= sleepData.hours %></label>
           </div>
           <!-- End of sleep data item block -->
         </form>
@@ -231,7 +230,7 @@
         <form id="deleteFormSteps">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="<%= stepsData.amount %>" id="<%= stepsData.id %>" />
-            <label class="form-check-label" id="stepsLabel" for="deleteItem">steps: <%= stepsData.amount %></label>
+            <label class="form-check-label" id="stepsLabel" for="deleteItem"><strong>Steps:</strong> <%= stepsData.amount %></label>
           </div>
           <!-- End of steps data item block -->
         </form>
@@ -264,17 +263,17 @@
                 <form action="/api/dashboard/user" method="POST">
                   <!-- Form fields for each attribute of the model -->
                   <div class="mb-3">
-                    <label for="userHeight" class="form-label">Height</label>
+                    <label for="userHeight" class="form-label"><strong>Height</strong></label>
                     <input type="number" class="form-control" placeholder="in feet" id="userHeightFeet"
                       name="userHeightFeet" />
                   </div>
                   <div class="mb-3">
-                    <label for="userHeight" class="form-label">Height</label>
+                    <label for="userHeight" class="form-label"><strong>Height</strong></label>
                     <input type="number" class="form-control" placeholder="in inches" id="userHeightInches"
                       name="userHeightInches" />
                   </div>
                   <div class="mb-3">
-                    <label for="userWeight" class="form-label">Weight</label>
+                    <label for="userWeight" class="form-label"><strong>Weight</strong></label>
                     <input type="number" class="form-control" placeholder="in lbs" id="userWeight" name="userWeight" />
                   </div>
                   <!-- Repeat for other attributes -->
@@ -307,16 +306,16 @@
                 <form action="/api/dashboard/cardio" method="POST">
                   <!-- Form fields for each attribute of the model -->
                   <div class="mb-3">
-                    <label for="Exercise" class="form-label">Exercise</label>
+                    <label for="Exercise" class="form-label"><strong>Exercise</strong></label>
                     <input type="text" class="form-control" placeholder="exercise" id="exercise" name="exercise" />
                   </div>
                   <div class="mb-3">
-                    <label for="Distance" class="form-label">Distance</label>
+                    <label for="Distance" class="form-label"><strong>Distance</strong></label>
                     <input type="number" class="form-control" placeholder="distance(km)" id="distance"
                       name="distance" />
                   </div>
                   <div class="mb-3">
-                    <label for="Time" class="form-label">Time</label>
+                    <label for="Time" class="form-label"><strong>Time</strong></label>
                     <input type="number" class="form-control" placeholder="time(minutes)" id="time" name="time" />
                   </div>
                   <!-- hidden input needed to pass the model ID for updates -->
@@ -347,15 +346,15 @@
                 <form action="/api/dashboard/workout" method="POST">
                   <!-- Form fields for each attribute of the model -->
                   <div class="mb-3">
-                    <label for="Workout" class="form-label">Workout</label>
+                    <label for="Workout" class="form-label"><strong>Workout</strong></label>
                     <input type="text" class="form-control" placeholder="exercise" id="workout" name="workout" />
                   </div>
                   <div class="mb-3">
-                    <label for="Reps" class="form-label">Reps</label>
+                    <label for="Reps" class="form-label"><strong>Reps</strong></label>
                     <input type="number" class="form-control" placeholder="reps" id="reps" name="reps" />
                   </div>
                   <div class="mb-3">
-                    <label for="Sets" class="form-label">Sets</label>
+                    <label for="Sets" class="form-label"><strong>Sets</strong></label>
                     <input type="number" class="form-control" placeholder="sets" id="sets" name="sets" />
                   </div>
                   <!-- hidden input needed to pass the model ID for updates -->
@@ -386,7 +385,7 @@
                 <form action="/api/dashboard/water" method="POST">
                   <!-- Form fields for each attribute of the model -->
                   <div class="mb-3">
-                    <label for="Water" class="form-label">Water</label>
+                    <label for="Water" class="form-label"><strong>Water</strong></label>
                     <input type="number" class="form-control" placeholder="ounces" id="wtrAmt" name="wtrAmt" />
                   </div>
                   <!-- hidden input needed to pass the model ID for updates -->
@@ -417,7 +416,7 @@
                 <form action="/api/dashboard/sleep" method="POST">
                   <!-- Form fields for each attribute of the model -->
                   <div class="mb-3">
-                    <label for="Sleep" class="form-label">Sleep</label>
+                    <label for="Sleep" class="form-label"><strong>Sleep</strong></label>
                     <input type="number" class="form-control" placeholder="hours" id="sleep" name="sleep" />
                   </div>
                   <!-- hidden input needed to pass the model ID for updates -->
@@ -448,7 +447,7 @@
                 <form action="/api/dashboard/steps" method="POST">
                   <!-- Form fields for each attribute of the model -->
                   <div class="mb-3">
-                    <label for="Steps" class="form-label">Steps</label>
+                    <label for="Steps" class="form-label"><strong>Steps</strong></label>
                     <input type="number" class="form-control" placeholder="steps" id="steps" name="steps" />
                   </div>
                   <!-- hidden input needed to pass the model ID for updates -->

@@ -88,7 +88,11 @@ deleteHeightBtn.addEventListener('click', (event) => {
   event.preventDefault();
 
   console.log('button clicked:', deleteHeightBtn);
+  const heightCheck = document.querySelector('.heightCheck');
+  const weightCheck = document.querySelector('.weightCheck');
 
+
+  if (heightCheck.checked === true && weightCheck.checked === true) {
   const heightLabel = document.querySelector('#deleteHeight');
   const heightId = heightLabel.previousElementSibling.getAttribute('id');
 
@@ -122,6 +126,42 @@ deleteHeightBtn.addEventListener('click', (event) => {
     .catch(function (error) {
       console.error('Error:', error.message);
     });
+
+  } else if (heightCheck.checked === true) {
+    const heightLabel = document.querySelector('#deleteHeight');
+    const heightId = heightLabel.previousElementSibling.getAttribute('id');
+
+    console.log(heightId);
+
+    const deleteHeightRequest = axios.delete(
+      '/api/dashboard/user/height/' + heightId
+    );
+    deleteHeightRequest
+      .then(function (response) {
+        console.log('Response:', response.data);
+        window.location.replace('/api/dashboard');
+      })
+      .catch(function (error) {
+        console.error('Error:', error.message);
+      });
+  } else  {
+    const weightLabel = document.querySelector('#deleteWeight');
+    const weightId = weightLabel.previousElementSibling.getAttribute('id');
+
+    console.log(weightId);
+
+    const deleteWeightRequest = axios.delete(
+      '/api/dashboard/user/weight/' + weightId
+    );
+    deleteWeightRequest
+      .then(function (response) {
+        console.log('Response:', response.data);
+        window.location.replace('/api/dashboard');
+      })
+      .catch(function (error) {
+        console.error('Error:', error.message);
+      });
+  }
 });
 
 //* add water
