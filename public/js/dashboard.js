@@ -90,19 +90,32 @@ deleteHeightBtn.addEventListener('click', (event) => {
   console.log('button clicked:', deleteHeightBtn);
 
   const heightLabel = document.querySelector('#deleteHeight');
-
   const heightId = heightLabel.previousElementSibling.getAttribute('id');
 
   console.log(heightId)
   
-  const deleteRequest = axios.delete('/api/dashboard/user/' + heightId);
-  deleteRequest
+  const deleteHeightRequest = axios.delete('/api/dashboard/user/height/' + heightId);
+  deleteHeightRequest
     .then(function (response) {
       console.log('Response:', response.data);
     })
     .catch(function (error) {
       console.error('Error:', error.message);
     });
+
+    const weightLabel = document.querySelector('#deleteWeight');
+    const weightId = weightLabel.previousElementSibling.getAttribute('id');
+  
+    console.log(weightId)
+
+    const deleteWeightRequest = axios.delete('/api/dashboard/user/weight/' + weightId);
+    deleteWeightRequest
+      .then(function (response) {
+        console.log('Response:', response.data);
+      })
+      .catch(function (error) {
+        console.error('Error:', error.message);
+      });
 })
 
 
