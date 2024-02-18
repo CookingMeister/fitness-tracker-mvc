@@ -1,14 +1,27 @@
 <%- include('partials/header') %>
 
-<div style="position: absolute; top: 0; right: 0; margin: 1%;">
-<button type="submit" class="btn mt-3 btn-light logout-btn">
+<div class="container primary-container">
+
+<!-- Logout button added to header -->
+<!-- <button type="submit" class="btn mt-3 btn-light logout-btn">
   Logout 
   <i class="fas fa-sign-out-alt m-1"></i>
-</button>
-</div>
+</button> -->
+
+
 
   <div class="container">
-    <div class="row">
+   
+
+    <!-- Cards for each Model -->
+
+    <div class="container mt-5">
+      <h1>Dashboard</h1>
+      <!-- <h3 id="date" class="text-center"></h3> -->
+      <hr />
+      
+<!-- Date Picker -->
+       <div class="row">
       <div class="col">
         <form action="/api/dashboard/water/:id" method="get" id="get-date">
           <label for="date">Choose a date:</label>
@@ -17,13 +30,7 @@
         </form>
       </div>
     </div>
-
-    <!-- Cards for each Model -->
-
-    <div class="container mt-5">
-      <h1>Simply Fit</h1>
-      <!-- <h3 id="date" class="text-center"></h3> -->
-      <hr />
+<hr/>
       <div class="row">
         <% categories.forEach((category)=> { %>
           <div class="col-md-4 mb-4">
@@ -33,13 +40,13 @@
                 <% if (category.name == 'Steps') { %>
                   <i class="fas fa-shoe-prints fa-3x"></i>
                   <% } else if (category.name == 'Cardio') { %>
-                    <i class="fas fa-heartbeat fa-3x pink"></i>
+                    <i class="fas fa-heartbeat fa-3x"></i>
                     <% } else if (category.name == 'Water') { %>
                       <i class="fas fa-tint fa-3x"></i>
                       <% } else if (category.name == 'Workout') { %>
                         <i class="fas fa-dumbbell fa-3x"></i>
                         <% } else if (category.name == 'Sleep') { %>
-                          <i class="fas fa-bed fa-3x pink"></i>
+                          <i class="fas fa-bed fa-3x "></i>
                           <% } else { %>
                             <i class="fas fa-walking fa-3x"></i>
                 <% } %>
@@ -90,7 +97,7 @@
       </div>
       <div class="modal-footer">
         <button type="submit" form="deleteFormUser" class="btn btn-danger deleteUserBtn">
-          <i class="fas fa-trash m-1"></i> Selected
+          <i class="fas fa-trash m-1"></i> Delete
         </button>
       </div>
     </div>
@@ -126,7 +133,7 @@
       </div>
       <div class="modal-footer">
         <button type="submit" form="deleteFormCardio" class="btn btn-danger">
-          <i class="fas fa-trash m-1"></i> Selected
+          <i class="fas fa-trash m-1"></i>Delete
         </button>
       </div>
     </div>
@@ -166,7 +173,7 @@
       </div>
       <div class="modal-footer">
         <button type="submit" form="deleteFormWorkout" class="btn btn-danger">
-          <i class="fas fa-trash m-1"></i> Selected
+          <i class="fas fa-trash m-1"></i> Delete
         </button>
       </div>
     </div>
@@ -194,7 +201,7 @@
       </div>
       <div class="modal-footer">
         <button type="submit" form="deleteFormWater" class="btn btn-danger deleteWaterBtn">
-          <i class="fas fa-trash m-1"></i> Selected
+          <i class="fas fa-trash m-1"></i> Delete
         </button>
       </div>
     </div>
@@ -221,7 +228,7 @@
       </div>
       <div class="modal-footer">
         <button type="submit" form="deleteFormSleep" class="btn btn-danger">
-          <i class="fas fa-trash m-1"></i> Selected
+          <i class="fas fa-trash m-1"></i> Delete
         </button>
       </div>
     </div>
@@ -248,7 +255,7 @@
       </div>
       <div class="modal-footer">
         <button type="submit" form="deleteFormSteps" class="btn btn-danger">
-          <i class="fas fa-trash m-1"></i> Selected
+          <i class="fas fa-trash m-1"></i> Delete
         </button>
       </div>
     </div>
@@ -478,6 +485,8 @@
           </div>
         </div>
 
+
+        </div>
         <!-- <% //* add water %>
 <div class="row">
   <div class="col">
@@ -581,8 +590,7 @@
 </div>
 </div>
     -->
-
-        <script src="../js/dashboard.js"></script>
+          <script src="../js/dashboard.js"></script>
         <script src="../js/BMI.js"></script>
         <script src="../js/date.js"></script>
 
