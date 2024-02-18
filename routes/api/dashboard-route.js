@@ -23,9 +23,18 @@ router.get('/', async (req, res) => {
               }, 
             } 
         })) || [];
-      const workoutData =
-        (await Workout.findOne({ where: { userId: req.session.userId } })) ||
-        [];
+      // const workoutData =
+      //   (await Workout.findOne({ where: { userId: req.session.userId } })) ||
+      //   [];
+      const workoutArray =
+        (await Workout.findAll({ 
+          where: { 
+              userId: req.session.userId,
+              created_at: {
+                [Op.between]: [dateInput + ' 00:00:00', dateInput + ' 23:59:59'],
+              }, 
+            } 
+        })) || [];
       const waterData =
         (await Water.findOne({ where: { userId: req.session.userId } })) || [];
       const sleepData =
@@ -38,14 +47,14 @@ router.get('/', async (req, res) => {
         categories: [
           { name: 'User', data: userData },
           { name: 'Cardio', data: cardioArray },
-          { name: 'Workout', data: workoutData },
+          { name: 'Workout', data: workoutArray },
           { name: 'Water', data: waterData },
           { name: 'Sleep', data: sleepData },
           { name: 'Steps', data: stepsData },
         ],
         userData,
         cardioArray,
-        workoutData,
+        workoutArray,
         waterData,
         sleepData,
         stepsData,
