@@ -63,7 +63,7 @@ router.post('/user', async (req, res) => {
   }
 });
 //user delete height
-router.delete('/user/:id', async (req, res) => {
+router.delete('/user/height/:id', async (req, res) => {
   try {
     const deleteHeight = await User.update(
       {
@@ -87,6 +87,30 @@ router.delete('/user/:id', async (req, res) => {
   }
 });
 
+// delete weight
+router.delete('/user/weight/:id', async (req, res) => {
+  try {
+    const deleteWeight = await User.update(
+      {
+      weight: null,
+      },
+      {
+      where: {
+        id: req.params.id,
+      },
+      }
+    )
+    if (!deleteWeight) {
+      res.status(404).json({ message: 'Weight does not exist!' });
+      return;
+    } else {
+      res.status(200).json(deleteWeight);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
+});
 
 //! water requests
 router.get('/water/:id', async (req, res) => {
