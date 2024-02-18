@@ -472,6 +472,7 @@ router.post('/workout', async (req, res) => {
       exercise_name: req.body.exercise,
       reps: req.body.reps,
       sets: req.body.sets,
+      weight: req.body.weight,
       userId: userId,
     });
     return res.redirect('/');
