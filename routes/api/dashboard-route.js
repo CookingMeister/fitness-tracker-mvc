@@ -143,10 +143,10 @@ router.post('/water', async (req, res) => {
 
       userId: userId,
     });
-    res.status(201);
+    return res.status(201);
   } catch (error) {
     console.error('Error adding daily water intake:', error);
-    res
+    return res
       .status(500)
       .json({ message: 'Internal Server Error adding daily water intake!' });
   }
@@ -167,7 +167,7 @@ router.delete('/water/:id', async (req, res) => {
       res.status(404).json({ message: 'Water does not exist!' });
       return;
     } else {
-      res.status(200).json(deleteWater);
+      return res.status(200).json(deleteWater);
     }
   } catch (error) {
     console.error(error);
@@ -246,10 +246,9 @@ router.delete('/sleep/:id', async (req, res) => {
       },
     });
     if (!deleteSleep) {
-      res.status(404).json({ message: 'Sleep does not exist!' });
-      return;
+      return res.status(404).json({ message: 'Sleep does not exist!' });
     } else {
-      res.status(200).json(deleteSleep);
+      return res.status(200).json(deleteSleep);
     }
   } catch (error) {
     console.error(error);
