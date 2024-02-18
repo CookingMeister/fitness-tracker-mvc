@@ -134,11 +134,12 @@ wtrBtn.addEventListener('click', (event) => {
   postRequest
     .then(function (response) {
       console.log('Response:', response.data);
-      // Close the modal here
+      // Close the modal
       let editModal = bootstrap.Modal.getInstance(
         document.getElementById('formModalWater')
       );
       editModal.hide();
+      // Reload the page
       window.location.reload();
     })
     .catch(function (error) {
@@ -154,19 +155,22 @@ const deleteWaterBtn = document.querySelector('button[form="deleteFormWater"]');
 
 deleteWaterBtn.addEventListener('click', (event) => {
   event.preventDefault();
-
   console.log('button clicked:', deleteWaterBtn);
-
   const waterLabel = document.querySelector('#waterLabel');
-
   const waterId = waterLabel.previousElementSibling.getAttribute('id');
-
   console.log(waterId)
   
   const deleteRequest = axios.delete('/api/dashboard/water/' + waterId);
   deleteRequest
     .then(function (response) {
       console.log('Response:', response.data);
+      // Close the modal
+      let editModal = bootstrap.Modal.getInstance(
+        document.getElementById('modalWater')
+        );
+        editModal.hide();
+        // Reload the page
+        window.location.reload();
     })
     .catch(function (error) {
       console.error('Error:', error.message);
@@ -203,19 +207,23 @@ const deleteSleepBtn = document.querySelector('button[form="deleteFormSleep"]');
 
 deleteSleepBtn.addEventListener('click', (event) => {
   event.preventDefault();
-
   console.log('button clicked:', deleteSleepBtn);
 
   const sleepLabel = document.querySelector('#sleepLabel');
-
   const sleepId = sleepLabel.previousElementSibling.getAttribute('id');
-
   console.log(sleepId)
   
   const deleteRequest = axios.delete('/api/dashboard/sleep/' + sleepId);
   deleteRequest
     .then(function (response) {
       console.log('Response:', response.data);
+      // Close the modal
+      let editModal = bootstrap.Modal.getInstance(
+        document.getElementById('modalSleep')
+        );
+        editModal.hide();
+        // Reload the page
+        window.location.reload();
     })
     .catch(function (error) {
       console.error('Error:', error.message);
