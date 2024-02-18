@@ -47,13 +47,14 @@ router.get('/', async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+
 // User update
 router.post('/user', async (req, res) => {
   try {
     const userId = req.session.passport.user;
-    console.log(userId);
+    // console.log(userId);
     const user = await User.findByPk(userId);
-    console.log(user);
+    // console.log(user);
     await user.update({ weight: req.body.weight, height: req.body.height });
     res.status(200).json(user);
     console.log(user, 'User updated');
@@ -62,6 +63,7 @@ router.post('/user', async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+
 //user delete height
 router.delete('/user/height/:id', async (req, res) => {
   try {
@@ -79,7 +81,7 @@ router.delete('/user/height/:id', async (req, res) => {
       res.status(404).json({ message: 'Height does not exist!' });
       return;
     } else {
-      res.status(200).json(deleteHeight);
+      return res.status(200).json(deleteHeight);
     }
   } catch (error) {
     console.error(error);
@@ -104,7 +106,7 @@ router.delete('/user/weight/:id', async (req, res) => {
       res.status(404).json({ message: 'Weight does not exist!' });
       return;
     } else {
-      res.status(200).json(deleteWeight);
+      return res.status(200).json(deleteWeight);
     }
   } catch (error) {
     console.error(error);
@@ -167,7 +169,7 @@ router.post('/water', async (req, res) => {
 
       userId: userId,
     });
-    return res.status(201);
+    return res.redirect('/');
   } catch (error) {
     console.error('Error adding daily water intake:', error);
     return res
@@ -249,10 +251,10 @@ router.post('/sleep', async (req, res) => {
       hours: req.body.slpInput,
       userId: userId,
     });
-    res.status(201);
+    return res.redirect('/');
   } catch (error) {
     console.error('Error adding daily sleep:', error);
-    res
+    return res
       .status(500)
       .json({ message: 'Internal Server Error adding daily sleep!' });
   }
@@ -321,10 +323,10 @@ router.post('/cardio', async (req, res) => {
       time: req.body.time,
       userId: userId,
     });
-    res.status(201);
+    return res.redirect('/');
   } catch (error) {
     console.error('Error adding Cardio:', error);
-    res.status(500).json({ message: 'Internal Server Error adding Cardio!' });
+    return res.status(500).json({ message: 'Internal Server Error adding Cardio!' });
   }
 });
 
@@ -343,7 +345,7 @@ router.delete('/cardio/:id', async (req, res) => {
       res.status(404).json({ message: 'Cardio does not exist!' });
       return;
     } else {
-      res.status(200).json(deleteCardio);
+      return res.status(200).json(deleteCardio);
     }
   } catch (error) {
     console.error(error);
@@ -401,10 +403,10 @@ router.post('/steps', async (req, res) => {
       amount: req.body.steps,
       userId: userId,
     });
-    res.status(201);
+    return res.redirect('/');
   } catch (error) {
     console.error('Error adding steps:', error);
-    res.status(500).json({ message: 'Internal Server Error adding steps!' });
+    return res.status(500).json({ message: 'Internal Server Error adding steps!' });
   }
 });
 
@@ -423,7 +425,7 @@ router.delete('/steps/:id', async (req, res) => {
       res.status(404).json({ message: 'Steps does not exist!' });
       return;
     } else {
-      res.status(200).json(deleteSteps);
+      return res.status(200).json(deleteSteps);
     }
   } catch (error) {
     console.error(error);
@@ -455,7 +457,7 @@ router.get('/workout/:id', async (req, res) => {
       return res.status(404).send('Workout not found');
     }
 
-    res.status(200).json(workout);
+    return res.redirect('/');
   } catch (error) {
     console.error('Error processing Workout data:', error);
     res.status(500).send('Error processing Workout data');
@@ -472,10 +474,10 @@ router.post('/workout', async (req, res) => {
       sets: req.body.sets,
       userId: userId,
     });
-    res.status(201);
+    return res.redirect('/');
   } catch (error) {
     console.error('Error adding Workout:', error);
-    res.status(500).json({ message: 'Internal Server Error adding Workout!' });
+    return res.status(500).json({ message: 'Internal Server Error adding Workout!' });
   }
 });
 
@@ -494,7 +496,7 @@ router.delete('/workout/:id', async (req, res) => {
       res.status(404).json({ message: 'Workout does not exist!' });
       return;
     } else {
-      res.status(200).json(deleteWorkout);
+      return res.status(200).json(deleteWorkout);
     }
   } catch (error) {
     console.error(error);

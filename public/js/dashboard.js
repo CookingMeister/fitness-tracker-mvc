@@ -54,35 +54,35 @@ document
       });
   });
 // User update button
-  document
-    .querySelector('.submit-user-btn')
-    .addEventListener('click', function (event) {
-      event.preventDefault();
-      const heightFeet = parseInt(
-        document.querySelector('#userHeightFeet').value
-      );
-      const heightInches = parseInt(
-        document.querySelector('#userHeightInches').value
-      );
-      const weight = parseInt(document.querySelector('#userWeight').value);
-      const heightConvertInches = heightFeet * 12 + heightInches;
-      const height = heightConvertInches;
-      console.log(height);
-      console.log(weight);
-      // const user = { height, weight };
-      const postRequest = axios.post('/api/dashboard/user', { height, weight });
-      postRequest
+document
+  .querySelector('.submit-user-btn')
+  .addEventListener('click', function (event) {
+    event.preventDefault();
+    const heightFeet = parseInt(
+      document.querySelector('#userHeightFeet').value
+    );
+    const heightInches = parseInt(
+      document.querySelector('#userHeightInches').value
+    );
+    const weight = parseInt(document.querySelector('#userWeight').value);
+    const heightConvertInches = heightFeet * 12 + heightInches;
+    const height = heightConvertInches;
+    console.log(height);
+    console.log(weight);
+    // const user = { height, weight };
+    const postRequest = axios.post('/api/dashboard/user', { height, weight });
+    postRequest
       .then(function (response) {
         console.log('Response:', response.data);
         window.location.replace('/api/dashboard');
       })
       .catch(function (error) {
         console.error('Error:', error.message);
-      })
-    });
+      });
+  });
 
-  //* delete user height
-  const deleteHeightBtn = document.querySelector('button[form="deleteFormUser"]');
+//* delete user height
+const deleteHeightBtn = document.querySelector('button[form="deleteFormUser"]');
 
 deleteHeightBtn.addEventListener('click', (event) => {
   event.preventDefault();
@@ -92,33 +92,37 @@ deleteHeightBtn.addEventListener('click', (event) => {
   const heightLabel = document.querySelector('#deleteHeight');
   const heightId = heightLabel.previousElementSibling.getAttribute('id');
 
-  console.log(heightId)
-  
-  const deleteHeightRequest = axios.delete('/api/dashboard/user/height/' + heightId);
+  console.log(heightId);
+
+  const deleteHeightRequest = axios.delete(
+    '/api/dashboard/user/height/' + heightId
+  );
   deleteHeightRequest
     .then(function (response) {
       console.log('Response:', response.data);
+      window.location.replace('/api/dashboard');
     })
     .catch(function (error) {
       console.error('Error:', error.message);
     });
 
-    const weightLabel = document.querySelector('#deleteWeight');
-    const weightId = weightLabel.previousElementSibling.getAttribute('id');
-  
-    console.log(weightId)
+  const weightLabel = document.querySelector('#deleteWeight');
+  const weightId = weightLabel.previousElementSibling.getAttribute('id');
 
-    const deleteWeightRequest = axios.delete('/api/dashboard/user/weight/' + weightId);
-    deleteWeightRequest
-      .then(function (response) {
-        console.log('Response:', response.data);
-      })
-      .catch(function (error) {
-        console.error('Error:', error.message);
-      });
-})
+  console.log(weightId);
 
-
+  const deleteWeightRequest = axios.delete(
+    '/api/dashboard/user/weight/' + weightId
+  );
+  deleteWeightRequest
+    .then(function (response) {
+      console.log('Response:', response.data);
+      window.location.replace('/api/dashboard');
+    })
+    .catch(function (error) {
+      console.error('Error:', error.message);
+    });
+});
 
 //* add water
 const wtrBtn = document.querySelector('.wtr-btn');
@@ -140,7 +144,7 @@ wtrBtn.addEventListener('click', (event) => {
       );
       editModal.hide();
       // Reload the page
-      window.location.reload();
+      window.location.replace('/api/dashboard');
     })
     .catch(function (error) {
       console.error('Error:', error.message);
@@ -158,8 +162,8 @@ deleteWaterBtn.addEventListener('click', (event) => {
   console.log('button clicked:', deleteWaterBtn);
   const waterLabel = document.querySelector('#waterLabel');
   const waterId = waterLabel.previousElementSibling.getAttribute('id');
-  console.log(waterId)
-  
+  console.log(waterId);
+
   const deleteRequest = axios.delete('/api/dashboard/water/' + waterId);
   deleteRequest
     .then(function (response) {
@@ -167,15 +171,15 @@ deleteWaterBtn.addEventListener('click', (event) => {
       // Close the modal
       let editModal = bootstrap.Modal.getInstance(
         document.getElementById('modalWater')
-        );
-        editModal.hide();
-        // Reload the page
-        window.location.reload();
+      );
+      editModal.hide();
+      // Reload the page
+      window.location.reload();
     })
     .catch(function (error) {
       console.error('Error:', error.message);
     });
-})
+});
 
 //* -----------------------------------------------------------------------------
 
@@ -193,6 +197,7 @@ slpBtn.addEventListener('click', (event) => {
   postRequest
     .then(function (response) {
       console.log('Response:', response.data);
+      window.location.replace('/api/dashboard');
     })
     .catch(function (error) {
       console.error('Error:', error.message);
@@ -211,8 +216,8 @@ deleteSleepBtn.addEventListener('click', (event) => {
 
   const sleepLabel = document.querySelector('#sleepLabel');
   const sleepId = sleepLabel.previousElementSibling.getAttribute('id');
-  console.log(sleepId)
-  
+  console.log(sleepId);
+
   const deleteRequest = axios.delete('/api/dashboard/sleep/' + sleepId);
   deleteRequest
     .then(function (response) {
@@ -220,15 +225,15 @@ deleteSleepBtn.addEventListener('click', (event) => {
       // Close the modal
       let editModal = bootstrap.Modal.getInstance(
         document.getElementById('modalSleep')
-        );
-        editModal.hide();
-        // Reload the page
-        window.location.reload();
+      );
+      editModal.hide();
+      // Reload the page
+      window.location.reload();
     })
     .catch(function (error) {
       console.error('Error:', error.message);
     });
-})
+});
 
 //* -----------------------------------------------------------------------------
 
@@ -251,6 +256,7 @@ addCardioBtn.addEventListener('click', (event) => {
   postRequest
     .then(function (response) {
       console.log('Response:', response.data);
+      window.location.replace('/api/dashboard');
     })
     .catch(function (error) {
       console.error('Error:', error.message);
@@ -260,28 +266,29 @@ addCardioBtn.addEventListener('click', (event) => {
 //* update cardio
 
 //* delete cardio
-const deleteCardioBtn = document.querySelector('button[form="deleteFormCardio"]');
+const deleteCardioBtn = document.querySelector(
+  'button[form="deleteFormCardio"]'
+);
 
 deleteCardioBtn.addEventListener('click', (event) => {
   event.preventDefault();
-
   console.log('button clicked:', deleteCardioBtn);
 
   const cardioLabel = document.querySelector('#deleteCardio');
 
   const cardioId = cardioLabel.previousElementSibling.getAttribute('id');
+  console.log(cardioId);
 
-  console.log(cardioId)
-  
   const deleteRequest = axios.delete('/api/dashboard/cardio/' + cardioId);
   deleteRequest
     .then(function (response) {
       console.log('Response:', response.data);
+      window.location.replace('/api/dashboard');
     })
     .catch(function (error) {
       console.error('Error:', error.message);
     });
-})
+});
 
 //* -----------------------------------------------------------------------------
 
@@ -302,6 +309,7 @@ addStepsBtn.addEventListener('click', (event) => {
   postRequest
     .then(function (response) {
       console.log('Response:', response.data);
+      window.location.replace('/api/dashboard');
     })
     .catch(function (error) {
       console.error('Error:', error.message);
@@ -321,17 +329,18 @@ deleteStepsBtn.addEventListener('click', (event) => {
 
   const stepsId = stepsLabel.previousElementSibling.getAttribute('id');
 
-  console.log(stepsId)
-  
+  console.log(stepsId);
+
   const deleteRequest = axios.delete('/api/dashboard/steps/' + stepsId);
   deleteRequest
     .then(function (response) {
       console.log('Response:', response.data);
+      window.location.replace('/api/dashboard');
     })
     .catch(function (error) {
       console.error('Error:', error.message);
     });
-})
+});
 
 //* -----------------------------------------------------------------------------
 
@@ -353,7 +362,8 @@ addWorkoutBtn.addEventListener('click', (event) => {
   const postRequest = axios.post('/api/dashboard/workout', exerciseRepSet);
   postRequest
     .then(function (response) {
-      console.log('Response:', response.data);
+      console.log('Response:', response.data)
+      window.location.replace('/api/dashboard');
     })
     .catch(function (error) {
       console.error('Error:', error.message);
@@ -361,25 +371,26 @@ addWorkoutBtn.addEventListener('click', (event) => {
 });
 //* update workout
 //* delete workout
-const deleteWorkoutBtn = document.querySelector('button[form="deleteFormWorkout"]');
+const deleteWorkoutBtn = document.querySelector(
+  'button[form="deleteFormWorkout"]'
+);
 
 deleteWorkoutBtn.addEventListener('click', (event) => {
   event.preventDefault();
-
   console.log('button clicked:', deleteWorkoutBtn);
 
   const workoutLabel = document.querySelector('#deleteWorkout');
 
   const workoutId = workoutLabel.previousElementSibling.getAttribute('id');
+  console.log(workoutId);
 
-  console.log(workoutId)
-  
   const deleteRequest = axios.delete('/api/dashboard/workout/' + workoutId);
   deleteRequest
     .then(function (response) {
       console.log('Response:', response.data);
+      window.location.replace('/api/dashboard');
     })
     .catch(function (error) {
       console.error('Error:', error.message);
     });
-})
+});
