@@ -22,14 +22,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const BMI = Math.floor(weightHeightDivision * 703);
     return BMI;
-    // If statements for conditionals such as too skinny, too fat, right on track, etc.
   }
 });
 // Update BMI value in the info modal
-function updateBMIValue(bmi) {
-  document.getElementById('bmiValue').innerText = bmi;
+function updateBMIValue(BMI) {
+  let bmiStatus =
+    BMI < 18.5
+      ? 'falls within the underweight range'
+      : BMI < 25
+      ? 'falls within the healthy weight range'
+      : BMI < 30
+      ? 'falls within the overweight range'
+      : 'falls within the obesity range';
+  document.getElementById('bmiValue').innerHTML = BMI + ' - ' + bmiStatus;
   // Store BMI value in localStorage
-  localStorage.setItem('bmi', bmi);
+  localStorage.setItem('bmi', BMI);
 }
 
 // Function to retrieve BMI value from localStorage
