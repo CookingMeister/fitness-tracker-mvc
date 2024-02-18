@@ -252,6 +252,28 @@ addCardioBtn.addEventListener('click', (event) => {
 //* update cardio
 
 //* delete cardio
+const deleteCardioBtn = document.querySelector('button[form="deleteFormCardio"]');
+
+deleteCardioBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  console.log('button clicked:', deleteCardioBtn);
+
+  const cardioLabel = document.querySelector('#deleteCardio');
+
+  const cardioId = cardioLabel.previousElementSibling.getAttribute('id');
+
+  console.log(cardioId)
+  
+  const deleteRequest = axios.delete('/api/dashboard/cardio/' + cardioId);
+  deleteRequest
+    .then(function (response) {
+      console.log('Response:', response.data);
+    })
+    .catch(function (error) {
+      console.error('Error:', error.message);
+    });
+})
 
 //* -----------------------------------------------------------------------------
 
@@ -331,3 +353,25 @@ addWorkoutBtn.addEventListener('click', (event) => {
 });
 //* update workout
 //* delete workout
+const deleteWorkoutBtn = document.querySelector('button[form="deleteFormWorkout"]');
+
+deleteWorkoutBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  console.log('button clicked:', deleteWorkoutBtn);
+
+  const workoutLabel = document.querySelector('#deleteWorkout');
+
+  const workoutId = workoutLabel.previousElementSibling.getAttribute('id');
+
+  console.log(workoutId)
+  
+  const deleteRequest = axios.delete('/api/dashboard/workout/' + workoutId);
+  deleteRequest
+    .then(function (response) {
+      console.log('Response:', response.data);
+    })
+    .catch(function (error) {
+      console.error('Error:', error.message);
+    });
+})
