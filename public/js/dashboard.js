@@ -394,8 +394,9 @@ addWorkoutBtn.addEventListener('click', (event) => {
   const exercise = document.querySelector('input[name="workout"]').value;
   const reps = document.querySelector('input[name="reps"]').value;
   const sets = document.querySelector('input[name="sets"]').value;
+  const weight = document.querySelector('input[name="weight"]').value;
 
-  const exerciseRepSet = { exercise, reps, sets };
+  const exerciseRepSet = { exercise, reps, sets, weight };
 
   console.log(exerciseRepSet);
 

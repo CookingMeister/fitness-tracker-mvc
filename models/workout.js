@@ -26,6 +26,12 @@ Workout.init(
                 isNumeric: true,
             },
         },
+        weight: {
+            type: DataTypes.INTEGER,
+            validate: {
+                isNumeric: true,
+            },
+        },
         userId: {
             type: DataTypes.INTEGER,
             references: {

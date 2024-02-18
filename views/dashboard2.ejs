@@ -149,6 +149,10 @@
             <label class="form-check-label" for="deleteItem"><strong>Reps:</strong>
               <%= workoutData.reps %>
             </label>
+            <label class="form-check-label" for="deleteItem"><strong>Weight per Set:</strong>
+              <%= workoutData.weight %>
+              lbs
+            </label>
           </div>
           <!-- End of workout data item block -->
         </form>
@@ -356,6 +360,10 @@
                   <div class="mb-3">
                     <label for="Sets" class="form-label"><strong>Sets</strong></label>
                     <input type="number" class="form-control" placeholder="sets" id="sets" name="sets" />
+                  </div>
+                  <div class="mb-3">
+                    <label for="weight" class="form-label"><strong>Weight per Set</strong></label>
+                    <input type="number" class="form-control" placeholder="in lbs" id="weight" name="weight" />
                   </div>
                   <!-- hidden input needed to pass the model ID for updates -->
                   <input type="hidden" name="userId" value="userId" />
