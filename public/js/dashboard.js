@@ -81,6 +81,32 @@ document
       })
     });
 
+  //* delete user height
+  const deleteHeightBtn = document.querySelector('button[form="deleteFormUser"]');
+
+deleteHeightBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  console.log('button clicked:', deleteHeightBtn);
+
+  const heightLabel = document.querySelector('#deleteHeight');
+
+  const heightId = heightLabel.previousElementSibling.getAttribute('id');
+
+  console.log(heightId)
+  
+  const deleteRequest = axios.delete('/api/dashboard/user/' + heightId);
+  deleteRequest
+    .then(function (response) {
+      console.log('Response:', response.data);
+    })
+    .catch(function (error) {
+      console.error('Error:', error.message);
+    });
+})
+
+
+
 //* add water
 const wtrBtn = document.querySelector('.wtr-btn');
 
@@ -111,6 +137,29 @@ wtrBtn.addEventListener('click', (event) => {
 
 //* delete water
 
+const deleteWaterBtn = document.querySelector('button[form="deleteFormWater"]');
+
+deleteWaterBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  console.log('button clicked:', deleteWaterBtn);
+
+  const waterLabel = document.querySelector('#waterLabel');
+
+  const waterId = waterLabel.previousElementSibling.getAttribute('id');
+
+  console.log(waterId)
+  
+  const deleteRequest = axios.delete('/api/dashboard/water/' + waterId);
+  deleteRequest
+    .then(function (response) {
+      console.log('Response:', response.data);
+    })
+    .catch(function (error) {
+      console.error('Error:', error.message);
+    });
+})
+
 //* -----------------------------------------------------------------------------
 
 //* add sleep
@@ -136,6 +185,29 @@ slpBtn.addEventListener('click', (event) => {
 //* update sleep
 
 //* delete sleep
+
+const deleteSleepBtn = document.querySelector('button[form="deleteFormSleep"]');
+
+deleteSleepBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  console.log('button clicked:', deleteSleepBtn);
+
+  const sleepLabel = document.querySelector('#sleepLabel');
+
+  const sleepId = sleepLabel.previousElementSibling.getAttribute('id');
+
+  console.log(sleepId)
+  
+  const deleteRequest = axios.delete('/api/dashboard/sleep/' + sleepId);
+  deleteRequest
+    .then(function (response) {
+      console.log('Response:', response.data);
+    })
+    .catch(function (error) {
+      console.error('Error:', error.message);
+    });
+})
 
 //* -----------------------------------------------------------------------------
 
@@ -195,6 +267,28 @@ addStepsBtn.addEventListener('click', (event) => {
 
 //* update steps
 //* delete steps
+const deleteStepsBtn = document.querySelector('button[form="deleteFormSteps"]');
+
+deleteStepsBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  console.log('button clicked:', deleteStepsBtn);
+
+  const stepsLabel = document.querySelector('#stepsLabel');
+
+  const stepsId = stepsLabel.previousElementSibling.getAttribute('id');
+
+  console.log(stepsId)
+  
+  const deleteRequest = axios.delete('/api/dashboard/steps/' + stepsId);
+  deleteRequest
+    .then(function (response) {
+      console.log('Response:', response.data);
+    })
+    .catch(function (error) {
+      console.error('Error:', error.message);
+    });
+})
 
 //* -----------------------------------------------------------------------------
 

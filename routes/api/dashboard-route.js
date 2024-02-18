@@ -3,6 +3,7 @@ const { User, Water, Cardio, Sleep, Steps, Workout } = require('../../models');
 const { Op } = require('sequelize');
 
 router.get('/', async (req, res) => {
+  console.log(req.session.userId);
   try {
     // If user logged in, include user data
     if (req.session.loggedIn) {
@@ -61,6 +62,31 @@ router.post('/user', async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+//user delete height
+router.delete('/user/:id', async (req, res) => {
+  try {
+    const deleteHeight = await User.update(
+      {
+      height: null,
+      },
+      {
+      where: {
+        id: req.params.id,
+      },
+      }
+    )
+    if (!deleteHeight) {
+      res.status(404).json({ message: 'Height does not exist!' });
+      return;
+    } else {
+      res.status(200).json(deleteHeight);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
+});
+
 
 //! water requests
 router.get('/water/:id', async (req, res) => {
