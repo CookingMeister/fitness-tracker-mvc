@@ -53,6 +53,7 @@ document
         console.error('Error:', error.message);
       });
   });
+  
 // User update button
 document
   .querySelector('.submit-user-btn')
@@ -394,3 +395,19 @@ deleteWorkoutBtn.addEventListener('click', (event) => {
       console.error('Error:', error.message);
     });
 });
+
+// Logout button
+const logout = document.querySelector('.logout-btn');
+logout.addEventListener('click', (event) => {
+  event.preventDefault();
+  console.log('Logout clicked!');
+  const postRequest = axios.post('/api/logout');
+  postRequest.
+      then(function (response) {
+        console.log('Response:', response.data);
+        window.location.replace('/');
+      })
+      .catch(function (error) {
+        console.error('Error:', error.message);
+      });
+  });

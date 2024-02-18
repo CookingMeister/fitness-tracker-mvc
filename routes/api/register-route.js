@@ -14,29 +14,52 @@ router.post('/', async (req, res) => {
 
   try {
     const existingUser = await User.findOne({ where: { username } });
-    existingUser  // If user already exists, return error
+    existingUser
       ? res.status(400).json({ error: 'Username already in use' })
-       // Hash the password with bcrypt
-      : await bcrypt.hash(password, saltRounds).then(async (hashedPassword) => {
-          const newUser = await User.create({ // Create new user
-            username,
-            password: hashedPassword,
+      : bcrypt
+          .hash(password, saltRounds)
+          .then((hashedPassword) => {
+            User.create({
+              username,
+              password: hashedPassword,
+            })
+              .then((newUser) => {
+                req.login(newUser, (err) => {
+                  if (err) {
+                    console.error(err);
+                    return res
+                      .status(500)
+                      .json({ error: 'Internal Server Error' });
+                  }
+                  req.session.userId = newUser.id;
+                  req.session.loggedIn = true; // Set session loggedIn to true
+                  req.session.save((err) => {
+                    if (err) {
+                      console.error(err);
+                      return res
+                        .status(500)
+                        .json({ error: 'Internal Server Error' });
+                    }
+                    console.log(newUser, 'New User created and logged in');
+                    return res.redirect('/api/dashboard');
+                  });
+                });
+              })
+              .catch((error) => {
+                console.error(error);
+                return res.status(500).json({ error: 'Internal Server Error' });
+              });
+          })
+          .catch((error) => {
+            console.error(error);
+            return res.status(500).json({ error: 'Internal Server Error' });
           });
-          req.login(newUser, (err) => { // Login the user
-            if (err) {
-              console.error(err);
-              return res.status(500).json({ error: 'Internal Server Error' });
-            }
-            req.session.loggedIn = true; // Set session loggedIn to true
-            console.log(newUser)
-            console.log('New User created and logged in');
-            return res.redirect('/api/dashboard');
-          });
-        });
-  } catch (error) { // Error handling
+  } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+
 
   module.exports = router;

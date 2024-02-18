@@ -13,8 +13,8 @@ body {
 }
 
 h1 {
-  color:rgb(246, 38, 130) ;
-  text-shadow: 2px 2px 3px aliceblue;
+  color:rgb(246, 38, 130);
+  text-shadow: 2px 2px 3px rgb(178, 28, 96);
   text-align: center;
   display: inline-block;
 }
@@ -35,3 +35,13 @@ h1 {
   background-color: rgb(52,160,164);
   border: none;
 }
+
+.pink {
+  color:rgb(246, 38, 130);
+}
+
+@media (max-width: 770px) {
+  .custom-jumbotron {
+    height: 650px;
+  }
+  }
