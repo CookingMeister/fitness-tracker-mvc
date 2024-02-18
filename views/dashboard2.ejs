@@ -1,5 +1,12 @@
 <%- include('partials/header') %>
 
+<div style="position: absolute; top: 0; right: 0; margin: 1%;">
+<button type="submit" class="btn mt-3 btn-light logout-btn">
+  Logout 
+  <i class="fas fa-sign-out-alt m-1"></i>
+</button>
+</div>
+
   <div class="container">
     <div class="row">
       <div class="col">
@@ -26,13 +33,13 @@
                 <% if (category.name == 'Steps') { %>
                   <i class="fas fa-shoe-prints fa-3x"></i>
                   <% } else if (category.name == 'Cardio') { %>
-                    <i class="fas fa-heartbeat fa-3x"></i>
+                    <i class="fas fa-heartbeat fa-3x pink"></i>
                     <% } else if (category.name == 'Water') { %>
                       <i class="fas fa-tint fa-3x"></i>
                       <% } else if (category.name == 'Workout') { %>
                         <i class="fas fa-dumbbell fa-3x"></i>
                         <% } else if (category.name == 'Sleep') { %>
-                          <i class="fas fa-bed fa-3x"></i>
+                          <i class="fas fa-bed fa-3x pink"></i>
                           <% } else { %>
                             <i class="fas fa-walking fa-3x"></i>
                 <% } %>
