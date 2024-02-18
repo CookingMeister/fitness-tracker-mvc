@@ -427,20 +427,26 @@ deleteWorkoutBtn.addEventListener('click', (event) => {
   event.preventDefault();
   console.log('button clicked:', deleteWorkoutBtn);
 
-  const workoutLabel = document.querySelector('#deleteWorkout');
+  const workoutLabels = document.querySelectorAll('.deleteWorkout');
 
-  const workoutId = workoutLabel.previousElementSibling.getAttribute('id');
-  console.log(workoutId);
+  for (i = 0; i < workoutLabels.length; i ++) {
+    const workoutLabel = workoutLabels[i];
 
-  const deleteRequest = axios.delete('/api/dashboard/workout/' + workoutId);
-  deleteRequest
-    .then(function (response) {
-      console.log('Response:', response.data);
-      window.location.replace('/api/dashboard');
-    })
-    .catch(function (error) {
-      console.error('Error:', error.message);
-    });
+    if (workoutLabel.previousElementSibling.checked) {
+      const workoutId = workoutLabel.previousElementSibling.getAttribute('id');
+      console.log(workoutId);
+
+       const deleteRequest = axios.delete('/api/dashboard/workout/' + workoutId);
+        deleteRequest
+          .then(function (response) {
+            console.log('Response:', response.data);
+            window.location.replace('/api/dashboard');
+          })
+          .catch(function (error) {
+            console.error('Error:', error.message);
+          });
+    }
+  };
 });
 
 // Logout button

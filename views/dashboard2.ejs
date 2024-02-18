@@ -118,10 +118,11 @@
             <input class="form-check-input" type="checkbox" value="<%= cardioData.exercise_name %>" id="<%= cardioData.id %>" />
             <label class="form-check-label deleteCardio" id="deleteCardio" for="deleteItem"><strong>Exercise:</strong>
               <%= cardioData.exercise_name %>
-            </label>
+            </label><br>
             <label class="form-check-label" for="deleteItem"><strong>Distance:</strong>
               <%= cardioData.distance %> 
               km
+            </label><br>
             <label class="form-check-label" for="deleteItem"><strong>Time:</strong>
               <%= cardioData.time %>
               minutes
@@ -151,23 +152,24 @@
       <div class="modal-body">
        <!-- Workout data -->
         <form id="deleteFormWorkout">
-      
+          <% workoutArray.map(workoutData => {  %>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="<%= workoutData.exercise_name %>" id="<%= workoutData.id %>" />
-            <label class="form-check-label" id="deleteWorkout" for="deleteItem"><strong>Exercise:</strong>
+            <label class="form-check-label deleteWorkout" id="deleteWorkout" for="deleteItem"><strong>Exercise:</strong>
               <%= workoutData.exercise_name %>
-            </label>
+            </label><br>
             <label class="form-check-label" for="deleteItem"><strong>Sets:</strong>
               <%= workoutData.sets %>
-            </label>
+            </label><br>
             <label class="form-check-label" for="deleteItem"><strong>Reps:</strong>
               <%= workoutData.reps %>
-            </label>
+            </label><br>
             <label class="form-check-label" for="deleteItem"><strong>Weight per Set:</strong>
               <%= workoutData.weight %>
               lbs
             </label>
           </div>
+          <% }) %>
           <!-- End of workout data item block -->
         </form>
       </div>
