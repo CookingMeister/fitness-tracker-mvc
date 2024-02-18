@@ -111,10 +111,12 @@
       </div>
       <div class="modal-body">
        <!-- Cardio data -->
+      
         <form id="deleteFormCardio">
+           <% cardioArray.map(cardioData => {  %>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="<%= cardioData.exercise_name %>" id="<%= cardioData.id %>" />
-            <label class="form-check-label" id="deleteCardio" for="deleteItem"><strong>Exercise:</strong>
+            <label class="form-check-label deleteCardio" id="deleteCardio" for="deleteItem"><strong>Exercise:</strong>
               <%= cardioData.exercise_name %>
             </label>
             <label class="form-check-label" for="deleteItem"><strong>Distance:</strong>
@@ -125,6 +127,7 @@
               minutes
             </label>
           </div>
+          <% }) %>
           <!-- End of cardio data item block -->
         </form>
       </div>

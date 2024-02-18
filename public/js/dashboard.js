@@ -315,20 +315,26 @@ deleteCardioBtn.addEventListener('click', (event) => {
   event.preventDefault();
   console.log('button clicked:', deleteCardioBtn);
 
-  const cardioLabel = document.querySelector('#deleteCardio');
+  const cardioLabels = document.querySelectorAll('.deleteCardio');
 
-  const cardioId = cardioLabel.previousElementSibling.getAttribute('id');
-  console.log(cardioId);
+  for (i = 0; i < cardioLabels.length; i ++) {
+  const cardioLabel= cardioLabels[i];
 
-  const deleteRequest = axios.delete('/api/dashboard/cardio/' + cardioId);
-  deleteRequest
-    .then(function (response) {
-      console.log('Response:', response.data);
-      window.location.replace('/api/dashboard');
-    })
-    .catch(function (error) {
-      console.error('Error:', error.message);
-    });
+    if (cardioLabel.previousElementSibling.checked) {
+      const cardioId = cardioLabel.previousElementSibling.getAttribute('id');
+      console.log(cardioId);
+
+      const deleteRequest = axios.delete('/api/dashboard/cardio/' + cardioId);
+      deleteRequest
+        .then(function (response) {
+          console.log('Response:', response.data);
+          window.location.replace('/api/dashboard');
+        })
+        .catch(function (error) {
+          console.error('Error:', error.message);
+        });
+    } 
+  }
 });
 
 //* -----------------------------------------------------------------------------

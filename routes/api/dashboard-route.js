@@ -8,10 +8,21 @@ router.get('/', async (req, res) => {
     // If user logged in, include user data
     if (req.session.loggedIn) {
       // Fetch data from models
+      const dateInput = '2024-02-18';
+
       const userData =
         (await User.findOne({ where: { id: req.session.userId } })) || [];
-      const cardioData =
-        (await Cardio.findOne({ where: { userId: req.session.userId } })) || [];
+        // const cardioData =
+        // (await Cardio.findOne({ where: { id: req.session.userId } })) || [];
+      const cardioArray =
+        (await Cardio.findAll({ 
+          where: { 
+              userId: req.session.userId,
+              created_at: {
+                [Op.between]: [dateInput + ' 00:00:00', dateInput + ' 23:59:59'],
+              }, 
+            } 
+        })) || [];
       const workoutData =
         (await Workout.findOne({ where: { userId: req.session.userId } })) ||
         [];
@@ -26,14 +37,14 @@ router.get('/', async (req, res) => {
       res.render('dashboard2', {
         categories: [
           { name: 'User', data: userData },
-          { name: 'Cardio', data: cardioData },
+          { name: 'Cardio', data: cardioArray },
           { name: 'Workout', data: workoutData },
           { name: 'Water', data: waterData },
           { name: 'Sleep', data: sleepData },
           { name: 'Steps', data: stepsData },
         ],
         userData,
-        cardioData,
+        cardioArray,
         workoutData,
         waterData,
         sleepData,
