@@ -45,8 +45,12 @@ h1 {
   color:#C20024;
 }
 
-@media (max-width: 770px) {
+.toast {
+  border-radius: 22px;
+}
+
+@media screen and (max-width: 990px) {
   .custom-jumbotron {
     height: 650px;
   }
-  }
+}

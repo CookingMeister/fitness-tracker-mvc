@@ -238,6 +238,7 @@ router.delete('/water/:id', async (req, res) => {
 });
 
 //! sleep requests
+
 router.post('/sleep', async (req, res) => {
   console.log(req.body);
   const userId = req.session.passport.user;
@@ -255,10 +256,7 @@ router.post('/sleep', async (req, res) => {
   }
 });
 
-// router.put('/sleep/:id', (req, res) => {
-
-// });
-
+// Delete Sleep data
 router.delete('/sleep/:id', async (req, res) => {
   try {
     const deleteSleep = await Sleep.destroy({
