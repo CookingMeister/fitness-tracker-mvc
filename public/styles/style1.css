@@ -59,6 +59,12 @@ h1 {
   border: none;
 }
 
+.daily-total {
+  display: flex; 
+  width: 100%; 
+  justify-content: space-between;
+}
+
 .orange {
   color:#C20024;
 }
