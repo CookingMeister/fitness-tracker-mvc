@@ -1,15 +1,34 @@
+
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --bluegreen: #34a0a4;
+  --darkblue: #1e6091;
+}
+
+.brand-logo{
+  cursor: pointer;
+}
+
 body {
   font-family: Helvetica, Arial, sans-serif;
   margin: 20px;
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     33deg,
     rgba(207, 238, 250, 0.8) 50%,
     rgb(52,160,164) 55%
-  );
+  ); */
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   height: 100vh;
+}
+.navbar {
+background: linear-gradient(-225deg, var(--bluegreen) 0%, var(--white) 100%);
+}
+.navbar-brand {
+  cursor: pointer;
+  color: var(--white);
 }
 
 h1 {
