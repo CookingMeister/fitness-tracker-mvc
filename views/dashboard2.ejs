@@ -28,7 +28,7 @@
 
     <div class="container mt-5">
       <h1 class="d-flex justify-content-center big">Simply Fit</h1>
-      <!-- <h3 id="date" class="text-center"></h3> -->
+      <h3 id="date" class="text-center"> <%= date %></h3>
       <hr />
       <div class="row">
         <% categories.forEach((category)=> { %>
@@ -114,7 +114,6 @@
       </div>
       <div class="modal-body">
        <!-- Cardio data -->
-      ƒ
         <form id="deleteFormCardio">
            <% cardioArray.map(cardioData => {  %>
           <div class="form-check">
@@ -206,7 +205,8 @@
           <!-- End of water data item block -->
         </form>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer daily-total">
+        <h3>Daily Total: <%= waterSum %> oz</h3>
         <button type="submit" form="deleteFormWater" class="btn btn-danger deleteWaterBtn">
           <i class="fas fa-trash m-1"></i> Selected
         </button>
@@ -235,7 +235,8 @@
           <!-- End of sleep data item block -->
         </form>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer daily-total">
+        <h3>Daily Total: <%= sleepSum %> hours</h3>
         <button type="submit" form="deleteFormSleep" class="btn btn-danger">
           <i class="fas fa-trash m-1"></i> Selected
         </button>
@@ -264,7 +265,8 @@
           <!-- End of steps data item block -->
         </form>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer daily-total">
+        <h3>Daily Total: <%= stepsSum %> steps</h3>
         <button type="submit" form="deleteFormSteps" class="btn btn-danger">
           <i class="fas fa-trash m-1"></i> Selected
         </button>
