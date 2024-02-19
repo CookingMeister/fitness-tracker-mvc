@@ -87,7 +87,7 @@ router.get('/', async (req, res) => {
         stepsArray,
       });
     } else {
-      res.render('notLoggedIn');
+      res.render('login');
     }
   } catch (error) {
     console.error(error);
