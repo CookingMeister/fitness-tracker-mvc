@@ -295,7 +295,6 @@ deleteSleepBtn.addEventListener('click', (event) => {
 
 //* -----------------------------------------------------------------------------
 
-//* get cardio
 //* add cardio
 
 const addCardioBtn = document.querySelector('.cardio');
@@ -309,19 +308,23 @@ addCardioBtn.addEventListener('click', (event) => {
   const cardio = { exercise, distance, time };
 
   console.log(cardio);
+  const toastCardio = new bootstrap.Toast(document.getElementById('toastCardio'));
+  const modalCardio = bootstrap.Modal.getInstance(document.getElementById('formModalCardio'));
 
   const postRequest = axios.post('/api/dashboard/cardio', cardio);
   postRequest
     .then(function (response) {
-      console.log('Response:', response.data);
-      window.location.replace('/api/dashboard');
+      modalCardio.hide();
+      toastCardio.show();
+      // Wait for 5 seconds before reloading the page
+      setTimeout(function () {
+        window.location.reload();
+      }, 5000);
     })
     .catch(function (error) {
       console.error('Error:', error.message);
     });
 });
-
-//* update cardio
 
 //* delete cardio
 const deleteCardioBtn = document.querySelector(
@@ -372,7 +375,7 @@ addStepsBtn.addEventListener('click', (event) => {
   const postRequest = axios.post('/api/dashboard/steps', stepsAmt);
   postRequest
     .then(function (response) {
-      console.log('Response:', response.data);
+      // console.log('Response:', response.data);
       window.location.replace('/api/dashboard');
     })
     .catch(function (error) {
@@ -401,7 +404,7 @@ deleteStepsBtn.addEventListener('click', (event) => {
       const deleteRequest = axios.delete('/api/dashboard/steps/' + stepsId);
       deleteRequest
         .then(function (response) {
-          console.log('Response:', response.data);
+          // console.log('Response:', response.data);
           window.location.replace('/api/dashboard');
         })
         .catch(function (error) {
@@ -432,7 +435,7 @@ addWorkoutBtn.addEventListener('click', (event) => {
   const postRequest = axios.post('/api/dashboard/workout', exerciseRepSet);
   postRequest
     .then(function (response) {
-      console.log('Response:', response.data)
+      // console.log('Response:', response.data)
       window.location.replace('/api/dashboard');
     })
     .catch(function (error) {
@@ -461,7 +464,7 @@ deleteWorkoutBtn.addEventListener('click', (event) => {
        const deleteRequest = axios.delete('/api/dashboard/workout/' + workoutId);
         deleteRequest
           .then(function (response) {
-            console.log('Response:', response.data);
+            // console.log('Response:', response.data);
             window.location.replace('/api/dashboard');
           })
           .catch(function (error) {
@@ -479,10 +482,21 @@ logout.addEventListener('click', (event) => {
   const postRequest = axios.post('/api/logout');
   postRequest.
       then(function (response) {
-        console.log('Response:', response.data);
+        // console.log('Response:', response.data);
         window.location.replace('/');
       })
       .catch(function (error) {
         console.error('Error:', error.message);
       });
   });
+
+// Toast button
+// const toastTrigger = document.querySelector('.toast-Cardio')
+// const toastCardio = document.getElementById('toastCardio')
+// if (toastTrigger) {
+//   toastTrigger.addEventListener('click', () => {
+//     const toast = new bootstrap.Toast(toastCardio);
+
+//     toast.show();
+//   })
+// }

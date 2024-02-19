@@ -21,21 +21,18 @@
       </div>
     </div>
 
-
   
-
     <!-- Cards for each Model -->
 
     <div class="container mt-5">
       <h1 class="d-flex justify-content-center big">Simply Fit</h1>
-      <!-- <h3 id="date" class="text-center"></h3> -->
       <hr />
       <div class="row">
         <% categories.forEach((category)=> { %>
           <div class="col-md-4 mb-4">
-            <div class="card" data-bs-toggle="modal" data-bs-target="#modal<%= category.name %>">
+            <div class="card toast-<%= category.name %>" data-bs-toggle="modal" data-bs-target="#modal<%= category.name %>">
               <div class="card-body text-center">
-                <!-- Font Awesome walking man icon -->
+                <!-- Font Awesome icons -->
                 <% if (category.name == 'Steps') { %>
                   <i class="fas fa-shoe-prints fa-3x"></i>
                   <% } else if (category.name == 'Cardio') { %>
@@ -53,7 +50,7 @@
                     <%= category.name %>
                   </h5>
                  <!-- Button to open the form modal -->
-                  <button type="button" class="btn btn-dark custom-btn px-3" data-bs-toggle="modal"
+                  <button type="button" class="btn btn-dark custom-btn px-3 toast-btn" data-bs-toggle="modal"
                     data-bs-target="#formModal<%= category.name %>">
                     <i class="fas fa-plus px-1 orange"></i>
                   </button>
@@ -114,7 +111,6 @@
       </div>
       <div class="modal-body">
        <!-- Cardio data -->
-      ƒ
         <form id="deleteFormCardio">
            <% cardioArray.map(cardioData => {  %>
           <div class="form-check">
@@ -496,9 +492,23 @@
           </div>
         </div>
 
+<!-- Flexbox container for aligning the toasts -->
+<div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
 
-        <script src="../js/dashboard.js"></script>
-        <script src="../js/BMI.js"></script>
-        <script src="../js/date.js"></script>
+  <!-- Toast -->
+  <div id="toastCardio" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex justify-content-center align-content-center">
+      <div class="toast-body">
+       <p class="orange mt-3"><strong>Nice Job on the Cardio! Keep it up!</strong></p>
+      </div>
+    </div>
+  </div>
 
-        <%- include('partials/footer') %>
+</div>
+
+
+<script src="../js/dashboard.js"></script>
+<script src="../js/BMI.js"></script>
+<script src="../js/date.js"></script>
+
+<%- include('partials/footer') %>
