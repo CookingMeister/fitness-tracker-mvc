@@ -5,10 +5,6 @@
   --darkblue: #1e6091;
 }
 
-.brand-logo{
-  cursor: pointer;
-}
-
 body {
   font-family: Helvetica, Arial, sans-serif;
   margin: 20px;
@@ -40,7 +36,6 @@ nav {
 .logout-btn{
   background-color: var(--darkblue);
   text-align: center;
-   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
 
  
@@ -78,11 +73,8 @@ font-size: xx-large;
 }
 
 .custom-btn {
-  background-color: var(--bluegreen);
-  color: var(--white);
+  background-color: rgb(52,160,164);
   border: none;
-  border-radius: 5px;
-  
 }
 .login-btn {
  display: flex;
