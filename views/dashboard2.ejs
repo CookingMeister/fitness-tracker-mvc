@@ -6,9 +6,9 @@
   <i class="fas fa-sign-out-alt m-1"></i>
 </button>
 </div>
-
   <div class="container">
-    <div class="row">
+<!-- old date form -->
+        <!-- <div class="row">
       <div class="col">
         <form action="/api/dashboard/water/:id" method="get" id="get-date">
           <label for="date">Choose a date:</label>
@@ -19,14 +19,32 @@
           </button>
         </form>
       </div>
-    </div>
+    </div> -->
 
     <!-- Cards for each Model -->
 
     <div class="container mt-5">
-      <h1>Simply Fit</h1>
+      <h1 class="text-center">Dashboard</h1>
       <!-- <h3 id="date" class="text-center"></h3> -->
       <hr />
+
+     
+<!-- Date Picker -->
+       <div class="row">
+      <div class="col">
+        <form action="/api/dashboard/water/:id" method="get" id="get-date">
+          <label for="date">Choose a date:</label>
+          <input type="date" id="date" name="date" min="2000-01-02" /><br />
+<button type="submit" class="btn btn-light date-btn p-1 px-2">
+            <i class="fas fa-plus px-1"></i>
+            Add
+          </button>
+        </form>
+      </div>
+    </div>
+<hr/>
+
+      <!-- end of day picker -->
       <div class="row">
         <% categories.forEach((category)=> { %>
           <div class="col-md-4 mb-4">
@@ -94,7 +112,7 @@
       </div>
       <div class="modal-footer">
         <button type="submit" form="deleteFormUser" class="btn btn-danger deleteUserBtn">
-          <i class="fas fa-trash m-1"></i> Selected
+          <i class="fas fa-trash m-1"></i> Delete
         </button>
       </div>
     </div>
@@ -134,7 +152,7 @@
       </div>
       <div class="modal-footer">
         <button type="submit" form="deleteFormCardio" class="btn btn-danger">
-          <i class="fas fa-trash m-1"></i> Selected
+          <i class="fas fa-trash m-1"></i> Delete
         </button>
       </div>
     </div>
@@ -175,7 +193,7 @@
       </div>
       <div class="modal-footer">
         <button type="submit" form="deleteFormWorkout" class="btn btn-danger">
-          <i class="fas fa-trash m-1"></i> Selected
+          <i class="fas fa-trash m-1"></i> Delete
         </button>
       </div>
     </div>
@@ -205,7 +223,7 @@
       </div>
       <div class="modal-footer">
         <button type="submit" form="deleteFormWater" class="btn btn-danger deleteWaterBtn">
-          <i class="fas fa-trash m-1"></i> Selected
+          <i class="fas fa-trash m-1"></i> Delete
         </button>
       </div>
     </div>
@@ -234,7 +252,7 @@
       </div>
       <div class="modal-footer">
         <button type="submit" form="deleteFormSleep" class="btn btn-danger">
-          <i class="fas fa-trash m-1"></i> Selected
+          <i class="fas fa-trash m-1"></i> Delete
         </button>
       </div>
     </div>
@@ -263,7 +281,7 @@
       </div>
       <div class="modal-footer">
         <button type="submit" form="deleteFormSteps" class="btn btn-danger">
-          <i class="fas fa-trash m-1"></i> Selected
+          <i class="fas fa-trash m-1"></i> Delete
         </button>
       </div>
     </div>

@@ -32,10 +32,16 @@ background: linear-gradient(-225deg, var(--bluegreen) 0%, var(--white) 100%);
 }
 
 h1 {
-  color:rgb(246, 38, 130);
-  text-shadow: 2px 2px 3px rgb(178, 28, 96);
+  /* color:rgb(246, 38, 130); */
+  color: var(--bluegreen);
+  /* text-shadow: 2px 2px 3px rgb(178, 28, 96); */
+  text-shadow: 2px 2px 3px var(--darkblue);
   text-align: center;
   display: inline-block;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .custom-jumbotron {
