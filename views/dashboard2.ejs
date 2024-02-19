@@ -202,7 +202,8 @@
           <!-- End of water data item block -->
         </form>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer daily-total">
+        <h5>Daily Total: <%= waterSum %> oz</h5>
         <button type="submit" form="deleteFormWater" class="btn btn-danger deleteWaterBtn">
           <i class="fas fa-trash m-1"></i> Selected
         </button>
@@ -231,7 +232,8 @@
           <!-- End of sleep data item block -->
         </form>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer daily-total">
+        <h5>Daily Total: <%= sleepSum %> hours</h5>
         <button type="submit" form="deleteFormSleep" class="btn btn-danger">
           <i class="fas fa-trash m-1"></i> Selected
         </button>
@@ -260,7 +262,8 @@
           <!-- End of steps data item block -->
         </form>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer daily-total">
+        <h5>Daily Total: <%= stepsSum %> steps</h5>
         <button type="submit" form="deleteFormSteps" class="btn btn-danger">
           <i class="fas fa-trash m-1"></i> Selected
         </button>

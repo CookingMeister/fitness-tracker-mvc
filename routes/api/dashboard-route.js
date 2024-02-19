@@ -1,6 +1,10 @@
 const router = require('express').Router();
 const { User, Water, Cardio, Sleep, Steps, Workout } = require('../../models');
 const { Op } = require('sequelize');
+const dayJs = require('dayjs');
+
+const today = dayJs();
+const formattedDate = today.format('YYYY-MM-DD')
 
 router.get('/', async (req, res) => {
   console.log(req.session.userId);
@@ -8,12 +12,12 @@ router.get('/', async (req, res) => {
     // If user logged in, include user data
     if (req.session.loggedIn) {
       // Fetch data from models
-      const dateInput = '2024-02-19';
+      const dateInput = req.query.id || formattedDate;
+      console.log(dateInput);
 
       const userData =
         (await User.findOne({ where: { id: req.session.userId } })) || [];
-        // const cardioData =
-        // (await Cardio.findOne({ where: { id: req.session.userId } })) || [];
+
       const cardioArray =
         (await Cardio.findAll({ 
           where: { 
@@ -23,9 +27,7 @@ router.get('/', async (req, res) => {
               }, 
             } 
         })) || [];
-      // const workoutData =
-      //   (await Workout.findOne({ where: { userId: req.session.userId } })) ||
-      //   [];
+  
       const workoutArray =
         (await Workout.findAll({ 
           where: { 
@@ -35,8 +37,7 @@ router.get('/', async (req, res) => {
               }, 
             } 
         })) || [];
-      // const waterData =
-      //   (await Water.findOne({ where: { userId: req.session.userId } })) || [];
+     
       const waterArray =
       (await Water.findAll({ 
         where: { 
@@ -46,8 +47,16 @@ router.get('/', async (req, res) => {
             }, 
           } 
       })) || [];
-      // const sleepData =
-      //   (await Sleep.findOne({ where: { userId: req.session.userId } })) || [];
+
+      const waterSum = await Water.sum('amount', {
+        where: {
+          userId: req.session.userId,
+          created_at: {
+            [Op.between]: [dateInput + ' 00:00:00', dateInput + ' 23:59:59'],
+          },
+        },
+      });
+      
       const sleepArray =
       (await Sleep.findAll({ 
         where: { 
@@ -57,8 +66,16 @@ router.get('/', async (req, res) => {
             }, 
           } 
       })) || [];
-      // const stepsData =
-      //   (await Steps.findOne({ where: { userId: req.session.userId } })) || [];
+
+      const sleepSum = await Sleep.sum('hours', {
+        where: {
+          userId: req.session.userId,
+          created_at: {
+            [Op.between]: [dateInput + ' 00:00:00', dateInput + ' 23:59:59'],
+          },
+        },
+      });
+      
       const stepsArray =
       (await Steps.findAll({ 
         where: { 
@@ -68,6 +85,15 @@ router.get('/', async (req, res) => {
             }, 
           } 
       })) || [];
+
+       const stepsSum = await Steps.sum('amount', {
+        where: {
+          userId: req.session.userId,
+          created_at: {
+            [Op.between]: [dateInput + ' 00:00:00', dateInput + ' 23:59:59'],
+          },
+        },
+      });
 
       // Pass the data to the EJS template
       res.render('dashboard2', {
@@ -80,11 +106,15 @@ router.get('/', async (req, res) => {
           { name: 'Steps', data: stepsArray },
         ],
         userData,
+        date: dayJs(dateInput).format('MMMM, D, YYYY'),
         cardioArray,
         workoutArray,
         waterArray,
+        waterSum: waterSum,
         sleepArray,
+        sleepSum: sleepSum,
         stepsArray,
+        stepsSum: stepsSum,
       });
     } else {
       res.render('login');
@@ -162,47 +192,6 @@ router.delete('/user/weight/:id', async (req, res) => {
 });
 
 //! water requests
-router.get('/water/:id', async (req, res) => {
-  try {
-    const userId = req.session.passport.user;
-
-    const dateInput = req.params.id;
-    console.log(dateInput);
-    console.log(userId);
-
-    const water = await Water.findAll({
-      where: {
-        userId: userId,
-        created_at: {
-          [Op.between]: [dateInput + ' 00:00:00', dateInput + ' 23:59:59'],
-        },
-      },
-    });
-
-    console.log('Water data:', water);
-
-    const waterSum = await Water.sum('amount', {
-      where: {
-        userId: userId,
-        created_at: {
-          [Op.between]: [dateInput + ' 00:00:00', dateInput + ' 23:59:59'],
-        },
-      },
-    });
-
-    console.log('sumOfWater:', waterSum);
-
-    if (!water) {
-      return res.status(404).send('Water not found');
-    }
-
-    res.status(200).json(water);
-  } catch (error) {
-    console.error('Error processing water data:', error);
-    res.status(500).send('Error processing water data');
-  }
-});
-
 router.post('/water', async (req, res) => {
   console.log('req:', req.body);
   const userId = req.session.passport.user;
@@ -250,47 +239,6 @@ router.delete('/water/:id', async (req, res) => {
 
 //! sleep requests
 
-router.get('/sleep/:id', async (req, res) => {
-  try {
-    const userId = req.session.passport.user;
-    const dateInput = req.params.id;
-    console.log(dateInput);
-    console.log(userId);
-
-    const sleep = await Sleep.findAll({
-      where: {
-        userId: userId,
-        created_at: {
-          [Op.between]: [dateInput + ' 00:00:00', dateInput + ' 23:59:59'],
-        },
-      },
-    });
-
-    console.log('Sleep data:', sleep);
-
-    const sleepSum = await Sleep.sum('hours', {
-      where: {
-        userId: userId,
-        created_at: {
-          [Op.between]: [dateInput + ' 00:00:00', dateInput + ' 23:59:59'],
-        },
-      },
-    });
-
-    console.log(sleepSum);
-
-    if (!sleep) {
-      return res.status(404).send('Sleep not found');
-    }
-
-    res.status(200).json(sleep);
-  } catch (error) {
-    console.error('Error processing Sleep data:', error);
-    res.status(500).send('Error processing Sleep data');
-  }
-});
-
-// Post Sleep data
 router.post('/sleep', async (req, res) => {
   console.log(req.body);
   const userId = req.session.passport.user;
@@ -399,46 +347,6 @@ router.delete('/cardio/:id', async (req, res) => {
 });
 
 //! steps requests
-
-router.get('/steps/:id', async (req, res) => {
-  try {
-    const userId = req.session.passport.user;
-    const dateInput = req.params.id;
-    console.log(dateInput);
-    console.log(userId);
-
-    const steps = await Steps.findAll({
-      where: {
-        userId: userId,
-        created_at: {
-          [Op.between]: [dateInput + ' 00:00:00', dateInput + ' 23:59:59'],
-        },
-      },
-    });
-
-    console.log('Steps data:', steps);
-
-    const stepsSum = await Steps.sum('amount', {
-      where: {
-        userId: userId,
-        created_at: {
-          [Op.between]: [dateInput + ' 00:00:00', dateInput + ' 23:59:59'],
-        },
-      },
-    });
-
-    console.log(stepsSum);
-
-    if (!steps) {
-      return res.status(404).send('Steps not found');
-    }
-
-    res.status(200).json(steps);
-  } catch (error) {
-    console.error('Error processing Steps data:', error);
-    res.status(500).send('Error processing Steps data');
-  }
-});
 
 router.post('/steps', async (req, res) => {
   console.log(req.body);

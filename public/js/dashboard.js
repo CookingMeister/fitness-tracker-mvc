@@ -8,50 +8,7 @@ document
     const dateValue = { dateInput };
     console.log(dateValue);
 
-    axios
-      .get('/api/dashboard/water/' + dateValue.dateInput)
-      .then(function (response) {
-        console.log('Response:', response.data);
-      })
-      .catch(function (error) {
-        console.error('Error:', error.message);
-      });
-
-    axios
-      .get('/api/dashboard/sleep/' + dateValue.dateInput)
-      .then(function (response) {
-        console.log('Response:', response.data);
-      })
-      .catch(function (error) {
-        console.error('Error:', error.message);
-      });
-
-    axios
-      .get('/api/dashboard/cardio/' + dateValue.dateInput)
-      .then(function (response) {
-        console.log('Response:', response.data);
-      })
-      .catch(function (error) {
-        console.error('Error:', error.message);
-      });
-
-    axios
-      .get('/api/dashboard/steps/' + dateValue.dateInput)
-      .then(function (response) {
-        console.log('Response:', response.data);
-      })
-      .catch(function (error) {
-        console.error('Error:', error.message);
-      });
-
-    axios
-      .get('/api/dashboard/workout/' + dateValue.dateInput)
-      .then(function (response) {
-        console.log('Response:', response.data);
-      })
-      .catch(function (error) {
-        console.error('Error:', error.message);
-      });
+    location.href=('/api/dashboard?id=' + dateValue.dateInput);
   });
   
 // User update button
