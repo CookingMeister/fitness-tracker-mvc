@@ -8,7 +8,7 @@
 </div>
 
   <div class="container">
-    <div class="row">
+    <div class="row d-flex justify-content-center">
       <div class="col">
         <form action="/api/dashboard/water/:id" method="get" id="get-date">
           <label for="date">Choose a date:</label>
@@ -21,10 +21,13 @@
       </div>
     </div>
 
+
+  
+
     <!-- Cards for each Model -->
 
     <div class="container mt-5">
-      <h1>Simply Fit</h1>
+      <h1 class="d-flex justify-content-center big">Simply Fit</h1>
       <!-- <h3 id="date" class="text-center"></h3> -->
       <hr />
       <div class="row">
@@ -36,13 +39,13 @@
                 <% if (category.name == 'Steps') { %>
                   <i class="fas fa-shoe-prints fa-3x"></i>
                   <% } else if (category.name == 'Cardio') { %>
-                    <i class="fas fa-heartbeat fa-3x pink"></i>
+                    <i class="fas fa-heartbeat fa-3x orange"></i>
                     <% } else if (category.name == 'Water') { %>
                       <i class="fas fa-tint fa-3x"></i>
                       <% } else if (category.name == 'Workout') { %>
                         <i class="fas fa-dumbbell fa-3x"></i>
                         <% } else if (category.name == 'Sleep') { %>
-                          <i class="fas fa-bed fa-3x pink"></i>
+                          <i class="fas fa-bed fa-3x"></i>
                           <% } else { %>
                             <i class="fas fa-walking fa-3x"></i>
                 <% } %>
@@ -52,7 +55,7 @@
                  <!-- Button to open the form modal -->
                   <button type="button" class="btn btn-dark custom-btn px-3" data-bs-toggle="modal"
                     data-bs-target="#formModal<%= category.name %>">
-                    <i class="fas fa-plus px-1"></i> Data
+                    <i class="fas fa-plus px-1 orange"></i>
                   </button>
               </div>
             </div>
@@ -94,7 +97,7 @@
       </div>
       <div class="modal-footer">
         <button type="submit" form="deleteFormUser" class="btn btn-danger deleteUserBtn">
-          <i class="fas fa-trash m-1"></i> Selected
+          <i class="fas fa-trash m-1 px-1"></i>
         </button>
       </div>
     </div>
@@ -111,7 +114,7 @@
       </div>
       <div class="modal-body">
        <!-- Cardio data -->
-      
+      ƒ
         <form id="deleteFormCardio">
            <% cardioArray.map(cardioData => {  %>
           <div class="form-check">
@@ -493,113 +496,9 @@
           </div>
         </div>
 
-        <!-- <% //* add water %>
-<div class="row">
-  <div class="col">
-    <form action="/api/dashboard/water" method="POST">
-        <div class="row mb-3">
-          <h3>Water: </h3>
-          <label for="water" class="col-sm-2 col-form-label">Water</label>
-          <div class="col-sm-10">
-            <input type="number" class="form-control" placeholder="ounces" name="wtr-amt" id="wtr-amt"></input>
-          </div>
-        </div>
-
-        <button type="submit" class="btn btn-primary wtr-btn" >Add</button>
-        <button type="submit" class="btn btn-primary wtr-update-btn" >Update</button>
-        <button type="submit" class="btn btn-primary wtr-delete-btn" >Delete</button>
-
-    </form>
-  </div>
-</div>
-
-<%  //* add sleep %>
-<div class="row">
-  <div class="col">
-    <form action="/api/dashboard/sleep" method="POST">
-        <div class="row mb-3">
-          <h3>Sleep: </h3>
-          <label for="sleep" class="col-sm-2 col-form-label">Sleep</label>
-          <div class="col-sm-10">
-            <input type="number" class="form-control" placeholder="hours" name="slp-amt" id="slp-amt"></input>
-          </div>
-        </div>
-    
-        <button type="submit" class="btn btn-primary slp-btn" >Add</button>
-        <button type="submit" class="btn btn-primary slp-update-btn" >Update</button>
-        <button type="submit" class="btn btn-primary slp-delete-btn" >Delete</button>
-    
-    </form>
-  </div>
-</div>
-
-  <% //add cardio %>
-  <div class="row">
-    <div class="col">
-      <form action="/api/dashboard/cardio" method="POST">
-          <div class="row mb-3">
-            <h3>cardio: </h3>
-            <label for="cardio" class="col-sm-2 col-form-label">cardio</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" placeholder="exercise" name="exercise" id="exercise"></input>
-              <input type="number" class="form-control" placeholder="distance(km)" name="distance" id="distance"></input>
-              <input type="number" class="form-control" placeholder="time(minutes)" name="time" id="time"></input>
-            </div>
-          </div>
-      
-          <button type="submit" class="btn btn-primary cardio">Add</button>
-          <button type="submit" class="btn btn-primary cardio-update" >Update</button>
-          <button type="submit" class="btn btn-primary cardio-delete" >Delete</button>
-      
-      </form>
-
-<% //add steps %>
-<div class="row">
-  <div class="col">
-    <form action="/api/dashboard/steps" method="POST">
-        <div class="row mb-3">
-          <h3>steps: </h3>
-          <label for="steps" class="col-sm-2 col-form-label">steps</label>
-          <div class="col-sm-10">
-            <input type="number" class="form-control" placeholder="steps" name="steps" id="steps"></input>
-          </div>
-        </div>
-    
-        <button type="submit" class="btn btn-primary steps">Add</button>
-        <button type="submit" class="btn btn-primary steps-update" >Update</button>
-        <button type="submit" class="btn btn-primary steps-delete" >Delete</button>
-    
-    </form>
-  </div>
-</div>
-
-<% //add workout %>
-<div class="row">
-  <div class="col">
-    <form action="/api/dashboard/workout" method="POST">
-        <div class="row mb-3">
-          <h3>workout: </h3>
-          <label for="workout" class="col-sm-2 col-form-label">workout</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" placeholder="exercise" name="exercise-name" id="exercise"></input>
-            <input type="number" class="form-control" placeholder="reps" name="reps" id="reps"></input>
-            <input type="number" class="form-control" placeholder="sets" name="sets" id="sets"></input>
-          </div>
-        </div>
-    
-        <button type="submit" class="btn btn-primary workout">Add</button>
-        <button type="submit" class="btn btn-primary workout-update" >Update</button>
-        <button type="submit" class="btn btn-primary workout-delete" >Delete</button>
-    
-    </form>
-  </div>
-</div>
-</div>
-    -->
 
         <script src="../js/dashboard.js"></script>
         <script src="../js/BMI.js"></script>
         <script src="../js/date.js"></script>
 
         <%- include('partials/footer') %>
-  </div>
