@@ -106,7 +106,7 @@ router.get('/', async (req, res) => {
           { name: 'Steps', data: stepsArray },
         ],
         userData,
-        date: dayJs(dateInput).format('MMMM, D, YYYY'),
+        date: dayJs(dateInput).format('MMMM D, YYYY'),
         cardioArray,
         workoutArray,
         waterArray,
