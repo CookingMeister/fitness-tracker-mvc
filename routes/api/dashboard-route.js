@@ -3,13 +3,16 @@ const { User, Water, Cardio, Sleep, Steps, Workout } = require('../../models');
 const { Op } = require('sequelize');
 const dayJs = require('dayjs');
 
+const today = dayJs();
+const formattedDate = today.format('YYYY-MM-DD')
+
 router.get('/', async (req, res) => {
   console.log(req.session.userId);
   try {
     // If user logged in, include user data
     if (req.session.loggedIn) {
       // Fetch data from models
-      const dateInput = req.query.id || new Date();
+      const dateInput = req.query.id || formattedDate;
       console.log(dateInput);
 
       const userData =
