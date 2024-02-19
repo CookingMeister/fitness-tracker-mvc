@@ -13,11 +13,7 @@
 body {
   font-family: Helvetica, Arial, sans-serif;
   margin: 20px;
-  /* background-image: linear-gradient(
-    33deg,
-    rgba(207, 238, 250, 0.8) 50%,
-    rgb(52,160,164) 55%
-  ); */
+
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
@@ -32,7 +28,7 @@ background: linear-gradient(-225deg, var(--bluegreen) 0%, var(--white) 100%);
 }
 
 h1 {
-  /* color:rgb(246, 38, 130); */
+
   color: var(--bluegreen);
   /* text-shadow: 2px 2px 3px rgb(178, 28, 96); */
   text-shadow: 2px 2px 3px var(--darkblue);
@@ -40,13 +36,15 @@ h1 {
   display: inline-block;
 }
 
-.text-center {
-  text-align: center;
+
+.big {
+  transform: scale(1.35);
+
 }
 
 .custom-jumbotron {
   height: 350px;
-  background-color: rgb(255, 255, 255, 0.45);
+  background-color: white;
   box-shadow: 5px 5px 15px black;
   border-radius: 5px;
   margin-top: 5%;
@@ -61,8 +59,8 @@ h1 {
   border: none;
 }
 
-.pink {
-  color:rgb(246, 38, 130);
+.orange {
+  color:#C20024;
 }
 
 @media (max-width: 770px) {
