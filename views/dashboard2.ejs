@@ -13,9 +13,9 @@
   <div class="container mt-5">
     <h1 class="d-flex justify-content-center big m-4">Simply Fit</h1>
     <div class="d-flex justify-content-between">
-      <form action="/api/dashboard/water/:id" method="get" id="get-date" class="mt-3">
+      <form action="/api/dashboard/water/:id" method="get" id="get-date" class="form-inline mt-3 d-flex">
         <label for="date">Choose a date:</label>
-        <input type="date" id="date" name="date" min="2000-01-02" class="form-control-inline" />
+        <input type="date" id="date" name="date" min="2000-01-02" class="form-control mr-5" />
         <button type="submit" class="btn btn-light date-btn">
           <i class="fas fa-plus px-1"></i>
         </button>
@@ -807,10 +807,74 @@
       <div class="d-flex justify-content-center align-content-center">
         <div class="toast-body">
           <p class="orange mt-3">
-            <strong>Nice Job on the Cardio! Keep it up!</strong>
+            <strong>Nice job on the Cardio! Keep it up!</strong>
           </p>
         </div>
       </div>
+    </div>
+    <!-- Toast -->
+    <div
+      id="toastWorkout"
+      class="toast"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+    >
+      <div class="d-flex justify-content-center align-content-center">
+        <div class="toast-body">
+          <p class="orange mt-3">
+            <strong>You did a Workout! Great job!</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+     <!-- Toast -->
+     <div
+     id="toastWater"
+     class="toast"
+     role="alert"
+     aria-live="assertive"
+     aria-atomic="true"
+   >
+     <div class="d-flex justify-content-center align-content-center">
+       <div class="toast-body">
+         <p class="orange mt-3">
+           <strong>You are staying Hydrated! Cheers!</strong>
+         </p>
+       </div>
+     </div>
+   </div>
+   <!-- Toast -->
+   <div
+   id="toastSleep"
+   class="toast"
+   role="alert"
+   aria-live="assertive"
+   aria-atomic="true"
+ >
+   <div class="d-flex justify-content-center align-content-center">
+     <div class="toast-body">
+       <p class="orange mt-3">
+         <strong>Great job getting some Zzz's!</strong>
+       </p>
+     </div>
+   </div>
+  </div>
+     <!-- Toast -->
+     <div
+     id="toastSteps"
+     class="toast"
+     role="alert"
+     aria-live="assertive"
+     aria-atomic="true"
+   >
+     <div class="d-flex justify-content-center align-content-center">
+       <div class="toast-body">
+         <p class="orange mt-3">
+           <strong>Wow! You need some new sneakers!</strong>
+         </p>
+       </div>
+     </div>
     </div>
   </div>
 </div>

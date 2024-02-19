@@ -129,20 +129,20 @@ wtrBtn.addEventListener('click', (event) => {
   event.preventDefault();
   const wtrInput = document.querySelector('input[name= "wtrAmt"]').value;
   const wtrAmt = { wtrInput };
-  console.log(wtrAmt);
-  console.log(wtrInput);
+  const toastWater = new bootstrap.Toast(document.getElementById('toastWater'));
+  const modalWater = bootstrap.Modal.getInstance(document.getElementById('formModalWater'));
 
   const postRequest = axios.post('/api/dashboard/water', wtrAmt);
   postRequest
     .then(function (response) {
       console.log('Response:', response.data);
       // Close the modal
-      let editModal = bootstrap.Modal.getInstance(
-        document.getElementById('formModalWater')
-      );
-      editModal.hide();
-      // Reload the page
-      window.location.replace('/api/dashboard');
+     modalWater.hide();
+     toastWater.show();
+     // Wait for 5 seconds before reloading the page
+     setTimeout(function () {
+      window.location.reload();
+    }, 5000);
     })
     .catch(function (error) {
       console.error('Error:', error.message);
@@ -199,13 +199,18 @@ slpBtn.addEventListener('click', (event) => {
   const slpInput = document.querySelector('input[name= "sleep"]').value;
   const slpAmt = { slpInput };
 
-  console.log(slpAmt);
+  const toastSleep = new bootstrap.Toast(document.getElementById('toastSleep'));
+  const modalSleep = bootstrap.Modal.getInstance(document.getElementById('formModalSleep'));
 
   const postRequest = axios.post('/api/dashboard/sleep', slpAmt);
   postRequest
     .then(function (response) {
-      console.log('Response:', response.data);
-      window.location.replace('/api/dashboard');
+      modalSleep.hide();
+      toastSleep.show();
+      // Wait for 5 seconds before reloading the page
+      setTimeout(function () {
+        window.location.reload();
+      }, 5000);
     })
     .catch(function (error) {
       console.error('Error:', error.message);
@@ -327,13 +332,19 @@ addStepsBtn.addEventListener('click', (event) => {
 
   const stepsAmt = { steps };
 
-  console.log(stepsAmt);
+  const toastSteps = new bootstrap.Toast(document.getElementById('toastSteps'));
+  const modalSteps = bootstrap.Modal.getInstance(document.getElementById('formModalSteps'));
 
   const postRequest = axios.post('/api/dashboard/steps', stepsAmt);
   postRequest
     .then(function (response) {
       // console.log('Response:', response.data);
-      window.location.replace('/api/dashboard');
+      modalSteps.hide();
+      toastSteps.show();
+      // Wait for 5 seconds before reloading the page
+      setTimeout(function () {
+        window.location.reload();
+      }, 5000);
     })
     .catch(function (error) {
       console.error('Error:', error.message);
@@ -388,12 +399,19 @@ addWorkoutBtn.addEventListener('click', (event) => {
   const exerciseRepSet = { exercise, reps, sets, weight };
 
   console.log(exerciseRepSet);
+  const toastWorkout = new bootstrap.Toast(document.getElementById('toastWorkout'));
+  const modalWorkout = bootstrap.Modal.getInstance(document.getElementById('formModalWorkout'));
 
   const postRequest = axios.post('/api/dashboard/workout', exerciseRepSet);
   postRequest
     .then(function (response) {
-      // console.log('Response:', response.data)
-      window.location.replace('/api/dashboard');
+      modalWorkout.hide();
+      toastWorkout.show();
+      // Wait for 5 seconds before reloading the page
+      setTimeout(function () {
+        window.location.reload();
+      }, 5000);
+      // window.location.replace('/api/dashboard');
     })
     .catch(function (error) {
       console.error('Error:', error.message);
@@ -446,14 +464,3 @@ logout.addEventListener('click', (event) => {
         console.error('Error:', error.message);
       });
   });
-
-// Toast button
-// const toastTrigger = document.querySelector('.toast-Cardio')
-// const toastCardio = document.getElementById('toastCardio')
-// if (toastTrigger) {
-//   toastTrigger.addEventListener('click', () => {
-//     const toast = new bootstrap.Toast(toastCardio);
-
-//     toast.show();
-//   })
-// }
