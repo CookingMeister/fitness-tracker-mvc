@@ -4,11 +4,9 @@ document.addEventListener('DOMContentLoaded', function () {
     .addEventListener('click', function (event) {
       event.preventDefault();
       const heightFeet = parseFloat(
-        document.querySelector('#userHeightFeet').value
-      );
+        document.querySelector('#userHeightFeet').value);
       const heightInches = parseFloat(
-        document.querySelector('#userHeightInches').value
-      );
+        document.querySelector('#userHeightInches').value);
       const weightLBS = parseFloat(document.querySelector('#userWeight').value);
 
       let bmi = calculateBMI(heightFeet, heightInches, weightLBS);

@@ -1,68 +1,22 @@
-:root {
-  --white: #ffffff;
-  --black: #000000;
-  --bluegreen: #34a0a4;
-  --darkblue: #1e6091;
-}
-
-.brand-logo{
-  cursor: pointer;
-}
-
 body {
   font-family: Helvetica, Arial, sans-serif;
   margin: 20px;
-    display: flex;
+  background-image: linear-gradient(
+    33deg,
+    rgba(207, 238, 250, 0.8) 50%,
+    rgb(52,160,164) 55%
+  );
+  background-repeat: no-repeat;
+  display: flex;
   justify-content: center;
   height: 100vh;
-  /* for footer */
-  min-height: 100vh;
-   flex-direction: column;
 }
 
-
-  main {
-    flex: 1 0 auto;
-  }
-      
-
-
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
- background-color: #34a0a4;
-  color: #fff;
-  z-index: 1000; /* Ensure a higher z-index than other elements if needed */
-}
-
-.logout-btn{
-  background-color: var(--darkblue);
-  text-align: center;
-   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  }
-
- 
 h1 {
-  color: var(--black);
-  text-shadow: var(--darkblue);
-    text-align: center;
+  color:rgb(246, 38, 130);
+  text-shadow: 2px 2px 3px rgb(178, 28, 96);
+  text-align: center;
   display: inline-block;
-}
-
-h2 {
-  color: var(--black);
-  text-shadow: var(--darkblue);
-    text-align: center;
- padding: 15px;
-font-size: xx-large;
-}
-
-.modal {
-  margin: 100px auto;
-  height: 400px;
-  
 }
 
 .custom-jumbotron {
@@ -78,47 +32,16 @@ font-size: xx-large;
 }
 
 .custom-btn {
-  background-color: var(--bluegreen);
-  color: var(--white);
+  background-color: rgb(52,160,164);
   border: none;
-  border-radius: 5px;
-  
-}
-.login-btn {
- display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
 }
 
-.secundary-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* .pink {
-  background-color: var(--white);
+.pink {
   color:rgb(246, 38, 130);
-  
-} */
+}
 
 @media (max-width: 770px) {
   .custom-jumbotron {
     height: 650px;
   }
   }
-
-  .page-footer {
-background-color: var(--white);
-color: var(--bluegreen);
-width: 80%;
-/* added */
-min-height: 5%;
-display: flex;
-position: absolute;
-margin-top: 0px;
-margin-left: 0px;
-margin-right: 0px;
-  }
-  
