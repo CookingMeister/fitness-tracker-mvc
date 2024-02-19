@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     // If user logged in, include user data
     if (req.session.loggedIn) {
       // Fetch data from models
-      const dateInput = '2024-02-18';
+      const dateInput = '2024-02-19';
 
       const userData =
         (await User.findOne({ where: { id: req.session.userId } })) || [];
@@ -35,12 +35,39 @@ router.get('/', async (req, res) => {
               }, 
             } 
         })) || [];
-      const waterData =
-        (await Water.findOne({ where: { userId: req.session.userId } })) || [];
-      const sleepData =
-        (await Sleep.findOne({ where: { userId: req.session.userId } })) || [];
-      const stepsData =
-        (await Steps.findOne({ where: { userId: req.session.userId } })) || [];
+      // const waterData =
+      //   (await Water.findOne({ where: { userId: req.session.userId } })) || [];
+      const waterArray =
+      (await Water.findAll({ 
+        where: { 
+            userId: req.session.userId,
+            created_at: {
+              [Op.between]: [dateInput + ' 00:00:00', dateInput + ' 23:59:59'],
+            }, 
+          } 
+      })) || [];
+      // const sleepData =
+      //   (await Sleep.findOne({ where: { userId: req.session.userId } })) || [];
+      const sleepArray =
+      (await Sleep.findAll({ 
+        where: { 
+            userId: req.session.userId,
+            created_at: {
+              [Op.between]: [dateInput + ' 00:00:00', dateInput + ' 23:59:59'],
+            }, 
+          } 
+      })) || [];
+      // const stepsData =
+      //   (await Steps.findOne({ where: { userId: req.session.userId } })) || [];
+      const stepsArray =
+      (await Steps.findAll({ 
+        where: { 
+            userId: req.session.userId,
+            created_at: {
+              [Op.between]: [dateInput + ' 00:00:00', dateInput + ' 23:59:59'],
+            }, 
+          } 
+      })) || [];
 
       // Pass the data to the EJS template
       res.render('dashboard2', {
@@ -48,16 +75,16 @@ router.get('/', async (req, res) => {
           { name: 'User', data: userData },
           { name: 'Cardio', data: cardioArray },
           { name: 'Workout', data: workoutArray },
-          { name: 'Water', data: waterData },
-          { name: 'Sleep', data: sleepData },
-          { name: 'Steps', data: stepsData },
+          { name: 'Water', data: waterArray },
+          { name: 'Sleep', data: sleepArray },
+          { name: 'Steps', data: stepsArray },
         ],
         userData,
         cardioArray,
         workoutArray,
-        waterData,
-        sleepData,
-        stepsData,
+        waterArray,
+        sleepArray,
+        stepsArray,
       });
     } else {
       res.render('notLoggedIn');

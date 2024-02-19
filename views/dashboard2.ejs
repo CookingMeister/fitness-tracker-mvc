@@ -193,11 +193,13 @@
       <div class="modal-body">
         <!-- Replace with actual water data -->
         <form id="deleteFormWater">
+          <% waterArray.map(waterData => {  %>
           <!-- Repeat this block for each water data item -->
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="<%= waterData.amount %>" id="<%= waterData.id %>" />
-            <label class="form-check-label" id="waterLabel" for="deleteItem"><strong>Amount:</strong>  <%= waterData.amount %> oz</label>
+            <label class="form-check-label waterLabel" id="waterLabel" for="deleteItem"><strong>Amount:</strong>  <%= waterData.amount %> oz</label>
           </div>
+          <% }) %>
           <!-- End of water data item block -->
         </form>
       </div>
@@ -221,10 +223,12 @@
       <div class="modal-body">
        <!-- Sleep data -->
         <form id="deleteFormSleep">
+          <% sleepArray.map(sleepData => {  %>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="<%= sleepData.hours %>" id="<%= sleepData.id %>" />
-            <label class="form-check-label" id="sleepLabel" for="deleteItem"><strong>Hours:</strong> <%= sleepData.hours %></label>
+            <label class="form-check-label sleepLabel" id="sleepLabel" for="deleteItem"><strong>Hours:</strong> <%= sleepData.hours %></label>
           </div>
+          <% }) %>
           <!-- End of sleep data item block -->
         </form>
       </div>
@@ -248,10 +252,12 @@
       <div class="modal-body">
         <!-- Steps data -->
         <form id="deleteFormSteps">
+          <% stepsArray.map(stepsData => {  %>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="<%= stepsData.amount %>" id="<%= stepsData.id %>" />
-            <label class="form-check-label" id="stepsLabel" for="deleteItem"><strong>Steps:</strong> <%= stepsData.amount %></label>
+            <label class="form-check-label stepsLabel" id="stepsLabel" for="deleteItem"><strong>Steps:</strong> <%= stepsData.amount %></label>
           </div>
+          <% }) %>
           <!-- End of steps data item block -->
         </form>
       </div>
