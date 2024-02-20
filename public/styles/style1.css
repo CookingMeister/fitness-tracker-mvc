@@ -91,12 +91,25 @@ footer {
   height: 35px;
 }
 
-footer {
-  margin-top: 22px;
+.footer {
+  padding-top: 100px;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1274px) {
+
   .custom-jumbotron {
     height: 650px;
+  }
+
+  .form-inline {
+    padding-top: 10px;
+  }
+
+  .form-inline input{
+    width: 155px;
+    margin-left: -80px;
+  }
+  .date {
+    transform: scale(0.70);
   }
 }
