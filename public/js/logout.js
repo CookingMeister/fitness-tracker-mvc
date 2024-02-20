@@ -1,4 +1,4 @@
-// post reuest to log current user out
+// post request to log current user out
 document.querySelector('.logout-btn').addEventListener('click', (event) => {
     event.preventDefault();
     
@@ -8,7 +8,6 @@ document.querySelector('.logout-btn').addEventListener('click', (event) => {
     const postRequest = axios.post('/api/logout', user);
     postRequest.
         then(function (response) {
-          console.log('Response:', response.data);
           window.location.replace('/');
         })
         .catch(function (error) {

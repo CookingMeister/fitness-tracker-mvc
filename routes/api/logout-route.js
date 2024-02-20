@@ -1,15 +1,7 @@
 const router = require('express').Router();
+const logoutUser = require('../../controllers/userController');
 
-// ends session, logs user out
-router.post('/', (req, res) => {
-    req.session.destroy((err) => {
-      if (err) {
-        console.log(err);
-        res.status(500).json({ message: 'There was an error logging out' });    
-      } else {
-        res.redirect('/');
-      }
-    });
-});
+// Logout route
+router.post('/', logoutUser);
 
-  module.exports = router;
+module.exports = router;
