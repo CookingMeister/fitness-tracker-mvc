@@ -9,10 +9,10 @@ document.querySelector('.register-btn').addEventListener('click', (event) => {
   // Handle the promise returned by the POST request
   postRequest
     .then(function (response) {
-      // console.log('Response:', response.data);
       window.location.replace('/api/dashboard');
     })
     .catch(function (error) {
       console.error('Error:', error.message);
+      window.location.replace('/api/login');
     });
 });

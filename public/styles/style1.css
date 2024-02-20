@@ -1,11 +1,16 @@
 body {
   font-family: Helvetica, Arial, sans-serif;
-  margin: 20px;
+  /* margin: 20px; */
   background-color:#3DBBBF;
   background-repeat: no-repeat;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   height: 100vh;
+}
+
+header {
+  display: block;
+  background-color: white;
 }
 
 h1 {
@@ -20,18 +25,36 @@ h1 {
 
 .custom-jumbotron {
   height: 350px;
+  width: auto;
+  max-width: 77vw;
   background-color: white;
   box-shadow: 5px 5px 15px black;
   border-radius: 5px;
-  margin-top: 5%;
+  margin-top: 8%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+.custom-jumbotron h3 {
+  padding-top: 15px;
+  font-weight: 200;
+  transform: scale(0.85);
+}
+
+.date {
+  font-weight: 200;
+}
 .card {
   box-shadow: 5px 5px 15px black;
 }
 
 .custom-btn {
   background-color: rgb(52,160,164);
+  border: none;
+}
+
+.logout-btn {
+  background-color: #C20024;
   border: none;
 }
 
@@ -64,7 +87,11 @@ h1 {
   height: 35px;
 }
 
-@media screen and (max-width: 990px) {
+footer {
+  margin-top: 22px;
+}
+
+@media screen and (max-width: 1200px) {
   .custom-jumbotron {
     height: 650px;
   }
