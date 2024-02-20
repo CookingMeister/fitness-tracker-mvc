@@ -1,3 +1,4 @@
+// listens for click, takes values from inputs
 document.addEventListener('DOMContentLoaded', function () {
   document
     .querySelector('.submit-user-btn')

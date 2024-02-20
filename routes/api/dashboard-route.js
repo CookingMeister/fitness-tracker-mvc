@@ -196,11 +196,7 @@ router.delete('/user/weight/:id', async (req, res) => {
 
 // creates new water data
 router.post('/water', async (req, res) => {
-  console.log('req:', req.body);
   const userId = req.session.passport.user;
-
-  console.log(req.session);
-  console.log(userId);
 
   try {
     const addWater = await Water.create({
@@ -239,7 +235,6 @@ router.delete('/water/:id', async (req, res) => {
 
 // creates sleep data
 router.post('/sleep', async (req, res) => {
-  console.log(req.body);
   const userId = req.session.passport.user;
   try {
     const addSleep = await Sleep.create({
@@ -276,7 +271,6 @@ router.delete('/sleep/:id', async (req, res) => {
 
 // creates cardio data
 router.post('/cardio', async (req, res) => {
-  console.log(req.body);
   const userId = req.session.passport.user;
   try {
     const addCardio = await Cardio.create({
@@ -314,7 +308,6 @@ router.delete('/cardio/:id', async (req, res) => {
 
 // creates steps data
 router.post('/steps', async (req, res) => {
-  console.log(req.body);
   const userId = req.session.passport.user;
   try {
     const addSteps = await Steps.create({
@@ -350,7 +343,6 @@ router.delete('/steps/:id', async (req, res) => {
 
 // creates new workout data
 router.post('/workout', async (req, res) => {
-  console.log(req.body);
   const userId = req.session.passport.user;
   try {
     const addWorkout = await Workout.create({

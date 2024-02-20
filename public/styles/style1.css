@@ -1,3 +1,4 @@
+/* sets font, bg color, height */
 body {
   font-family: Helvetica, Arial, sans-serif;
   background-color:#3DBBBF;
@@ -6,25 +7,30 @@ body {
   height: 100vh;
 }
 
+/* sets header bg */
 header {
   display: block;
   background-color: white;
 }
 
+/* sets h1 font color, aligns text */
 h1 {
   color:#C20024;  
   text-align: center;
   display: inline-block;
 }
 
+/* adds margin to footer */
 footer {
   margin-top: 40px;
 }
+
 
 .big {
   transform: scale(1.35);
 }
 
+/* styling for home screen div */
 .custom-jumbotron {
   height: 350px;
   width: auto;
@@ -43,54 +49,65 @@ footer {
   transform: scale(0.85);
 }
 
+/* sets font size for date on home screen  */
 .date {
   font-weight: 200;
   font-size: 1.5rem;
 }
 
+/* adds shadow effect on modals on dashboard */
 .card {
   box-shadow: 5px 5px 15px black;
 }
 
+/* adds hover effect on modals on dashboard */
 :hover.card {
   transform: scale(1.015);
   transition: transform ease-in-out;
 }
 
+/* adds hover effect on buttons on home screen */
 .card .custom-btn:hover {
   .fa-plus {
     color: white;
   }  
 }
 
+/* sets custom color for button on home screen */
 .custom-btn {
   background-color: rgb(52,160,164);
   border: none;
 }
 
+/* sets color for logout button */
 .logout-btn {
   background-color: #C20024;
   border: none;
 }
 
+/* adds margin for logout icon */
 .logout-icon {
   margin-left: 4px;
 }
 
+/* makes daily totals in modals to display on bottom left */
 .daily-total {
   display: flex; 
   width: 100%; 
   justify-content: space-between;
 }
 
+/* custom orange color */
 .orange {
   color:#C20024;
 }
 
+/* makes toasts have rounded corners */
 .toast {
   border-radius: 22px;
 }
 
+/* adds padding, margin, set width for labels */
 .form-inline label {
   margin-left: 8px;
   padding-top: 5px;
@@ -98,19 +115,23 @@ footer {
   width: 220px;
 }
 
+/* set heigh for buttons */
 .form-inline button {
   margin-left: 8px;
   height: 35px;
 }
 
+/* set heigh for inputs */
 .form-inline input {
   height: 35px;
 }
 
+/* padding for footer */
 .footer {
   padding-top: 100px;
 }
 
+/* makes app responsive to all screen sizes */
 @media screen and (max-width: 1274px) {
 
   header h1,

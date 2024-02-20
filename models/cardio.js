@@ -3,6 +3,7 @@ const sequelize = require('../config/connection.js');
 
 class Cardio extends Model {}
 
+// using sequalize model structure, creates tables
 Cardio.init(
     {
         id: {
