@@ -10,13 +10,12 @@ const formattedDate = today.format('YYYY-MM-DD')
 
 // gets all info for logged in user for chosen date or default date(todays date)
 router.get('/', async (req, res) => {
-  // console.log(req.session.userId);
+  
   try {
     // If user logged in, include user data
     if (req.session.loggedIn) {
       // Fetch data from models
       const dateInput = req.query.id || formattedDate;
-      // console.log(dateInput);
 
       const userData =
         (await User.findOne({ where: { id: req.session.userId } })) || [];
