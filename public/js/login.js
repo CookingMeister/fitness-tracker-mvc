@@ -1,3 +1,4 @@
+// gets values from inputs, sends data for post request to create new profile
 document.querySelector('.login-btn').addEventListener('click', (event) => {
     event.preventDefault();
     const username = document.querySelector('input[name= "username"]').value;
