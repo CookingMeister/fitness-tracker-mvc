@@ -1,9 +1,7 @@
 body {
   font-family: Helvetica, Arial, sans-serif;
-  /* margin: 20px; */
   background-color:#3DBBBF;
   background-repeat: no-repeat;
-  /* display: flex; */
   justify-content: center;
   height: 100vh;
 }
@@ -47,9 +45,22 @@ footer {
 
 .date {
   font-weight: 200;
+  font-size: 1.5rem;
 }
+
 .card {
   box-shadow: 5px 5px 15px black;
+}
+
+:hover.card {
+  transform: scale(1.015);
+  transition: transform ease-in-out;
+}
+
+.card .custom-btn:hover {
+  .fa-plus {
+    color: white;
+  }  
 }
 
 .custom-btn {
@@ -60,6 +71,10 @@ footer {
 .logout-btn {
   background-color: #C20024;
   border: none;
+}
+
+.logout-icon {
+  margin-left: 4px;
 }
 
 .daily-total {
@@ -80,13 +95,14 @@ footer {
   margin-left: 8px;
   padding-top: 5px;
   display: inline-block;
-  width: 220px; /* Adjust width as needed */
+  width: 220px;
 }
 
 .form-inline button {
   margin-left: 8px;
   height: 35px;
 }
+
 .form-inline input {
   height: 35px;
 }
@@ -97,6 +113,10 @@ footer {
 
 @media screen and (max-width: 1274px) {
 
+  header h1,
+  header .fa-dumbell {
+    padding-top:5px;
+  }
   .custom-jumbotron {
     height: 650px;
   }
