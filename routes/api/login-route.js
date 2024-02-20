@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const loginUser = require('../../controllers/userController');
+const { loginUser } = require('../../controllers/userController');
 
 // Render login page
 router.get('/', (req, res) => {
