@@ -6,6 +6,7 @@ CREATE DATABASE simplyFit_db;
 
 USE simplyFit_db;
 
+-- creates tables
 CREATE TABLE user (
     id INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(30) NOT NULL UNIQUE,

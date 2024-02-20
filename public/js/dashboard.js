@@ -6,7 +6,6 @@ document
     event.preventDefault();
     const dateInput = document.querySelector('input[name="date"]').value;
     const dateValue = { dateInput };
-    console.log(dateValue);
 
     location.href=('/api/dashboard?id=' + dateValue.dateInput);
 });
@@ -25,9 +24,7 @@ document
     const weight = parseInt(document.querySelector('#userWeight').value);
     const heightConvertInches = heightFeet * 12 + heightInches;
     const height = heightConvertInches;
-    console.log(height);
-    console.log(weight);
-    // const user = { height, weight };
+
     const postRequest = axios.post('/api/dashboard/user', { height, weight });
     postRequest
       .then(function (response) {
@@ -54,8 +51,6 @@ deleteHeightBtn.addEventListener('click', (event) => {
   const heightLabel = document.querySelector('#deleteHeight');
   const heightId = heightLabel.previousElementSibling.getAttribute('id');
 
-  console.log(heightId);
-
   const deleteHeightRequest = axios.delete(
     '/api/dashboard/user/height/' + heightId
   );
@@ -70,8 +65,6 @@ deleteHeightBtn.addEventListener('click', (event) => {
 
   const weightLabel = document.querySelector('#deleteWeight');
   const weightId = weightLabel.previousElementSibling.getAttribute('id');
-
-  console.log(weightId);
 
   const deleteWeightRequest = axios.delete(
     '/api/dashboard/user/weight/' + weightId
@@ -89,8 +82,6 @@ deleteHeightBtn.addEventListener('click', (event) => {
     const heightLabel = document.querySelector('#deleteHeight');
     const heightId = heightLabel.previousElementSibling.getAttribute('id');
 
-    console.log(heightId);
-
     const deleteHeightRequest = axios.delete(
       '/api/dashboard/user/height/' + heightId
     );
@@ -105,8 +96,6 @@ deleteHeightBtn.addEventListener('click', (event) => {
   } else  {
     const weightLabel = document.querySelector('#deleteWeight');
     const weightId = weightLabel.previousElementSibling.getAttribute('id');
-
-    console.log(weightId);
 
     const deleteWeightRequest = axios.delete(
       '/api/dashboard/user/weight/' + weightId
@@ -155,18 +144,15 @@ const deleteWaterBtn = document.querySelector('button[form="deleteFormWater"]');
 
 deleteWaterBtn.addEventListener('click', (event) => {
   event.preventDefault();
-  console.log('button clicked:', deleteWaterBtn);
 
   const waterLabels = document.querySelectorAll('.waterLabel');
 
   for (i = 0; i < waterLabels.length; i ++) {
     const waterLabel = waterLabels[i];
     const waterId = waterLabel.previousElementSibling.getAttribute('id');
-    console.log(waterId);
 
     if (waterLabel.previousElementSibling.checked) {
       const waterId = waterLabel.previousElementSibling.getAttribute('id');
-      console.log(waterId);
 
       const deleteRequest = axios.delete('/api/dashboard/water/' + waterId);
       deleteRequest
@@ -221,7 +207,6 @@ const deleteSleepBtn = document.querySelector('button[form="deleteFormSleep"]');
 
 deleteSleepBtn.addEventListener('click', (event) => {
   event.preventDefault();
-  console.log('button clicked:', deleteSleepBtn);
 
   const sleepLabels = document.querySelectorAll('.sleepLabel');
 
@@ -230,7 +215,6 @@ deleteSleepBtn.addEventListener('click', (event) => {
 
     if (sleepLabel.previousElementSibling.checked) {
       const sleepId = sleepLabel.previousElementSibling.getAttribute('id');
-      console.log(sleepId);
 
       const deleteRequest = axios.delete('/api/dashboard/sleep/' + sleepId);
       deleteRequest
@@ -265,7 +249,6 @@ addCardioBtn.addEventListener('click', (event) => {
 
   const cardio = { exercise, distance, time };
 
-  console.log(cardio);
   const toastCardio = new bootstrap.Toast(document.getElementById('toastCardio'));
   const modalCardio = bootstrap.Modal.getInstance(document.getElementById('formModalCardio'));
 
@@ -291,7 +274,6 @@ const deleteCardioBtn = document.querySelector(
 
 deleteCardioBtn.addEventListener('click', (event) => {
   event.preventDefault();
-  console.log('button clicked:', deleteCardioBtn);
 
   const cardioLabels = document.querySelectorAll('.deleteCardio');
 
@@ -300,7 +282,6 @@ deleteCardioBtn.addEventListener('click', (event) => {
 
     if (cardioLabel.previousElementSibling.checked) {
       const cardioId = cardioLabel.previousElementSibling.getAttribute('id');
-      console.log(cardioId);
 
       const deleteRequest = axios.delete('/api/dashboard/cardio/' + cardioId);
       deleteRequest
@@ -351,8 +332,6 @@ const deleteStepsBtn = document.querySelector('button[form="deleteFormSteps"]');
 deleteStepsBtn.addEventListener('click', (event) => {
   event.preventDefault();
 
-  console.log('button clicked:', deleteStepsBtn);
-
   const stepsLabels = document.querySelectorAll('.stepsLabel');
 
   for (i = 0; i < stepsLabels.length; i ++) {
@@ -360,8 +339,7 @@ deleteStepsBtn.addEventListener('click', (event) => {
 
     if (stepsLabel.previousElementSibling.checked) {
     const stepsId = stepsLabel.previousElementSibling.getAttribute('id');
-    console.log(stepsId);
-
+   
       const deleteRequest = axios.delete('/api/dashboard/steps/' + stepsId);
       deleteRequest
         .then(function (response) {
@@ -390,7 +368,6 @@ addWorkoutBtn.addEventListener('click', (event) => {
 
   const exerciseRepSet = { exercise, reps, sets, weight };
 
-  console.log(exerciseRepSet);
   const toastWorkout = new bootstrap.Toast(document.getElementById('toastWorkout'));
   const modalWorkout = bootstrap.Modal.getInstance(document.getElementById('formModalWorkout'));
 
@@ -417,7 +394,6 @@ const deleteWorkoutBtn = document.querySelector(
 
 deleteWorkoutBtn.addEventListener('click', (event) => {
   event.preventDefault();
-  console.log('button clicked:', deleteWorkoutBtn);
 
   const workoutLabels = document.querySelectorAll('.deleteWorkout');
 
@@ -426,8 +402,7 @@ deleteWorkoutBtn.addEventListener('click', (event) => {
 
     if (workoutLabel.previousElementSibling.checked) {
       const workoutId = workoutLabel.previousElementSibling.getAttribute('id');
-      console.log(workoutId);
-
+ 
        const deleteRequest = axios.delete('/api/dashboard/workout/' + workoutId);
         deleteRequest
           .then(function (response) {
@@ -445,7 +420,7 @@ deleteWorkoutBtn.addEventListener('click', (event) => {
 const logout = document.querySelector('.logout-btn');
 logout.addEventListener('click', (event) => {
   event.preventDefault();
-  console.log('Logout clicked!');
+
   const postRequest = axios.post('/api/logout');
   postRequest.
       then(function (response) {

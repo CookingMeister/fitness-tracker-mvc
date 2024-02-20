@@ -5,6 +5,7 @@ const Steps = require('./steps');
 const Water = require('./water');
 const Workout = require('./workout');
 
+// connects all tables to user w/ foreign key
 User.hasMany(Cardio, {
     foreignKey: 'userId',
     onDelete: 'CASCADE',

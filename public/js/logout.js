@@ -1,7 +1,7 @@
 // post reuest to log current user out
 document.querySelector('.logout-btn').addEventListener('click', (event) => {
     event.preventDefault();
-    console.log('Logout clicked!');
+    
     const username = document.querySelector('input[name= "username"]').value;
 
     const user = { username };

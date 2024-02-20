@@ -3,6 +3,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const { User } = require('../models');
 const bcrypt = require('bcrypt');
 
+// encripts password through passportjs
 passport.use(
   new LocalStrategy(
     {
