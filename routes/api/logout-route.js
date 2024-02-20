@@ -1,5 +1,6 @@
 const router = require('express').Router();
 
+// ends session, logs user out
 router.post('/', (req, res) => {
     req.session.destroy((err) => {
       if (err) {
@@ -9,6 +10,6 @@ router.post('/', (req, res) => {
         res.redirect('/');
       }
     });
-  });
+});
 
   module.exports = router;

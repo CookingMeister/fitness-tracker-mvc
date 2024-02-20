@@ -1,19 +1,22 @@
+// imports dependancies
 const router = require('express').Router();
 const { User, Water, Cardio, Sleep, Steps, Workout } = require('../../models');
 const { Op } = require('sequelize');
 const dayJs = require('dayjs');
 
+// acquires todays date through dayjs
 const today = dayJs();
 const formattedDate = today.format('YYYY-MM-DD')
 
+// gets all info for logged in user for chosen date or default date(todays date)
 router.get('/', async (req, res) => {
-  console.log(req.session.userId);
+  // console.log(req.session.userId);
   try {
     // If user logged in, include user data
     if (req.session.loggedIn) {
       // Fetch data from models
       const dateInput = req.query.id || formattedDate;
-      console.log(dateInput);
+      // console.log(dateInput);
 
       const userData =
         (await User.findOne({ where: { id: req.session.userId } })) || [];
@@ -191,7 +194,7 @@ router.delete('/user/weight/:id', async (req, res) => {
   }
 });
 
-//! water requests
+// creates new water data
 router.post('/water', async (req, res) => {
   console.log('req:', req.body);
   const userId = req.session.passport.user;
@@ -214,10 +217,7 @@ router.post('/water', async (req, res) => {
   }
 });
 
-// router.put('/water/:id', (req, res) => {
-
-// });
-
+// deletes water data
 router.delete('/water/:id', async (req, res) => {
   try {
     const deleteWater = await Water.destroy({
@@ -237,8 +237,7 @@ router.delete('/water/:id', async (req, res) => {
   }
 });
 
-//! sleep requests
-
+// creates sleep data
 router.post('/sleep', async (req, res) => {
   console.log(req.body);
   const userId = req.session.passport.user;
@@ -275,37 +274,7 @@ router.delete('/sleep/:id', async (req, res) => {
   }
 });
 
-//! cardio requests
-
-router.get('/cardio/:id', async (req, res) => {
-  try {
-    const userId = req.session.passport.user;
-    const dateInput = req.params.id;
-    console.log(dateInput);
-    console.log(userId);
-
-    const cardio = await Cardio.findAll({
-      where: {
-        userId: userId,
-        created_at: {
-          [Op.between]: [dateInput + ' 00:00:00', dateInput + ' 23:59:59'],
-        },
-      },
-    });
-
-    console.log('Cardio data:', cardio);
-
-    if (!cardio) {
-      return res.status(404).send('Cardio not found');
-    }
-
-    res.status(200).json(cardio);
-  } catch (error) {
-    console.error('Error processing Cardio data:', error);
-    res.status(500).send('Error processing Cardio data');
-  }
-});
-
+// creates cardio data
 router.post('/cardio', async (req, res) => {
   console.log(req.body);
   const userId = req.session.passport.user;
@@ -323,10 +292,7 @@ router.post('/cardio', async (req, res) => {
   }
 });
 
-// router.put('/cardio/:id', (req, res) => {
-
-// });
-
+// deletes cardio data
 router.delete('/cardio/:id', async (req, res) => {
   try {
     const deleteCardio = await Cardio.destroy({
@@ -346,8 +312,7 @@ router.delete('/cardio/:id', async (req, res) => {
   }
 });
 
-//! steps requests
-
+// creates steps data
 router.post('/steps', async (req, res) => {
   console.log(req.body);
   const userId = req.session.passport.user;
@@ -363,10 +328,7 @@ router.post('/steps', async (req, res) => {
   }
 });
 
-// router.put('/steps/:id', (req, res) => {
-
-// });
-
+// deletes steps data
 router.delete('/steps/:id', async (req, res) => {
   try {
     const deleteSteps = await Steps.destroy({
@@ -386,37 +348,7 @@ router.delete('/steps/:id', async (req, res) => {
   }
 });
 
-//! workout requests
-
-router.get('/workout/:id', async (req, res) => {
-  try {
-    const userId = req.session.passport.user;
-    const dateInput = req.params.id;
-    console.log(dateInput);
-    console.log(userId);
-
-    const workout = await Workout.findAll({
-      where: {
-        userId: userId,
-        created_at: {
-          [Op.between]: [dateInput + ' 00:00:00', dateInput + ' 23:59:59'],
-        },
-      },
-    });
-
-    console.log('Workout data:', workout);
-
-    if (!workout) {
-      return res.status(404).send('Workout not found');
-    }
-
-    return res.redirect('/');
-  } catch (error) {
-    console.error('Error processing Workout data:', error);
-    res.status(500).send('Error processing Workout data');
-  }
-});
-
+// creates new workout data
 router.post('/workout', async (req, res) => {
   console.log(req.body);
   const userId = req.session.passport.user;
@@ -435,10 +367,7 @@ router.post('/workout', async (req, res) => {
   }
 });
 
-// router.put('/workout/:id', (req, res) => {
-
-// });
-
+// deletes workout data
 router.delete('/workout/:id', async (req, res) => {
   try {
     const deleteWorkout = await Workout.destroy({

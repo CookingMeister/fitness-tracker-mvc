@@ -9,7 +9,7 @@ document
     console.log(dateValue);
 
     location.href=('/api/dashboard?id=' + dateValue.dateInput);
-  });
+});
   
 // User update button
 document
@@ -149,8 +149,6 @@ wtrBtn.addEventListener('click', (event) => {
     });
 });
 
-//* update water
-
 //* delete water
 
 const deleteWaterBtn = document.querySelector('button[form="deleteFormWater"]');
@@ -216,8 +214,6 @@ slpBtn.addEventListener('click', (event) => {
       console.error('Error:', error.message);
     });
 });
-
-//* update sleep
 
 //* delete sleep
 
@@ -320,8 +316,6 @@ deleteCardioBtn.addEventListener('click', (event) => {
 });
 
 //* -----------------------------------------------------------------------------
-
-//* get steps
 //* add steps
 
 const addStepsBtn = document.querySelector('.steps');
@@ -351,7 +345,6 @@ addStepsBtn.addEventListener('click', (event) => {
     });
 });
 
-//* update steps
 //* delete steps
 const deleteStepsBtn = document.querySelector('button[form="deleteFormSteps"]');
 
@@ -384,7 +377,6 @@ deleteStepsBtn.addEventListener('click', (event) => {
 
 //* -----------------------------------------------------------------------------
 
-//* get workout
 //* add workout
 
 const addWorkoutBtn = document.querySelector('.workout');
@@ -417,7 +409,7 @@ addWorkoutBtn.addEventListener('click', (event) => {
       console.error('Error:', error.message);
     });
 });
-//* update workout
+
 //* delete workout
 const deleteWorkoutBtn = document.querySelector(
   'button[form="deleteFormWorkout"]'
