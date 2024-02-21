@@ -15,7 +15,7 @@ As a fitness enthusiast, I want a comprehensive fitness tracker that allows me t
 
 ## Installation
 
-Clone or download the repo. Remove '.Example' from the .env file and add your credentials for mySQL inside the .env file. In the root directory run `npm install` to initialize and install dependencies. Run `npm run create` to initialize and set up the database. Run `npm run start` to start the application.
+Clone or download the repo. Remove '.Example' from the .env file and add your credentials for mySQL inside the .env file. In the root directory run `npm install` to initialize and install dependencies. Run `npm run create` to initialize and set up the database. Run `npm start` to start the application.
 
 ## Usage
 
