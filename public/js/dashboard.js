@@ -1,5 +1,4 @@
 //* get all data by date
-
 document
   .getElementById('get-date')
   .addEventListener('submit', function (event) {
@@ -172,8 +171,6 @@ deleteWaterBtn.addEventListener('click', (event) => {
     }
   }
 });
-
-//* -----------------------------------------------------------------------------
 
 //* add sleep
 const slpBtn = document.querySelector('.slp-btn');
