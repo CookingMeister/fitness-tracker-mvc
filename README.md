@@ -1,7 +1,8 @@
 # Fitness Tracker MVC
 
-Live URL 👇🏼<br>
+[![badge](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/mit)
 
+Live URL 👇🏼<br>
 
 ## Description
 
@@ -16,19 +17,7 @@ As a fitness enthusiast, I want a comprehensive fitness tracker that allows me t
 
 ## Installation
 
-npm install 
-"bcrypt": "^5.1.1",
-"connect-session-sequelize": "^7.1.7",
-"dayjs": "^1.11.10",
-"dotenv": "^16.4.1",
-"ejs": "^3.1.9",
-"express": "^4.18.2",
-"express-flash": "^0.0.2",
-"express-session": "^1.18.0",
-"mysql2": "^3.9.1",
-"passport": "^0.7.0",
-"passport-local": "^1.0.0",
-"sequelize": "^6.36.0"
+Clone or download the repo. Remove '.Example' from the .env file and add your credentials for mySQL inside the .env file. In the root directory run `npm install` to initialize and install dependencies. Run `npm run create` to initialize and set up the database. Run `npm run start` to start the application.
 
 ## Usage
 
@@ -70,19 +59,8 @@ Workout, Water, Sleep and Steps all have the same functionalities and come with 
 ## Credits
 
 Maika Sabo, Stephanie Perroni, Samantha Allen, Shawn Meister
+W3Schools, MDN Web Docs and edX Bootcamp resources were invaluable for completing this project.
 
 ## License
 
 The MIT License is short and to the point. It lets people do almost anything they want with your project, like making and distributing closed source versions.
-
-## Features
-
-N/A
-
-## How to Contribute
-
-N/A
-
-## Tests
-
-N/A
