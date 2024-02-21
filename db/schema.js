@@ -23,11 +23,11 @@ connection.connect((err) =>
 
 // Create a new database
 connection.query(
-  `CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME}`,
+  `CREATE DATABASE IF NOT EXISTS fitness_tracker;`,
   (createDbErr) =>
     createDbErr
       ? console.error('Error creating database:', createDbErr)
-      : console.log(`Database ${process.env.DB_NAME} created successfully`)
+      : console.log(`Database fitness_tracker created successfully`)
 );
 
 // Close the connection when done
