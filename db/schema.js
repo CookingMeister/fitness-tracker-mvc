@@ -2,11 +2,17 @@ const mysql = require('mysql2');
 require('dotenv').config();
 
 // MySQL connection configuration
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-});
+const connection = mysql.createConnection(
+  process.env.JAWSDB_URL
+    ? {
+        host: process.env.JAWSDB_URL,
+      }
+    : {
+        host: 'localhost',
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+      }
+);
 
 // Connect to MySQL
 connection.connect((err) =>
