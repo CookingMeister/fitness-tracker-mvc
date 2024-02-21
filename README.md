@@ -2,8 +2,6 @@
 
 [![badge](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/mit)
 
-Live URL 👇🏼<br>
-
 ## Description
 
 As a fitness enthusiast, I want a comprehensive fitness tracker that allows me to log various types of workouts, track my water intake, and monitor my daily steps, so that I can have a detailed overview of my fitness progress and health habits to better achieve my personal health goals.
@@ -58,9 +56,11 @@ Workout, Water, Sleep and Steps all have the same functionalities and come with 
 
 ## Credits
 
-Maika Sabo, Stephanie Perroni, Samantha Allen, Shawn Meister
+Maika Sabo, Stephanie Perroni, Samantha Allen, Shawn Meister.
 W3Schools, MDN Web Docs and edX Bootcamp resources were invaluable for completing this project.
 
 ## License
+
+[![badge](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/mit)
 
 The MIT License is short and to the point. It lets people do almost anything they want with your project, like making and distributing closed source versions.
